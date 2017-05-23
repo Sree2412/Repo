@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<project basedir="." default="build" name="MindPalace">
+	<property environment="env"/>
+	<property name="debuglevel" value="source,lines,vars"/>
+	<property name="target" value="1.8"/>
+	<property name="source" value="1.8"/>
+	<path id="MindPalace.classpath">
+		<pathelement location="bin"/>
+		<pathelement location="jars/commons-codec-1.9.jar"/>
+		<pathelement location="jars/commons-lang3-3.3.2.jar"/>
+		<pathelement location="jars/commons-logging-1.2.jar"/>
+		<pathelement location="jars/groovy-2.4.4.jar"/>
+		<pathelement location="jars/groovy-json-2.4.4.jar"/>
+		<pathelement location="jars/groovy-xml-2.4.4.jar"/>
+		<pathelement location="jars/guice-4.1.0.jar"/>
+		<pathelement location="jars/hamcrest-core-1.3.jar"/>
+		<pathelement location="jars/hamcrest-library-1.3.jar"/>
+		<pathelement location="jars/httpclient-4.5.1.jar"/>
+		<pathelement location="jars/httpcore-4.4.3.jar"/>
+		<pathelement location="jars/httpmime-4.5.1.jar"/>
+		<pathelement location="jars/java-json.jar"/>
+		<pathelement location="jars/jcommander.jar"/>
+		<pathelement location="jars/json-lib.jar"/>
+		<pathelement location="jars/json-path-2.2.0.jar"/>
+		<pathelement location="jars/json-simple-1.1.jar"/>
+		<pathelement location="jars/log4j-1.2.17.jar"/>
+		<pathelement location="jars/org.apache.commons.io.jar"/>
+		<pathelement location="jars/poi-3.11-20141221.jar"/>
+		<pathelement location="jars/poi-examples-3.11-20141221.jar"/>
+		<pathelement location="jars/poi-excelant-3.11-20141221.jar"/>
+		<pathelement location="jars/poi-ooxml-3.11-20141221.jar"/>
+		<pathelement location="jars/poi-ooxml-schemas-3.11-20141221.jar"/>
+		<pathelement location="jars/poi-scratchpad-3.11-20141221.jar"/>
+		<pathelement location="jars/reportng-1.1.4.jar"/>
+		<pathelement location="jars/rest-assured-2.8.0.jar"/>
+		<pathelement location="jars/saxon-8.7.jar"/>
+		<pathelement location="jars/saxon8-dom.jar"/>
+		<pathelement location="jars/SaxonLiaison.jar"/>
+		<pathelement location="jars/tagsoup-1.2.1.jar"/>
+		<pathelement location="jars/testng-6.9.10.jar"/>
+		<pathelement location="jars/velocity-dep-1.4.jar"/>
+		<pathelement location="jars/xmlbeans-2.6.0.jar"/>
+		<pathelement location="jars/xmlunit-1.6.jar"/>
+		<pathelement location="jars/commons-collections4-4.0.jar"/>
+		<pathelement location="jars/sqljdbc4-3.0.jar"/>
+	</path>
+
+	<target name="init">
+		<condition property="ANT" 
+			            value="${appenv.ANT_HOME}/bin/ant.bat" 
+			            else="${appenv.ANT_HOME}/bin/ant">
+			<os family="windows" />
+		</condition>
+		<mkdir dir="bin"/>
+		<copy includeemptydirs="false" todir="bin">
+			<fileset dir="src">
+				<exclude name="**/*.java"/>
+			</fileset>
+		</copy>
+	</target>
+
+
+	<target name="clean">
+		<delete dir="bin"/>
+	</target>
+
+	<target name="build" depends="init">
+		<javac debug="false" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+			<src path="src"/>
+			<classpath refid="MindPalace.classpath"/>
+		</javac>
+	</target>
+
+	<taskdef name="testng" classname="org.testng.TestNGAntTask">
+		<classpath>
+			<pathelement location="jars/testng-6.9.10.jar" />
+		</classpath>
+	</taskdef>
+
+	<target name="runTests" depends="clean,build">
+		<mkdir dir="testng_output" />
+		<testng outputdir="testng_output" classpathref="MindPalace.classpath">
+			<xmlfileset dir="." includes="testng.xml" />
+		</testng>
+	</target>
+
+	<target name="runStageIngestionScalingTests" depends="clean,build">
+		<mkdir dir="testng_output" />
+		<testng outputdir="testng_output" classpathref="MindPalace.classpath">
+			<xmlfileset dir="." includes="PerformanceScalingStageIngestionTest.xml" />
+		</testng>
+	</target>
+
+	<target name="runStageTaskScalingTests" depends="clean,build">
+		<mkdir dir="testng_output" />
+		<testng outputdir="testng_output" classpathref="MindPalace.classpath">
+			<xmlfileset dir="." includes="PerformanceScalingStageTaskTest.xml" />
+		</testng>
+	</target>
+
+	<target name="runStageIngestionAndTaskScalingTests" depends="clean,build">
+		<mkdir dir="testng_output" />
+		<testng outputdir="testng_output" classpathref="MindPalace.classpath">
+			<xmlfileset dir="." includes="PerformanceScalingStageIngestionAndTaskTest.xml" />
+		</testng>
+	</target>
+	
+	<target name="runStageVolumeTests" depends="clean,build">
+			<mkdir dir="testng_output" />
+			<testng outputdir="testng_output" classpathref="MindPalace.classpath">
+				<xmlfileset dir="." includes="PerformanceVolumeStageTest.xml" />
+			</testng>
+		</target>
+</project>

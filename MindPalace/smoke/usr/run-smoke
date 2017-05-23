@@ -1,0 +1,74 @@
+#!/bin/bash
+source smoke_echo.sh
+BRANCH_NAME=$1
+COMMIT_REQUIRED=0
+
+echo_status 'Checking if test is already running'
+pgrep python > /dev/null
+if [ $? == 0 ]; then
+    echo_warning "RUNNING"
+    echo "Smoke test might be running now by another user."
+    echo "Use sudo stop-smoke to kill python processes."
+    exit 1
+else
+    echo_ok
+fi
+
+
+echo_status 'Checking code changes'
+if [ -d "MindPalace" ]; then
+    cd MindPalace
+    if [ -n "$(git status --porcelain)" ]; then
+	echo_warning "COMMIT REQUIRED"
+        echo "Following files must be commited into the branch:"
+	git status --porcelain
+	COMMIT_REQUIRED=1
+    fi
+    cd ..
+fi
+
+if [ $COMMIT_REQUIRED == 0 ]; then
+    echo_ok
+    echo_status 'Performing cleanup'
+    rm -rf MindPalace/ 2> /dev/null
+    if [ $? != 0 ]; then
+        echo_error
+        exit 1;
+    else
+        echo_ok
+    fi
+
+    if [ -z $BRANCH_NAME ]; then
+        BRANCH_NAME=master
+    fi
+
+    git clone -b $BRANCH_NAME `echo aHR0cHM6Ly9tamFuZGE6T2xpZmtBMjAxMUBnaXRodWIuY29uc2lsaW8uY29tL0Rpc2NvdmVyeVByb2Nlc3NpbmcvTWluZFBhbGFjZS5naXQ= | base64 --decode`
+    CLONE_RESULT=$?
+    echo_status "Cloning $BRANCH_NAME branch"
+    
+    if [ $CLONE_RESULT -ne 0 ]; then
+        echo_error
+        exit 1;
+    else
+        echo_ok
+    fi
+
+    echo_status 'Checking cloned branch'
+    if [ -d "MindPalace" ]; then
+    cd MindPalace    
+    if [ -z "$(git status --porcelain)" ]; then
+	echo_ok	
+	echo_status 'Checking smoke test scripts folder'
+	if [ -d "smoke" ]; then
+	    echo_ok
+	    cd smoke
+	    ./smoke_test.sh
+	else
+	    echo_error
+	    exit 1
+	fi    
+    fi
+fi
+
+    
+fi

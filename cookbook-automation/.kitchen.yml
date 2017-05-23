@@ -1,0 +1,43 @@
+---
+driver:
+  name: vra
+  username: <%= ENV['VRA_USER'] %>
+  password: "<%= ENV['VRA_PASS'] %>"
+  tenant: Engineering
+  base_url: https://cloud.consilio.com
+  verify_ssl: false
+  cpus: 1
+  memory: 4096
+  lease_days: 1
+  request_timeout: 1200
+  use_dns: false
+  server_ready_retries: 10
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  # Describes a Linux host, remove if unneeded
+  - name: Linux
+    driver:
+      private_key_path: ./id_rsa
+      catalog_id: a4bbb0f7-3aff-4382-98bb-8f354664645a
+      subtenant_id: 3de5fbd7-8968-495a-ac2b-93b731b3a729
+    transport:
+      username: <%= ENV['KT_USER'] %>
+
+  # Describes a Windows host, remove if unneeded
+  - name: Windows
+    driver:
+      catalog_id: 2f7a97cd-bff0-4408-b26f-2750344ec35e
+      subtenant_id: 3de5fbd7-8968-495a-ac2b-93b731b3a729
+    transport:
+      name: winrm
+      username: <%= ENV['KT_USER'] %>
+      password: <%= ENV['KT_PASS'] %>
+
+suites:
+  - name: default
+    run_list:
+      - recipe[cookbook-automation::default]
+    attributes:

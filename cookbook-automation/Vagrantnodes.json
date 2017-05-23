@@ -1,0 +1,59 @@
+{
+    "nodes": {
+        "mario": {
+            ":node": "mario-10",
+            ":platform": "linux",
+            ":ip": "10.0.0.10",
+            ":host": "mario.server-10",
+            "ports": [
+                {
+                    ":host": 2210,
+                    ":guest": 22,
+                    ":id": "ssh"
+                }
+            ],
+            ":memory": 1024,
+            ":cpus": 1,
+            ":run_list": [
+                "recipe[cookbook-automation::default]"
+            ],
+            ":attributes": {
+                "qa": {
+                    "ruby": {
+                        "install": true
+                    }
+                }
+            }
+        },
+        "luigi": {
+            ":node": "luigi-20",
+            ":platform": "windows",
+            ":ip": "10.0.0.20",
+            ":host": "luigi.server-20",
+            "ports": [
+                {
+                    ":host": 2220,
+                    ":guest": 22,
+                    ":id": "ssh"
+                },
+                {
+                    ":host": 33389,
+                    ":guest": 3389,
+                    ":id": "rdp"
+                }
+            ],
+            ":memory": 1024,
+            ":cpus": 1,
+            ":run_list": [
+                "recipe[cookbook-automation::default]"
+            ],
+            ":attributes": {
+                "qa": {
+                    "ruby": {
+                        "install": true
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,183 @@
+<SOAP-ENV:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+<SOAP-ENV:Body>
+<a1:LoadFile id="ref-1" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<FilePath id="ref-3">\\chiprodfs01\testing\Testing Documents\Relativity\Third Tier\Smoke Test\SmokeTestData\Salt-v-Pepper.dat</FilePath>
+<FirstLineContainsHeaders>true</FirstLineContainsHeaders>
+<LoadNativeFiles>true</LoadNativeFiles>
+<ExtractFullTextFromNativeFile>false</ExtractFullTextFromNativeFile>
+<RecordDelimiter>124</RecordDelimiter>
+<QuoteDelimiter>94</QuoteDelimiter>
+<NewlineDelimiter>174</NewlineDelimiter>
+<MultiRecordDelimiter>59</MultiRecordDelimiter>
+<OverwriteDestination>None</OverwriteDestination>
+<FieldMap href="#ref-4"/>
+<NativeFilePathColumn id="ref-5">FILE_PATH (27)</NativeFilePathColumn>
+<SelectedIdentifierField href="#ref-6"/>
+<FolderStructureContainedInColumn id="ref-7">Folder Path (20)</FolderStructureContainedInColumn>
+<CreateFolderStructure>true</CreateFolderStructure>
+<FullTextColumnContainsFileLocation>true</FullTextColumnContainsFileLocation>
+<GroupIdentifierColumn id="ref-8">Group Identifier (21)</GroupIdentifierColumn>
+<HierarchicalValueDelimiter>92</HierarchicalValueDelimiter>
+<SourceFileEncoding>1252</SourceFileEncoding>
+<ArtifactTypeID>10</ArtifactTypeID>
+<StartLineNumber>0</StartLineNumber>
+<IdentityFieldId>1003667</IdentityFieldId>
+<SendEmailOnLoadCompletion>false</SendEmailOnLoadCompletion>
+<ForceFolderPreview>true</ForceFolderPreview>
+<ExtractedTextFileEncoding>1252</ExtractedTextFileEncoding>
+</a1:LoadFile>
+<a1:LoadFileFieldMap id="ref-4" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_al href="#ref-9"/>
+</a1:LoadFileFieldMap>
+<a1:DocumentField id="ref-6" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_fieldName id="ref-10">Control Number</_fieldName>
+<_fieldID>1003667</_fieldID>
+<_fieldTypeID>0</_fieldTypeID>
+<_value xsi:null="1"/>
+<_fieldCategoryID>2</_fieldCategoryID>
+<_fileColumnIndex>0</_fileColumnIndex>
+</a1:DocumentField>
+<a2:ArrayList id="ref-9" xmlns:a2="http://schemas.microsoft.com/clr/ns/System.Collections">
+<_items href="#ref-11"/>
+<_size>11</_size>
+<_version>11</_version>
+</a2:ArrayList>
+<SOAP-ENC:Array id="ref-11" SOAP-ENC:arrayType="xsd:anyType[16]">
+<item href="#ref-12"/>
+<item href="#ref-13"/>
+<item href="#ref-14"/>
+<item href="#ref-15"/>
+<item href="#ref-16"/>
+<item href="#ref-17"/>
+<item href="#ref-18"/>
+<item href="#ref-19"/>
+<item href="#ref-20"/>
+<item href="#ref-21"/>
+<item href="#ref-22"/>
+</SOAP-ENC:Array>
+<a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem id="ref-12" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_documentField href="#ref-6"/>
+<_nativeFileColumnIndex>0</_nativeFileColumnIndex>
+</a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem>
+<a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem id="ref-13" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_documentField href="#ref-23"/>
+<_nativeFileColumnIndex>16</_nativeFileColumnIndex>
+</a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem>
+<a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem id="ref-14" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_documentField href="#ref-24"/>
+<_nativeFileColumnIndex>13</_nativeFileColumnIndex>
+</a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem>
+<a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem id="ref-15" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_documentField href="#ref-25"/>
+<_nativeFileColumnIndex>15</_nativeFileColumnIndex>
+</a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem>
+<a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem id="ref-16" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_documentField href="#ref-26"/>
+<_nativeFileColumnIndex>12</_nativeFileColumnIndex>
+</a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem>
+<a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem id="ref-17" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_documentField href="#ref-27"/>
+<_nativeFileColumnIndex>14</_nativeFileColumnIndex>
+</a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem>
+<a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem id="ref-18" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_documentField href="#ref-28"/>
+<_nativeFileColumnIndex>9</_nativeFileColumnIndex>
+</a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem>
+<a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem id="ref-19" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_documentField href="#ref-29"/>
+<_nativeFileColumnIndex>17</_nativeFileColumnIndex>
+</a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem>
+<a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem id="ref-20" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_documentField href="#ref-30"/>
+<_nativeFileColumnIndex>20</_nativeFileColumnIndex>
+</a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem>
+<a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem id="ref-21" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_documentField href="#ref-31"/>
+<_nativeFileColumnIndex>23</_nativeFileColumnIndex>
+</a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem>
+<a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem id="ref-22" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_documentField href="#ref-32"/>
+<_nativeFileColumnIndex>4</_nativeFileColumnIndex>
+</a1:LoadFileFieldMap_x002B_LoadFileFieldMapItem>
+<a1:DocumentField id="ref-23" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_fieldName id="ref-33">Extracted Text</_fieldName>
+<_fieldID>1003668</_fieldID>
+<_fieldTypeID>4</_fieldTypeID>
+<_value xsi:null="1"/>
+<_fieldCategoryID>1</_fieldCategoryID>
+<_fileColumnIndex>0</_fileColumnIndex>
+</a1:DocumentField>
+<a1:DocumentField id="ref-24" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_fieldName id="ref-34">Email From</_fieldName>
+<_fieldID>1035366</_fieldID>
+<_fieldTypeID>0</_fieldTypeID>
+<_value xsi:null="1"/>
+<_fieldCategoryID>0</_fieldCategoryID>
+<_fileColumnIndex>0</_fileColumnIndex>
+</a1:DocumentField>
+<a1:DocumentField id="ref-25" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_fieldName id="ref-35">Email To</_fieldName>
+<_fieldID>1035368</_fieldID>
+<_fieldTypeID>4</_fieldTypeID>
+<_value xsi:null="1"/>
+<_fieldCategoryID>0</_fieldCategoryID>
+<_fileColumnIndex>0</_fileColumnIndex>
+</a1:DocumentField>
+<a1:DocumentField id="ref-26" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_fieldName id="ref-36">Email CC</_fieldName>
+<_fieldID>1035365</_fieldID>
+<_fieldTypeID>4</_fieldTypeID>
+<_value xsi:null="1"/>
+<_fieldCategoryID>0</_fieldCategoryID>
+<_fileColumnIndex>0</_fileColumnIndex>
+</a1:DocumentField>
+<a1:DocumentField id="ref-27" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_fieldName id="ref-37">Email Subject</_fieldName>
+<_fieldID>1038083</_fieldID>
+<_fieldTypeID>4</_fieldTypeID>
+<_value xsi:null="1"/>
+<_fieldCategoryID>0</_fieldCategoryID>
+<_fileColumnIndex>0</_fileColumnIndex>
+</a1:DocumentField>
+<a1:DocumentField id="ref-28" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_fieldName id="ref-38">Date Sent</_fieldName>
+<_fieldID>1035355</_fieldID>
+<_fieldTypeID>2</_fieldTypeID>
+<_value xsi:null="1"/>
+<_fieldCategoryID>0</_fieldCategoryID>
+<_fileColumnIndex>0</_fileColumnIndex>
+</a1:DocumentField>
+<a1:DocumentField id="ref-29" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_fieldName id="ref-39">File Name</_fieldName>
+<_fieldID>1035374</_fieldID>
+<_fieldTypeID>0</_fieldTypeID>
+<_value xsi:null="1"/>
+<_fieldCategoryID>0</_fieldCategoryID>
+<_fileColumnIndex>0</_fileColumnIndex>
+</a1:DocumentField>
+<a1:DocumentField id="ref-30" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_fieldName id="ref-40">Group Identifier</_fieldName>
+<_fieldID>1003671</_fieldID>
+<_fieldTypeID>0</_fieldTypeID>
+<_value xsi:null="1"/>
+<_fieldCategoryID>5</_fieldCategoryID>
+<_fileColumnIndex>0</_fileColumnIndex>
+</a1:DocumentField>
+<a1:DocumentField id="ref-31" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_fieldName id="ref-41">Parent Document ID</_fieldName>
+<_fieldID>1035385</_fieldID>
+<_fieldTypeID>0</_fieldTypeID>
+<_value xsi:null="1"/>
+<_fieldCategoryID>0</_fieldCategoryID>
+<_fileColumnIndex>0</_fileColumnIndex>
+</a1:DocumentField>
+<a1:DocumentField id="ref-32" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/kCura.WinEDDS/kCura.WinEDDS%2C%20Version%3D8.0.155.11%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_fieldName id="ref-42">Conversation Index</_fieldName>
+<_fieldID>1035350</_fieldID>
+<_fieldTypeID>4</_fieldTypeID>
+<_value xsi:null="1"/>
+<_fieldCategoryID>0</_fieldCategoryID>
+<_fileColumnIndex>0</_fileColumnIndex>
+</a1:DocumentField>
+</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

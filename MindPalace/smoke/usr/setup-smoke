@@ -1,0 +1,56 @@
+#!/bin/bash
+source smoke_echo.sh
+source smoke_rest.sh
+source smoke_common.sh
+
+root_required
+
+echo_status "Setting up name server..."
+sudo echo "nameserver 8.8.8.8" > /etc/resolv.conf
+echo_ok
+
+echo_status "Checking elasticsearch"
+sudo service elasticsearch status | grep running > /dev/null;
+if [ $? != 0 ]; then
+    echo_warning "NOT RUNNING"
+    echo_status "Starting elasticsearch"
+
+    sudo service elasticsearch start &> /dev/null
+    if [ $? != 0 ]; then
+	echo_error
+	exit 1
+    else
+	echo_ok
+    fi
+else
+    echo_ok
+fi
+
+echo_line "Waiting for elasticsearch..."
+echo_status "Connecting to elasticsearch"
+WAIT_SECONDS=0
+while [ $WAIT_SECONDS -lt 120 ]; do
+    sleep 1
+
+    curl --silent --output /dev/null -XGET http://localhost:9200
+    if [ $? == 0 ]; then
+	echo_ok
+	break;
+    fi
+    let WAIT_SECONDS=WAIT_SECONDS+1
+done
+
+curl --silent --output /dev/null -XGET http://localhost:9200
+if [ $? != 0 ]; then
+    echo_error
+    echo_line "Cannot connect to elasticsearch."
+    exit 1
+fi
+
+#do_request 'Deleting all indexes' DELETE http://localhost:9200/_all
+
+mount_storage "10.213.1.132" "DestinationLocation" "username=jzwerling,password=Consilio@123,domain=rpmx.com"
+mount_storage "10.12.239.121" "DestinationLocation" "username=mjanda,password=OlifkA2011,domain=consilio"
+mount_storage "10.12.235.48" "MPQA" "username=mpqa,password=ConAdm1n,domain=."
+
+

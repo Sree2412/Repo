@@ -1,0 +1,19 @@
+#!/bin/bash
+source smoke_echo.sh
+source smoke_common.sh
+
+root_required
+
+echo_status "Killing python processes"
+pgrep python | xargs kill -9
+sleep 1
+pgrep python > /dev/null
+
+if [ $? == 1 ]; then
+    echo_ok
+else
+    echo_error
+fi
+
+
+

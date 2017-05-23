@@ -1,0 +1,66 @@
+GIT
+  remote: https://github.consilio.com/QA/Browser-Framework.git
+  revision: 2003114cf644941b31030d821db2441208759587
+  specs:
+    TestFramework (0.0.12)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    byebug (9.0.5)
+    childprocess (0.5.9)
+      ffi (~> 1.0, >= 1.0.11)
+    coderay (1.1.1)
+    commonwatir (4.0.0)
+    diff-lcs (1.2.5)
+    ffi (1.9.10-x64-mingw32)
+    json (1.8.3)
+    log4r (1.1.10)
+    method_source (0.8.2)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    rspec (3.4.0)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
+    rspec-core (3.4.4)
+      rspec-support (~> 3.4.0)
+    rspec-expectations (3.4.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-mocks (3.4.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-support (3.4.1)
+    rubyzip (1.2.0)
+    selenium-webdriver (2.53.3)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0)
+    slop (3.6.0)
+    solid_assert (1.0.0)
+    watir (5.0.0)
+      commonwatir (~> 4)
+      watir-webdriver
+    watir-webdriver (0.9.1)
+      selenium-webdriver (>= 2.46.2)
+    websocket (1.2.3)
+
+PLATFORMS
+  x64-mingw32
+
+DEPENDENCIES
+  TestFramework!
+  byebug
+  json
+  log4r
+  pry
+  rspec
+  solid_assert
+  watir
+  watir-webdriver
+
+BUNDLED WITH
+   1.12.5

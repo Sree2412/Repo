@@ -1,0 +1,9 @@
+RestAssured/Workspace/MindPalace/testng_output/
+RestAssured/Workspace/MindPalace/test-output/
+RestAssured/Workspace/MindPalace/bin/
+MyTests.java
+RestAssured/Workspace/MindPalace/resources/mockfiles/TextualNearDupesAndEmailThreading/*_updated.xml
+RestAssured/Workspace/MindPalace/resources/testrepo/TestData_EmailThread1.xlsx
+RestAssured/Workspace/MindPalace/resources/testrepo/TestData_NearDupes1.xlsx
+RestAssured/Workspace/MindPalace/resources/logs/*.log
+RestAssured/Workspace/MindPalace/resources//metrics/*.xlsx

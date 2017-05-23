@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Staging Area Operations suite" preserve-order="true" verbose="2">
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	</listeners>
+	<test name="Test_Email_Threading">
+		<classes>
+			<class name="com.consilio.tests.Functional_EmailThreadingTest" />			
+		</classes>
+	</test>
+	<test name="Test_Textual_Near_Duplicates" >
+		<classes>
+			<class name="com.consilio.tests.Functional_TextualNearDupeTest" />
+		</classes>
+	</test>
+	<test name="Test_Conceptual_MasterCluster">
+		<classes>
+			<class name="com.consilio.tests.MasterClusterRequest" />			
+		</classes>
+	</test>
+	<test name="Test_Conceptual_NearDupeCluster">
+		<classes>
+			<class name="com.consilio.tests.ConceptualNearDupeRequest" />			
+		</classes>
+	</test>
+	<test name="Test_Conceptual_Search">
+		<classes>
+			<class name="com.consilio.tests.SearchRequest" />			
+		</classes>
+	</test>
+		<test name="Test_Conceptual_Categorization">
+		<classes>
+			<class name="com.consilio.tests.CategorizationRequest" />			
+		</classes>
+	</test>
+</suite>
+<!--
+<suite guice-stage="DEVELOPMENT" name="Scaling Performance Suite" preserve-order="true" verbose="2">
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	</listeners>
+	<test name="Conceptual_Performance_Scalibility">
+		<classes>
+			<class name="com.mp.tests.ScalingExecutor" />			
+		</classes>
+	</test>
+</suite> 
+<suite guice-stage="DEVELOPMENT" name="Volume Performance Suite" preserve-order="true" verbose="2">
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	</listeners>
+	<test name="Conceptual_Performance_Volume">
+		<classes>
+			<class name="com.mp.tests.PerformanceIBMC" />			
+		</classes>
+	</test>
+</suite>
+<!--
+<suite guice-stage="DEVELOPMENT" name="Scaling Performance Suite" preserve-order="true" verbose="2">
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	</listeners>
+	<test name="Conceptual_Performance_Scalibility">
+		<classes>
+			<class name="com.consilio.tests.ScalingExecutor" />			
+		</classes>
+	</test>
+</suite> 
+<suite guice-stage="DEVELOPMENT" name="Volume Performance Suite" preserve-order="true" verbose="2">
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	</listeners>
+	<test name="Conceptual_Performance_Volume">
+		<classes>
+			<class name="com.consilio.tests.PerformanceIBMC" />			
+		</classes>
+	</test>
+	<test name="Test_Conceptual_NearDupeCluster">
+		<classes>
+			<class name="com.consilio.tests.ConceptualNearDupeRequest" />			
+		</classes>
+	</test>
+	<test name="Test_Conceptual_Search">
+		<classes>
+			<class name="com.consilio.tests.SearchRequest" />			
+		</classes>
+	</test>
+		<test name="Test_Conceptual_Categorization">
+		<classes>
+			<class name="com.consilio.tests.CategorizationRequest" />			
+		</classes>
+	</test>
+</suite>
+-->
+<suite guice-stage="DEVELOPMENT" name="Scaling Performance Suite" preserve-order="true" verbose="2">
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	</listeners>
+	<test name="Conceptual_Performance_Scalibility">
+		<classes>
+			<class name="com.consilio.tests.ScalingExecutor" />			
+		</classes>
+	</test>
+</suite> 
+<suite guice-stage="DEVELOPMENT" name="Volume Performance Suite" preserve-order="true" verbose="2">
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	</listeners>
+	<test name="Conceptual_Performance_Volume">
+		<classes>
+			<class name="com.consilio.tests.PerformanceIBMC" />			
+		</classes>
+	</test>
+</suite>
+<!--
+<suite guice-stage="DEVELOPMENT" name="Scaling Performance Suite" preserve-order="true" verbose="2">
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	</listeners>
+	<test name="Conceptual_Performance_Scalibility">
+		<classes>
+			<class name="com.mp.tests.ScalingExecutor" />			
+		</classes>
+	</test>
+</suite> 
+<suite guice-stage="DEVELOPMENT" name="Volume Performance Suite" preserve-order="true" verbose="2">
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	</listeners>
+	<test name="Conceptual_Performance_Volume">
+		<classes>
+			<class name="com.mp.tests.PerformanceIBMC" />			
+		</classes>
+	</test> -->
+</suite> 
+-->

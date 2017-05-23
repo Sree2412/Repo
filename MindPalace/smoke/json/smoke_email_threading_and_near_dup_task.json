@@ -1,0 +1,13 @@
+{
+  "config":{
+    "parameters":{
+      "startOver":"false",
+      "useMessageIdsIfAvailable":"false",
+      "ignoreNumerics":"true",
+      "minSimilarity":"0.9",
+      "retainGroupIds":"false",
+      "textKeys":null
+    }
+  },
+  "limiters":null
+}

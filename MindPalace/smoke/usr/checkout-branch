@@ -1,0 +1,96 @@
+#!/bin/bash
+source smoke_echo.sh
+BRANCH_NAME=$1
+
+
+
+if [ -z $BRANCH_NAME ]; then
+    echo_line "Branch name is required."
+    exit 1
+fi
+
+if [ -d "$BRANCH_NAME" ]; then
+    echo_line "Branch is already checked out."
+    echo_line "Anoter build might be in progress."
+    echo_line "Waiting up to 10 minutes until another build is complete."
+    echo_status "Waiting"
+
+    WAIT_SECONDS=0
+    while [ $WAIT_SECONDS -lt 600 ]; do
+	if [ ! -d "$BRANCH_NAME" ]; then
+	    echo_ok
+            break;
+        fi
+    sleep 3
+    let WAIT_SECONDS=WAIT_SECONDS+1
+    done
+
+    if [ -d "$BRANCH_NAME" ]; then
+	echo_error
+	echo_line "Another build is taking too long."
+	exit 1
+    fi
+fi
+
+
+if [ -f "/var/lock/.smoke_test" ]; then
+    echo_line "Lock file found."
+    echo_line "Anoter build might be in progress."
+    echo_line "Waiting up to 10 minutes until another build is complete."
+    echo_status "Waiting"
+
+    WAIT_SECONDS=0
+    while [ $WAIT_SECONDS -lt 600 ]; do
+	if [ ! -f "/var/lock/.smoke_test" ]; then
+	    echo_ok
+            break;
+        fi
+    sleep 5
+    let WAIT_SECONDS=WAIT_SECONDS+1
+    done
+
+    if [ -f "/var/lock/.smoke_test" ]; then
+	echo_error
+	echo_line "Another build is taking too long."
+	exit 1
+    fi
+fi
+
+echo_line "Creating smoke test branch lock..."
+echo "smoke-test" > /var/lock/.smoke_test
+
+git clone -b $BRANCH_NAME `echo aHR0cHM6Ly9tamFuZGE6T2xpZmtBMjAxMUBnaXRodWIuY29uc2lsaW8uY29tL0Rpc2NvdmVyeVByb2Nlc3NpbmcvTWluZFBhbGFjZS5naXQ= | base64 --decode` $BRANCH_NAME
+CLONE_RESULT=$?
+echo_status "Cloning $BRANCH_NAME branch"
+
+if [ $CLONE_RESULT -ne 0 ]; then
+    echo_error
+    exit 1;
+else
+    echo_ok
+fi
+
+echo_status 'Checking cloned branch'
+
+if [ -d "$BRANCH_NAME" ]; then
+    cd "$BRANCH_NAME"
+    if [ -z "$(git status --porcelain)" ]; then
+	echo_ok
+	echo_status 'Checking smoke test scripts folder'
+	if [ -d "smoke" ]; then
+	    echo_ok
+	else
+	    echo_error
+	    exit 1
+	fi
+    fi
+else
+    echo_error
+    echo_line "Branch folder doesn't exist."
+    exit 1
+fi
+
+
+
+#SLACK_CHANNEL=@$(git show -s | grep -hio "\b[a-z0-9.-]\+@[a-z0-9.-]\+\.[a-z]\{2,4\}\+\b" | sed -E 's/(.*)@{1}(.*)/\1/')
+#curl -s -X POST -d "{ \"text\": \"Branch $BRANCH_NAME build $2 is in progress.\",\"channel\": \"$SLACK_CHANNEL\", \"icon_emoji\": \":ghost:\", \"username\": \"Jenkins\" }" https://hooks.slack.com/services/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

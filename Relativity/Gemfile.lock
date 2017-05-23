@@ -1,0 +1,107 @@
+GIT
+  remote: https://github.consilio.com/Automation/Browser-Framework.git
+  revision: 7c2e153c64d1aff39eaacae243a61543b2006e54
+  specs:
+    TestFramework (0.0.10)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    byebug (8.2.4)
+    childprocess (0.5.9)
+      ffi (~> 1.0, >= 1.0.11)
+    coderay (1.1.1)
+    commonwatir (4.0.0)
+    diff-lcs (1.2.5)
+    ffi (1.9.10-x64-mingw32)
+    ffi (1.9.10-x86-mingw32)
+    json (1.8.3)
+    log4r (1.1.10)
+    method_source (0.8.2)
+    mini_magick (4.3.6)
+    mini_portile (0.6.2)
+    mini_portile2 (2.1.0)
+    multi_json (1.11.3)
+    nokogiri (1.6.8.rc3-x86-mingw32)
+      mini_portile2 (~> 2.1.0)
+      pkg-config (~> 1.1.7)
+    pkg-config (1.1.7)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    rautomation (0.17.0)
+      ffi (~> 1.9.0)
+    rspec (3.4.0)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
+    rspec-core (3.4.4)
+      rspec-support (~> 3.4.0)
+    rspec-expectations (3.4.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-mocks (3.4.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-support (3.4.1)
+    rubyzip (1.2.0)
+    selenium-webdriver (2.53.0)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0)
+    slop (3.6.0)
+    solid_assert (0.8.0)
+    tiny_tds (0.7.0-x64-mingw32)
+      mini_portile (= 0.6.2)
+    tiny_tds (0.7.0-x86-mingw32)
+      mini_portile (= 0.6.2)
+    watir (5.0.0)
+      commonwatir (~> 4)
+      watir-webdriver
+    watir (5.0.0-x86-mingw32)
+      commonwatir (~> 4)
+      watir-classic (~> 4.0)
+      watir-webdriver
+    watir-classic (4.3.0)
+      ffi (~> 1.0)
+      multi_json
+      nokogiri (>= 1.5.7.rc3)
+      rautomation (~> 0.7)
+      win32-process (>= 0.5.5)
+      win32screenshot (~> 2.1.0)
+      windows-pr (>= 0.6.6)
+    watir-webdriver (0.9.1)
+      selenium-webdriver (>= 2.46.2)
+    websocket (1.2.3)
+    win32-api (1.5.3-universal-mingw32)
+    win32-process (0.8.3)
+      ffi (>= 1.0.0)
+    win32screenshot (2.1.0)
+      ffi (~> 1.9.0)
+      mini_magick (~> 4.3.0)
+      rautomation (~> 0.7)
+    windows-api (0.4.4)
+      win32-api (>= 1.4.5)
+    windows-pr (1.2.4)
+      win32-api (>= 1.4.5)
+      windows-api (>= 0.4.0)
+
+PLATFORMS
+  x64-mingw32
+  x86-mingw32
+
+DEPENDENCIES
+  TestFramework!
+  byebug
+  json
+  log4r
+  pry
+  rspec
+  solid_assert
+  tiny_tds
+  watir
+  watir-webdriver
+
+BUNDLED WITH
+   1.11.2

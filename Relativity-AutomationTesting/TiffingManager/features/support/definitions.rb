@@ -1,0 +1,5 @@
+#Search_funnel = BROWSERR.iframe(:id=>"ListTemplateFrame").a(:id=>"ctl00_viewRenderer_itemList_FilterSwitch")
+Search_funnel_1 = BROWSERR.iframe(:id=>"ListTemplateFrame").a(:id=>"ctl00_viewRenderer_itemList_FilterSwitch", :title=>"Show Filters")
+Search_funnel_2 = BROWSERR.iframe(:id=>"ListTemplateFrame").a(:id=>"ctl00_viewRenderer_itemList_FilterSwitch", :title=>"Hide Filters")
+Dropdown_tab = BROWSERR.li(:id=>"moreTabsButton").a(:id=>"moreTabsButtonToggle")
+Tiffing_tab = BROWSERR.a(:class=>"accordionParent ng-scope accordionParentVisible", :text=>"TiffingManager")

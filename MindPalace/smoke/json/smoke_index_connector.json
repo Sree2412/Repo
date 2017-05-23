@@ -1,0 +1,20 @@
+{
+       "config": {
+	"filterProportion": 0.0,
+	"limit": 0,
+	"mode": "ADD_TRAINING_AND_SEARCHABLE_ITEMS",
+	"name": "SMOKE-TEST",
+	"params": {
+              "userName": "sa",
+              "password": "ConAdm1n",
+              "fetchSize": "0",
+              "query": "EXEC get_test_by_id 1, 20, '/xvdb'",
+              "driverClassName": "com.microsoft.sqlserver.jdbc.SQLServerDriver",
+              "singleItemQuery": "MindPalace does not use this field.",
+              "url": "jdbc:sqlserver://10.12.235.48;databaseName=MPQA;responseBuffering=adaptive;"
+           },
+       "runDisabled": false,
+       "schedule": null
+       },
+       "type": "JDBCConnector"
+}

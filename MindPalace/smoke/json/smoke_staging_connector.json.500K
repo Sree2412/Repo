@@ -1,0 +1,20 @@
+{
+   "config": {
+   "filterProportion": 0.0,
+   "limit": 0,
+   "mode": "ADD_ITEMS",
+   "name": "1093",
+   "params": {
+      "password": "ConAdm1n",
+      "fetchSize": "0",
+      "query": "EXEC get_test_by_id 2, 84, '/mnt/xvdb/'",
+      "driverClassName": "com.microsoft.sqlserver.jdbc.SQLServerDriver",
+      "singleItemQuery": "mp do not use this",
+      "userName": "sa",
+      "url": "jdbc:sqlserver://10.213.1.150;databaseName=MPQA;responseBuffering=adaptive;"
+   },
+   "runDisabled": false,
+   "schedule": null
+},
+ "type": "JDBCConnector"
+}

@@ -1,0 +1,16 @@
+﻿Revert "checking in to test older version"
+
+This reverts commit 11434654f31c66c356ae2051e6b66011916edcf4.
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch nokogiri_feature
+# Changes to be committed:
+#	modified:   TestFramework.gemspec
+#	deleted:    examples/HlmcBilling/.byebug_history
+#	modified:   examples/HlmcBilling/Gemfile
+#	deleted:    examples/HlmcBilling/Gemfile.lock
+#	modified:   examples/HlmcBilling/spec/models/HlmcBilling.rb
+#	deleted:    examples/HlmcBilling/test_run000001.log
+#
+

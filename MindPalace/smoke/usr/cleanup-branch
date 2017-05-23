@@ -1,0 +1,45 @@
+#!/bin/bash
+source smoke_echo.sh
+BRANCH_NAME=$1
+#SLACK_MESSAGE=$2
+
+
+if [ -z $BRANCH_NAME ]; then
+    echo_line "Branch name is required."
+    exit 1
+fi
+
+
+
+echo_status "Performing branch cleanup"
+
+if [ -d "$BRANCH_NAME" ]; then
+
+#    echo 'problem'
+#    echo $SLACK_MESSAGE
+
+#    cd "$BRANCH_NAME"
+#    SLACK_CHANNEL=@$(git show -s | grep -hio "\b[a-z0-9.-]\+@[a-z0-9.-]\+\.[a-z]\{2,4\}\+\b" | sed -E 's/(.*)@{1}(.*)/\1/')
+#    curl -s -X POST -d "{ \"text\": \"$SLACK_MESSAGE\", \"channel\": \"$SLACK_CHANNEL\", \"icon_emoji\": \":ghost:\", \"username\": \"Jenkins\" }" https://hooks.slack.com/services/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
+#    cd ..
+
+
+    rm -rf $BRANCH_NAME/ 2> /dev/null
+    if [ $? != 0 ]; then
+        echo_error
+        exit 1;
+    else
+        echo_ok
+    fi
+
+else
+    echo_error
+    echo_line "Branch folder doesn't exist."
+    exit 1
+fi
+
+echo_line "Removing smoke test lock."
+rm -f /var/lock/.smoke_test
+
+
+

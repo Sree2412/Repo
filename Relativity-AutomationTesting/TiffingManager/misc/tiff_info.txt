@@ -1,0 +1,12 @@
+tiffstate to selected immediately
+then background worker will tiff, but not immediately
+
+tiffing state is the only field that affects
+
+tiffing qc field affects QC sampling
+
+filtered file type will not get tiffed but a slipsheet will be generated
+
+slip sheet: 
+field is called : file extention
+

@@ -1,0 +1,16 @@
+{
+  "continueOnError":false,
+  "dataKeys":["none"],
+  "exportType":"XML",
+  "ignoreContainers":false,
+  "ignoreItemsWithoutData":false,
+  "includeEmailMeta":false,
+  "includeGeneralMeta":false,
+  "includeNearDupMeta":true,
+  "limiters":null,
+  "metadataKeys":["to","from","cc","bcc","sent-date","subject","parent-item-id","conversation-index","in-reply-to","message-id","references","sender-name","sent-representing","sender-email-address","sent-representing-email-address","caat-derived-primary-language","caat-derived-locale"],
+  "params":{
+    "filename":"TextualNearDupe.xml",
+    "overwrite":"true"
+  }
+}

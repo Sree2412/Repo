@@ -1,0 +1,6 @@
+gem 'rubyntlm'
+gem 'httpclient'
+gem 'NtlmREST', :git => 'https://github.consilio.com/Automation/NtlmREST.git'
+gem 'ServiceBase', :git => 'https://github.consilio.com/Automation/Service-Framework.git'
+gem 'json'
+gem 'logger'

@@ -1,0 +1,122 @@
+stage 'Init'
+node('Linux && ChefDK') {
+  try {
+    git credentialsId: 'build_account', url: 'https://github.huronconsultinggroup.com/HL/cookbook-cookbook-automation.git'
+    stash includes: '**', name: 'source'
+  } catch (e) {
+    println "Jenkins encounted Error: ${e}"
+    throw e
+  } finally {
+    rake "clean"
+    rake "clobber"
+  }
+}
+
+stage 'Style'
+node('Linux && ChefDK') {
+  try {
+    unstash "source"
+    println "Running setup"
+    rake "setup:bundler"
+    rake "setup:gems"
+    println "Running style guide tests"
+    rake "style"
+  } catch (e) {
+    println "Jenkins encounted Error: ${e}"
+    throw e
+  } finally {
+    rake "clean"
+    rake "clobber"
+  }
+}
+
+stage 'Unit'
+node('Linux && ChefDK') {
+  try {
+    unstash "source"
+    println "Running setup"
+    rake "setup:bundler"
+    rake "setup:gems"
+    rake "setup:cookbooks"
+    println "Running unit tests"
+    sh "mkdir Reports"
+    rake "unit"
+    step([$class: 'JUnitResultArchiver', testResults: 'Reports/chefspec.xml'])
+  } catch (e) {
+    println "Jenkins encounted Error: ${e}"
+    throw e
+  } finally {
+    rake "clean"
+    rake "clobber"
+  }
+}
+
+stage 'Integration'
+node('Kitchen') {
+  try {
+    unstash "source"
+    println "Running setup"
+    rake "setup:bundler"
+    rake "setup:gems"
+    rake "setup:cookbooks"
+    sh "mkdir -p Logs"
+    println "Running integration tests"
+    sh "chef exec kitchen test | tee Logs/kitchen_tests.log"
+    sh "mkdir -p Reports"
+    sh "awk -f filter_junit.awk Logs/kitchen_tests.log > Reports/kitchen_tests.xml"
+    step([$class: 'JUnitResultArchiver', testResults: "Reports/kitchen_tests.xml"])
+  } catch (e) {
+    println "Jenkins encounted Error: ${e}"
+    throw e
+  } finally {
+    rake "clean"
+    rake "clobber"
+  }
+}
+
+stage 'Package'
+node('Linux && ChefDK') {
+  try {
+    unstash "source"
+    println "Running setup"
+    rake "setup:bundler"
+    rake "setup:gems"
+    rake "setup:cookbooks"
+    println "Running Build/Package"
+    rake "build:package"
+    archive 'artifacts/*.tar.gz'
+    echo env.JOB_NAME
+    build job: '/Chef/StoreArtifacts',
+               parameters: [[$class: 'StringParameterValue',
+                             name: 'PROJECT',
+                             value: env.JOB_NAME],
+                            [$class: 'StringParameterValue',
+                             name: 'VERSION',
+                             value: readFile('VERSION')]]
+  } catch (e) {
+    println "Jenkins encounted Error: ${e}"
+    throw e
+  } finally {
+    rake "clean"
+    rake "clobber"
+  }
+}
+
+stage 'Deploy'
+node('Linux && ChefDK') {
+  try {
+    unstash "source"
+    rake 'build:deploy'
+  } catch (e) {
+    println "Jenkins encounted Error: ${e}"
+    throw e
+  } finally {
+    rake "clean"
+    rake "clobber"
+  }
+}
+
+// make rake calls look nicer
+def rake(args) {
+  sh "chef exec rake ${args}"
+}

@@ -1,0 +1,56 @@
+GIT
+  remote: https://github.huronconsultinggroup.com/Automation/NtlmREST.git
+  revision: 780a5bec1194032ac140f29a16b3f2c58224f2d8
+  specs:
+    NtlmREST (0.0.3)
+
+GIT
+  remote: https://github.huronconsultinggroup.com/Automation/Service-Framework.git
+  revision: 77c19e066e9625f3df874d078af11e8648606db0
+  specs:
+    ServiceBase (0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    byebug (8.2.2)
+    coderay (1.1.0)
+    diff-lcs (1.2.5)
+    httpclient (2.7.1)
+    json (1.8.3)
+    method_source (0.8.2)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    rspec (3.4.0)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
+    rspec-core (3.4.2)
+      rspec-support (~> 3.4.0)
+    rspec-expectations (3.4.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-mocks (3.4.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-support (3.4.1)
+    rubyntlm (0.6.0)
+    slop (3.6.0)
+
+PLATFORMS
+  x86-mingw32
+
+DEPENDENCIES
+  NtlmREST!
+  ServiceBase!
+  byebug
+  httpclient
+  json
+  pry
+  rspec
+  rubyntlm
+
+BUNDLED WITH
+   1.11.2

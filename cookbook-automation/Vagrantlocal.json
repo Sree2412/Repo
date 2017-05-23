@@ -1,0 +1,8 @@
+{
+  "local": {
+    ":windows_box": "Windows2012AutomationDevelopment.box",
+    ":linux_box": "bento/centos-7.2",
+    ":folder": "../",
+    ":chef_log_level": "debug"
+  }
+}

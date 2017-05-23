@@ -1,0 +1,31 @@
+#!/bin/bash
+source smoke_echo.sh
+
+BRANCH_NAME=$1
+
+if [ -z $BRANCH_NAME ]; then
+    echo_line "Branch name was not provided. Please provide branch name."
+    exit 1
+fi
+
+
+if [ -d "$BRANCH_NAME" ]; then
+    cd BRANCH_NAME=$1
+    echo_status "Checking for changes"
+
+    if [ -n "$(git status --porcelain)" ]; then
+
+	echo_warning "COMMIT REQUIRED"
+	echo_line "Commiting and pusing to $BRANCH_NAME"
+        git add smoke/
+        git commit -m "Smoke test scripts update"
+        echo ''
+        echo ''
+        git push origin $BRANCH_NAME
+    else
+	echo_warning "NO CHANGES";
+    fi
+else
+    echo_line "Branch $BRANCH_NAME folder doesn't exist."
+fi
+

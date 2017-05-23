@@ -1,0 +1,24 @@
+#!/bin/bash
+source smoke_echo.sh
+source smoke_common.sh
+
+
+echo_status "Checking running python apps"
+pgrep python > /dev/null
+if [ $? == 0 ]; then
+    echo_warning "RUNNING"
+    echo_status "Killing running python applications"
+    pgrep python | xargs kill
+    echo_ok
+fi
+echo_ok
+
+
+umount_storage "10.213.2.89/DestinationLocation"
+umount_storage "10.213.1.132/DestinationLocation"
+
+echo_status 'Stopping elasticsearch'
+sudo service elasticsearch stop
+echo_ok
+
+

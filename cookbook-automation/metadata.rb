@@ -1,0 +1,7 @@
+name 'cookbook-automation'
+maintainer 'Consilio, LLC'
+maintainer_email 'bushman@consilio.com'
+license 'all_rights'
+description 'Installs/Configures automation'
+long_description 'Installs/Configures automation'
+version '0.1.0'

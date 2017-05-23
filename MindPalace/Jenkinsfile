@@ -1,0 +1,99 @@
+// Execute bash command on remote server
+def void sshExec(String command) {
+    println "Executing $command"
+    sh "ssh -o StrictHostKeyChecking=no -i smoke/config/server.key admin@10.213.1.109 \'PATH=\$PATH:/usr/smoke;${command};\'"
+}
+
+// Get current branch name
+def String getBranchName() {
+    return env.JOB_NAME.substring(
+        env.JOB_NAME.indexOf('-ci-') + 4, 
+        env.JOB_NAME.length())
+}
+
+
+def slackMessage(String message, String colour = '#A0A0A0') {
+    try {
+    	def branchName = getBranchName()
+    	sh "./smoke/smoke_slack.sh '${env.BUILD_DISPLAY_NAME}' ${env.JOB_URL} ${env.BUILD_URL} '${message}' '${colour}' '${branchName}'"
+    }
+    catch (e) {
+      println "Slack notification failed: ${e}"
+    }   
+}
+
+// Do cleanup 
+def void doCleanup(boolean success) {
+   def branchName = getBranchName()
+   def message = success 
+   	? "Build from $branchName branch completed successfully." 
+   	: "Build from $branchName branch failed."
+   	
+   slackMessage(message, success ? "good" : "danger");
+
+   println "Cleaning up branch $branchName"
+   sshExec("cleanup-branch ${branchName}")
+}
+
+
+stage ('Init Build') {
+    node('Linux') {
+        try {
+            // Perform cleanup. 
+            deleteDir()
+            // Checkout current branch
+            checkout scm
+            // The key must by own only by current user otherwise ssa will refuse to apply it. 
+            sh 'chmod 600 smoke/config/server.key'
+            
+            def branchName = getBranchName()
+            slackMessage("Initializing build from ${branchName} branch.")
+        } 
+        catch (e) {
+            println "Jenkins encountered error: ${e}"
+            throw e
+        }
+    }
+}
+
+
+stage ('Branch Checkout') {
+    node('Linux') {
+        try {
+            def branchName = getBranchName()
+            sshExec("checkout-branch ${branchName}")
+        } 
+        catch (e) {
+            println "Jenkins encountered error: ${e}"
+            doCleanup(false)
+            throw e
+        }
+    }
+}
+
+stage ('Ant Test') {
+    node('Linux') {
+        try {
+            def branchName = getBranchName()
+	    sshExec("cd /home/admin/QA/MindPalace/RestAssured/Workspace/MindPalace/;./runTests.sh")
+        } 
+        catch (e) {
+            println "Jenkins encountered error: ${e}"
+            doCleanup(false)
+            throw e
+        }
+    }
+}
+
+
+stage ('Branch Cleanup') {
+    node('Linux') {
+        try {
+      	   doCleanup(true)
+        } 
+        catch (e) {
+            println "Jenkins encountered error: ${e}"
+            throw e
+        }
+    }
+}

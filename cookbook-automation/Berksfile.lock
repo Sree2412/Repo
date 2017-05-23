@@ -1,0 +1,7 @@
+DEPENDENCIES
+  automation
+    path: .
+    metadata: true
+
+GRAPH
+  automation (0.1.0)

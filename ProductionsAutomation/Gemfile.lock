@@ -1,0 +1,73 @@
+GIT
+  remote: https://github.consilio.com/Automation/Browser-Framework.git
+  revision: e33208f5861dd322c543c2b46e1253965c6fc8dc
+  specs:
+    TestFramework (0.0.13)
+
+GIT
+  remote: https://github.consilio.com/QA/ConcordanceLibrary.git
+  revision: 4f78ee09e30e2c83c93c97b0c4f90f4dbe26bd7b
+  specs:
+    Concordance (0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    byebug (9.0.6)
+    childprocess (0.5.9)
+      ffi (~> 1.0, >= 1.0.11)
+    coderay (1.1.1)
+    commonwatir (4.0.0)
+    diff-lcs (1.2.5)
+    ffi (1.9.14-x64-mingw32)
+    json (2.0.2)
+    log4r (1.1.10)
+    method_source (0.8.2)
+    pry (0.10.4)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    rspec (3.5.0)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
+    rspec-core (3.5.4)
+      rspec-support (~> 3.5.0)
+    rspec-expectations (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-mocks (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-support (3.5.0)
+    rubyzip (1.2.0)
+    selenium-webdriver (3.0.0)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0)
+    slop (3.6.0)
+    solid_assert (1.0.0)
+    watir (5.0.0)
+      commonwatir (~> 4)
+      watir-webdriver
+    watir-webdriver (0.9.3)
+      selenium-webdriver (>= 2.46.2)
+    websocket (1.2.3)
+
+PLATFORMS
+  x64-mingw32
+
+DEPENDENCIES
+  Concordance!
+  TestFramework!
+  byebug
+  json
+  log4r
+  pry
+  rspec
+  solid_assert
+  watir
+  watir-webdriver
+
+BUNDLED WITH
+   1.13.6

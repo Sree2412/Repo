@@ -1,0 +1,5 @@
+gem 'watir'
+gem 'interface'
+gem 'abstract'
+gem 'json'
+gem 'logger'

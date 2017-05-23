@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/RubyScripts/chef","disabled":false,"__vagrantfile":true},"v-csc-ac258e9e8":{"id":"v-csc-ac258e9e8","guestpath":"C:/vagrant-chef/c49a2c3b9cdbb89686ff906f861dca6c/cookbooks","hostpath":"Z:/.berkshelf/vagrant-berkshelf/shelves/berkshelf20160303-13808-u6j4qm-luigi","disabled":false,"__vagrantfile":true}}}
