@@ -1,0 +1,6 @@
+New-SmbShare -Name FileShare -Path <%= node['Attached']['DriveLetter'] %>\FileShare -FullAccess Administrators
+New-SmbShare -Name EDDSFileShare -Path <%= node['Attached']['DriveLetter'] %>\EDDSFileShare -FullAccess Administrators
+New-SmbShare -Name DTSearch -Path <%= node['Attached']['DriveLetter'] %>\DTSearch -FullAccess Administrators  
+New-SmbShare -Name InvariantNetworkShare -Path <%= node['Attached']['DriveLetter'] %>\InvariantNetworkShare -FullAccess Administrators
+New-SmbShare -Name BCPPath -Path <%= node['Attached']['DriveLetter'] %>\BCPPath -FullAccess Administrators
+ 

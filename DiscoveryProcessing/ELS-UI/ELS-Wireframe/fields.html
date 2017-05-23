@@ -1,0 +1,43 @@
+<div ng-controller="fieldConfig" layout="column" class="content">
+  <md-toolbar class="md-hue-1" md-whiteframe="2">
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button toolbar-back-button" ng-click="hideConfigPanel()">
+        <md-icon>arrow_back</md-icon>
+      </md-button>
+      Field Configuration
+    </div>
+  </md-toolbar>
+  <md-subheader class="md-primary">Item Fields</md-subheader>
+  <md-content flex layout-padding>
+    <div ng-repeat="field in itemFields track by $index" layout="row" layout-align="start start">
+      <md-input-container>
+        <input ng-model="field.name" placeholder="Field Name" />
+      </md-input-container>
+      <md-input-container flex="20">
+        <label>Type</label>
+        <md-select ng-model="field.type" placeholder="Type">
+          <md-option value="text">Text</md-option>
+          <md-option value="number">Number</md-option>
+          <md-option value="longText">Long Text</md-option>
+          <md-option value="date">Date</md-option>
+          <md-option value="multivalue">Multivalue</md-option>
+          <md-option value="boolean">Boolean</md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container flex="20">
+        <label>Depends on Field</label>
+        <md-select ng-model="field.dependentOnField" placeholder="Depends on Field">
+          <md-option ng-value="f.name" ng-repeat="f in itemFields">{{f.name}}</md-option>
+        </md-select>
+        <!-- <input ng-model="field.dependentOnField" ng-disabled="field.locked" placeholder="Depends on Field" /> -->
+      </md-input-container>
+      <md-input-container flex="20">
+        <input ng-model="field.dependentOnValue" placeholder="Depends on Value" />
+      </md-input-container>
+      <md-switch ng-model="field.displayInEdit">Editable</md-switch>
+    </div>
+    <md-button class="md-raised" ng-click="addField()">
+      <md-icon>add_circle</md-icon> Item Field
+    </md-button>
+  </md-content>
+</div>

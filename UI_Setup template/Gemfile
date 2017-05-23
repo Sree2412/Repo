@@ -1,0 +1,18 @@
+source 'https://rubygems.org'
+group :test do
+    gem 'rspec_html_formatter', git: 'https://github.consilio.com/QA/RSpec_Report_Formatter.git'
+    gem 'TestFramework', :git => 'https://github.consilio.com/QA/Browser-Framework.git', :branch => 'master'
+    gem 'uigen', :git => 'https://github.consilio.com/QA/uigen', :branch => 'master'
+    gem 'byebug', '~> 9.0.6'
+    gem 'rspec', '~> 3.5.0'
+    gem 'watir', '~> 6.2.0'
+    gem 'interface'
+    gem 'abstract'
+    gem 'json'
+    gem 'logger'
+    gem 'solid_assert'
+    gem 'log4r'
+
+end
+
+

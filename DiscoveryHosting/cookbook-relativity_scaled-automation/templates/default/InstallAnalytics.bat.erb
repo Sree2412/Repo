@@ -1,0 +1,9 @@
+@echo off
+
+echo Running Relativity installer bundle. . .
+start /wait msiexec.exe /i "C:\Installs\relativity\<%= node['Relativity']['Source']['AnalyticsMSI'] %>" /qn /l*v "<%= node['Relativity']['Analytics']['LogPath'] %>"
+
+IF %ERRORLEVEL% LSS 0 echo An error occurred during installation (Error code: %ERRORLEVEL%). Please check the log file for more details.
+IF %ERRORLEVEL% GTR 0 echo An error occurred during installation (Error code: %ERRORLEVEL%). Please check the log file for more details.
+
+IF %ERRORLEVEL% EQU 0 echo Installation successful!

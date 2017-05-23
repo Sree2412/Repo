@@ -1,0 +1,56 @@
+<md-content flex md-colors="{background: 'background'}" layout="column">
+  <div layout-padding>
+    <div class="md-headline">{{project.Code}} - {{project.Name}}</div>
+    <div layout="row">
+      <div flex="50">
+        <div>
+          <span class="md-body-2">Matter name:</span>
+          {{project.Name}}
+        </div>
+        <div>
+          <span class="md-body-2">Service line:</span>
+          {{project.DomainServiceLineName}}
+        </div>
+        <div>
+          <span class="md-body-2">Client name:</span>
+          {{project.ClientName}}
+        </div>
+      </div>
+      <div flex="50">
+        <div>
+          <span class="md-body-2">Project status:</span>
+          {{project.DomainProjectStatusName}}
+        </div>
+        <div>
+          <span class="md-body-2">Requestor:</span>
+          {{project.Requestor}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <md-tabs md-border-bottom md-autoselect flex>
+    <md-tab label="Data Clients">
+      <detail-table detail="$resolve.dataClients"
+        model="$resolve.dataClientModel"
+        field-filters="$resolve.dataClientFilters"
+        fields-displayed="['Id', 'Name', 'DataSegregationType']"
+        filter-object="filterDataClients"
+        on-row-click="selectDataClient( item )"
+        list-name="projectDataClientsTable">
+    </md-tab>
+    <md-tab label="Data Transfers">
+      <detail-table detail="$resolve.dataTransfers"
+        model="$resolve.dataTransferModel"
+        field-filters="$resolve.dataTransferFilters"
+        fields-displayed="['Id', 'DataTransferTypeName', 'Name', 'TrackingNumber', 'CollectingEvidenceHandlerDisplayName', 'DeliveringEvidenceHandlerDisplayName']"
+        filter-object="{ BusinessProjectId: project.ID }"
+        on-row-click="selectDataTransfer( item )"
+        list-name="projectTransfersTable">
+    </md-tab>
+    <md-tab label="Attachments">
+      <attachment-list attachments="project.attachments"></attachment-list>
+    </md-tab>
+    <md-tab label="History" ng-disabled="true">
+    </md-tab>
+  </md-tabs>
+</md-content>

@@ -1,0 +1,33 @@
+<div flex md-colors="{background: 'background'}" layout="column">
+  <div layout-padding>
+    <div class="md-title" layout="row" layout-align="start center">
+      <span>Data Transfer:</span>
+      <md-input-container flex class="md-block">
+        <input aria-label="Name" ng-model="dataTransfer.name" />
+      </md-input-container>
+    </div>
+    <div layout="row">
+      <div flex="50">
+        <div>
+          <span class="md-body-2">Data transfer name:</span>
+          {{dataTransfer.name}}
+        </div>
+        <div>
+          <span class="md-body-2">Data client name:</span>
+          {{client.clientName}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <md-tabs md-border-bottom md-autoselect flex>
+    <md-tab label="Items">
+      <item-list items="items"></item-list>
+    </md-tab>
+    <md-tab label="Attachments">
+      <attachment-list attachments="project.attachments"></attachment-list>
+    </md-tab>
+    <md-tab label="History">
+      <history-list history="project.history"></history-list>
+    </md-tab>
+  </md-tabs>
+</div>

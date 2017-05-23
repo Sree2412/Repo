@@ -1,0 +1,155 @@
+<div class="detail-panel" ng-show="container" md-colors="{background: 'background'}" md-whiteframe="1" ng-cloak layout="column">
+  <div layout="row" layout-align="start center">
+    <div flex="40" layout="row" layout-align="start center">
+      <md-button class="md-icon-button" ng-click="container = null">
+        <md-icon>arrow_back</md-icon>
+      </md-button>
+      <span class="md-title">{{container.ContainerTypeName}}</span>
+    </div>
+    <div flex style="text-align: center;">
+      <md-button class="md-icon-button" ng-click="navigatePrevious()" ng-disabled="!container.Id || index <= 0">
+        <md-icon>navigate_before</md-icon>
+      </md-button>
+      <md-button class="md-icon-button" ng-click="navigateNext()" ng-disabled="!container.Id || index >= containerList.length - 1">
+        <md-icon>navigate_next</md-icon>
+      </md-button>
+    </div>
+    <div flex="40" style="text-align: right;">
+      <md-button class="md-icon-button" ng-click="showNav('attachmentNav')">
+        <md-icon>attachment</md-icon>
+      </md-button>
+      <span class="badge" md-colors="{ background: 'primary'}" md-whiteframe="4" ng-show="container.attachments.length">{{container.attachments.length}}</span>
+      <md-button class="md-icon-button" ng-click="showNav('historyNav')">
+        <md-icon>history</md-icon>
+      </md-button>
+    </div>
+  </div>
+  <div layout="row" flex>
+    <div layout="column" flex>
+      <md-content ng-form="containerForm" layout-padding flex>
+        <div layout="row">
+          <div flex="50">
+            <md-input-container class="md-block">
+              <label>Type</label>
+              <md-select required ng-model="container.ContainerTypeId" ng-change="selectedContainerType = findById( containerTypes, container.ContainerTypeId ); container.ContainerTypeName = selectedContainerType.Name; container.IsPhysical = selectedContainerType.IsPhysical; container.IsLogical = selectedContainerType.IsLogical; container.ContainerSubtypeId = null;">
+                <md-option ng-repeat="containerType in containerTypes" ng-value="containerType.Id">{{containerType.Name}}</md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Data Client</label>
+              <virtual-select placeholder="Data Client" model="container.DataClientId" items="dataClients" identifier="Id" label="Name"></virtual-select>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <input ng-model="container.Description" placeholder="Description" ng-model-options="{ debounce: 500 }" />
+            </md-input-container>
+          </div>
+          <div flex="50">
+            <md-input-container class="md-block">
+              <label>Sub Type</label>
+              <md-select ng-model="container.ContainerSubtypeId" ng-change="container.ContainerSubTypeName = findById( containerSubtypes, container.ContainerSubtypeId ).Name">
+                <md-option ng-repeat="containerSubtype in containerSubtypes | filter:{ ContainerTypeId: container.ContainerTypeId }:true" ng-value="containerSubtype.Id">{{containerSubtype.Name}}</md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Disposition State</label>
+              <md-select required ng-model="container.DispositionStateId" ng-change="container.DispositionStateName = findById( dispositionStates, container.DispositionStateId ).Name">
+                <md-option ng-repeat="dispositionState in dispositionStates" ng-value="dispositionState.Id">{{dispositionState.Name}}</md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <input ng-model="container.Password" placeholder="Password" ng-model-options="{ debounce: 500 }" />
+            </md-input-container>
+          </div>
+        </div>
+        <div layout="row" ng-if="!container.IsPhysical">
+          <div flex="50">
+            <md-input-container class="md-block">
+              <input ng-model="container.ContainerLocation" placeholder="Location" required ng-model-options="{ debounce: 500 }" />
+            </md-input-container>
+          </div>
+          <div flex="50">
+            <md-input-container class="md-block">
+              <input ng-model="container.FileName" placeholder="FileName" required ng-model-options="{ debounce: 500 }" />
+            </md-input-container>
+          </div>
+        </div>
+        <div layout="row" ng-if="container.IsPhysical">
+          <div flex="50">
+            <md-input-container class="md-block">
+              <label>Evidence Location</label>
+              <md-select ng-model="container.EvidenceLocationId" ng-change="container.EvidenceLocationName = findById( evidenceLocations, container.EvidenceLocationId ).Name">
+                <md-option ng-repeat="evidenceLocation in evidenceLocations" ng-value="evidenceLocation.Id">{{evidenceLocation.Name}}</md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <input ng-model="container.Make" placeholder="Make" ng-model-options="{ debounce: 500 }" />
+            </md-input-container>
+            <md-input-container class="md-block">
+              <input ng-model="container.SerialNumber" placeholder="Serial Number" ng-model-options="{ debounce: 500 }" />
+            </md-input-container>
+          </div>
+          <div flex="50">
+            <md-input-container class="md-block">
+              <input ng-model="container.Model" placeholder="Model" ng-model-options="{ debounce: 500 }" />
+            </md-input-container>
+            <md-input-container class="md-block">
+              <input ng-model="container.Capacity" placeholder="Capacity" ng-model-options="{ debounce: 500 }" />
+            </md-input-container>
+            <md-input-container class="md-block">
+              <input ng-model="container.Label" placeholder="Label" ng-model-options="{ debounce: 500 }" />
+            </md-input-container>
+          </div>
+        </div>
+      </md-content>
+      <div>
+        <md-button class="md-raised" ng-click="duplicateToNewItem()">
+          <md-icon>content_copy</md-icon> Duplicate to New Item
+        </md-button>
+        <md-menu md-position-mode="target-right target">
+          <md-button class="md-raised" ng-click="$mdMenu.open($event)">
+            <md-icon>arrow_drop_up</md-icon> Actions
+          </md-button>
+          <md-menu-content>
+            <md-menu-item>
+              <md-button>Print item label</md-button>
+            </md-menu-item>
+            <md-menu-item>
+              <md-button>View item history</md-button>
+            </md-menu-item>
+            <md-menu-item>
+              <md-button ng-click="viewCustody($event)">View chain of custody log</md-button>
+            </md-menu-item>
+            <md-menu-item>
+              <md-button>View tickets</md-button>
+            </md-menu-item>
+            <md-menu-item>
+              <md-button>Delete</md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+      </div>
+    </div>
+    <md-sidenav class="md-sidenav-right" md-component-id="attachmentNav" md-whiteframe="2" layout="column">
+      <md-toolbar class="md-accent" md-whiteframe="1">
+        <div class="md-toolbar-tools">
+          <span flex>Attachments</span>
+          <md-button class="md-icon-button" ng-click="hideNav( 'attachmentNav' )"><md-icon>close</md-icon></md-button>
+        </div>
+      </md-toolbar>
+      <md-content flex>
+        <attachment-list attachments="container.attachments"></attachment-list>
+      </md-content>
+    </md-sidenav>
+    <md-sidenav class="md-sidenav-right" md-component-id="historyNav" md-whiteframe="2" layout="column">
+      <md-toolbar class="md-accent" md-whiteframe="1">
+        <div class="md-toolbar-tools">
+          <span flex>History</span>
+          <md-button class="md-icon-button" ng-click="hideNav( 'historyNav' )"><md-icon>close</md-icon></md-button>
+        </div>
+      </md-toolbar>
+      <md-content flex>
+        <history-list item="container"></history-list>
+      </md-content>
+    </md-sidenav>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# read vm and local setting configurations from YAML files
+require 'yaml'
+nodes_config = YAML.load_file('Vagrantnodes.yml')['nodes']
+local_config = YAML.load_file('Vagrantlocal.yml')['local']
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = '2'.freeze
+
+Vagrant.require_version '>= 1.8.3'
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |setup|
+  nodes_config.each do |node_name, node_values|
+    # configure node settings per nodes.yml
+    setup.vm.define node_name do |config|
+      # configures all forwarding ports in JSON array
+      ports = node_values['ports']
+      ports.each do |port|
+        config.vm.network :forwarded_port,
+                          host:  port['host'],
+                          guest: port['guest'],
+                          id:    port['id']
+      end
+
+      case node_values['platform']
+      when 'windows'
+        # do windows configs...
+        config.vm.box = local_config['windows_box']
+        config.vm.box_url = local_config['windows_box_url']
+        config.vm.guest = :windows
+        config.vm.communicator = 'winrm'
+      when 'linux'
+        # do linux configs...
+        config.vm.box = local_config['linux_box']
+        config.vm.box_url = local_config['linux_box_url']
+      else
+        raise "Unconfigured OS type - #{node_values['platform']}"
+      end
+
+      config.vm.hostname = node_values['node']
+      config.vm.network :private_network, ip: node_values['ip']
+
+      # configure VM/Host shared folders per local.json
+      config.vm.synced_folder local_config['folder'], '/vagrant'
+
+      # configure vm settings per nodes.json
+      config.vm.provider :virtualbox do |vb|
+        vb.linked_clone = node_values['linked']
+        vb.gui = false
+        vb.memory = node_values['memory']
+        vb.cpus = node_values['cpus']
+        vb.customize ['modifyvm', :id, '--name', node_values['node']]
+
+        # ensure an optical drive exists
+        vb.customize ['storageattach', :id,
+                      '--storagectl', 'IDE Controller',
+                      '--port', 1,
+                      '--device', 0,
+                      '--type', 'dvddrive',
+                      '--medium', 'emptydrive']
+      end
+
+      config.berkshelf.enabled = true
+      config.vm.provision :chef_solo do |chef|
+        chef.install = true
+        chef.channel = 'stable'
+        chef.log_level = local_config['chef_log_level'].to_sym
+        chef.json = node_values['attributes'] unless node_values[
+          'attributes'].nil?
+        chef.run_list = [
+          node_values['run_list']
+        ]
+      end
+    end
+  end
+end

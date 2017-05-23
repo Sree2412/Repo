@@ -1,0 +1,13 @@
+source 'https://rubygems.org'
+gem 'byebug', '~> 9.0.6'
+gem 'rubyntlm'
+gem 'NtlmREST', :git => 'https://github.consilio.com/Automation/NtlmREST.git'
+gem 'ServiceBase', :git => 'https://github.consilio.com/Automation/Service-Framework.git'
+gem 'json', '~> 2.0.3'
+gem 'rspec', '~> 3.5.0'
+gem 'httpclient'
+gem 'rspec_html_formatter', :git => 'https://github.consilio.com/QA/RSpec_Report_Formatter.git'
+gem 'tiny_tds', '~> 1.1.0'
+gem 'restgen', git: 'https://github.consilio.com/QA/restgen.git'
+gem 'log4r', '~> 1.1.10'
+

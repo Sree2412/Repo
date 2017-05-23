@@ -1,0 +1,61 @@
+require 'rake'
+require 'open3'
+require 'rspec/core/rake_task'
+require 'rubocop/rake_task'
+require 'foodcritic'
+require 'rake/packagetask'
+require 'rake/clean'
+require 'fileutils'
+require 'git'
+require 'net/http'
+require 'openssl'
+
+namespace :setup do
+  desc 'Run all setup tasks in order'
+  task all: [:bundler, :gems, :cookbooks]
+end
+
+desc 'Run all style guides'
+task style: ['style:all']
+
+namespace :style do
+  desc 'Run all style guides'
+  task all: [:rubocop, :foodcritic]
+end
+
+desc 'Run all unit tests'
+task unit: ['unit:all']
+
+namespace :unit do
+  desc 'Run all unit tests'
+  task all: [:chefspec]
+end
+
+namespace :integration do
+  desc 'Run all integration tests'
+  task all: [:kitchen]
+end
+
+namespace :test do
+  desc 'Run all tests'
+  task all: ['style:rubocop',
+             'style:foodcritic',
+             'unit:chefspec',
+             'integration:kitchen']
+end
+
+namespace :build do
+  desc 'Setup, test, & then package'
+  task all: ['setup:all', 'test:all', :package]
+end
+
+task default: ['list']
+
+def version?
+  m = nil
+  File.readlines('metadata.rb').each do |line|
+    m = line.match(/(^version\s+\')(.*)(\'\r{0,1}$)/)
+    break if m
+  end
+  m[2]
+end

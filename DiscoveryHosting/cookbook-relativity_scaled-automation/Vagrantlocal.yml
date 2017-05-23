@@ -1,0 +1,15 @@
+---
+# This file is for config settings you may be likely to override in your use of vagrant.
+local:
+  # Name of the windows vagrant box you'd like to use
+  windows_box: "mwrock/Windows2012R2"
+  # URL the box or the box catalog can be found at
+  windows_box_url: "https://atlas.hashicorp.com/mwrock/Windows2012R2"
+  # Name of the linux vagrant box you'd like to use
+  linux_box: "consilio-centos-vagrant"
+  # URL the box or the box catalog can be found at
+  linux_box_url: "http://packages.consilio.com/hlnas00/tech/Packages/OS-Builds/CentOS/consilio-centos-vagrant.json"
+  # Directory to share to the vagrant node.  This will share the contianing directory.
+  folder: "../"
+  # What log level would you like chef to run at on your nodes.
+  chef_log_level: "debug"

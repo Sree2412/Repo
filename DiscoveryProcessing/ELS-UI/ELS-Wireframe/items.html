@@ -1,0 +1,83 @@
+<div class="detail-panel-container" layout="column">
+  <md-content flex>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th class="checkboxColumn"><md-checkbox aria-label="select-all" ng-model="selectAllChecked" ng-change="selectAll()" /></th>
+          <th ng-repeat="field in itemFields | filter:{ displayInList: true }:true">{{field.name}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in items" class="clickable" ng-click="showItemDetails( item )">
+          <td class="checkboxColumn">
+            <md-checkbox aria-label="select" ng-model="selectedItems[item['Item Number']]" ng-change="selectItem(item)" ng-click="$event.stopPropagation();" />
+          </td>
+          <td ng-repeat="field in itemFields | filter:{ displayInList: true }:true">{{item[field.name]}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </md-content>
+  <div class="table-footer" layout="row">
+    <div flex>
+      <md-button class="md-raised" ng-click="addItem()">
+        <md-icon>add_circle</md-icon> Item
+      </md-button>
+      <md-button class="md-raised" ng-click="listSettings($event)">
+        <md-icon>settings</md-icon> List Settings
+      </md-button>
+    </div>
+    <div>
+      <md-button class="md-raised" ng-disabled="!selectedCount">
+        <md-icon>file_download</md-icon> Export List
+      </md-button>
+      <md-menu>
+        <md-button class="md-raised" ng-disabled="!selectedCount" ng-click="$mdOpenMenu($event)">
+          <md-icon>arrow_drop_up</md-icon> Reports
+        </md-button>
+        <md-menu-content>
+          <md-menu-item>
+            <md-button>Chain of custody</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button>Item submission no barcode</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button>Item submission with barcode</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button>Transfer receipt</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button>Container label</md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+      <md-menu>
+        <md-button class="md-raised" ng-disabled="!selectedCount" ng-click="$mdOpenMenu($event)">
+          <md-icon>arrow_drop_up</md-icon> Transactions
+        </md-button>
+        <md-menu-content>
+          <md-menu-item>
+            <md-button>Check out items</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button>Check in items</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button>Move items</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button>Dispose items</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button>Print label(s)</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button>Mass update items</md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </div>
+  </div>
+  <item-detail item="itemDetail"></item-detail>
+</div>

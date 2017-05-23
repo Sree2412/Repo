@@ -1,0 +1,43 @@
+---
+nodes:
+  # define the nodes you would like to create in vagrant within this section.
+  # two sample nodes have been provided.
+  # mario:
+  #   node: mario-10
+  #   platform: linux
+  #   linked: false
+  #   ip: 10.0.0.10
+  #   host: mario.server-10
+  #   ports: [{
+  #            host: 2210,
+  #            guest: 22,
+  #            id: ssh
+  #          }]
+  #   memory: 1024
+  #   cpus: 1
+  #   run_list: [
+  #               'recipe[relativity-scaled-automation-sri::default]'
+  #             ]
+  #   attributes:
+  #     somegrouping:
+  #       someattribute: value1
+  #     someothergrouping:
+  #       anotherattribute: value2
+
+  luigi:
+    node: luigi-20
+    platform: windows
+    linked: false
+    ip: 10.0.0.20
+    host: luigi.server-20
+    ports: [{
+              host: 2220,
+              guest: 22,
+              id: ssh
+           }]
+    memory: 1024
+    cpus: 1
+    run_list: [
+                'recipe[relativity-scaled-automation-sri::default]'
+              ]
+    attributes:				

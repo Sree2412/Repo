@@ -1,0 +1,36 @@
+[InstallShield Silent]
+Version=v7.00
+File=Response File
+[File Transfer]
+OverwrittenReadOnly=NoToAll
+[{87BE7D50-7CBE-48D8-9555-88CD17178DCA}-DlgOrder]
+Dlg0={87BE7D50-7CBE-48D8-9555-88CD17178DCA}-SdWelcome-0
+Count=6
+Dlg1={87BE7D50-7CBE-48D8-9555-88CD17178DCA}-SdLicense-0
+Dlg2={87BE7D50-7CBE-48D8-9555-88CD17178DCA}-SdRegisterUser-0
+Dlg3={87BE7D50-7CBE-48D8-9555-88CD17178DCA}-SdAskDestPath2-0
+Dlg4={87BE7D50-7CBE-48D8-9555-88CD17178DCA}-SdStartCopy2-0
+Dlg5={87BE7D50-7CBE-48D8-9555-88CD17178DCA}-SdFinishReboot-0
+[{87BE7D50-7CBE-48D8-9555-88CD17178DCA}-SdWelcome-0]
+Result=1
+[{87BE7D50-7CBE-48D8-9555-88CD17178DCA}-SdLicense-0]
+Result=1
+[{87BE7D50-7CBE-48D8-9555-88CD17178DCA}-SdRegisterUser-0]
+szName=Windows User
+szCompany=Consilio
+Result=1
+[{87BE7D50-7CBE-48D8-9555-88CD17178DCA}-SdAskDestPath2-0]
+szDir=C:\Program Files (x86)\Samsung\JungUmGlobal
+Result=1
+[{87BE7D50-7CBE-48D8-9555-88CD17178DCA}-SdStartCopy2-0]
+Result=1
+[Application]
+Name=JungUm Global Viewer
+Version=1.00.000
+Company=Samsung
+Lang=0409
+[{87BE7D50-7CBE-48D8-9555-88CD17178DCA}-SdFinishReboot-0]
+Result=6
+BootOption=0
+[{8580D06F-6052-445B-8551-FB545BAB9779}-DlgOrder]
+Count=0

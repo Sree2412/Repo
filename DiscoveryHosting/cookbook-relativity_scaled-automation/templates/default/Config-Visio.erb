@@ -1,0 +1,32 @@
+<Configuration Product="Visio">
+<Display Level="none" CompletionNotice="no" SuppressModal="no" AcceptEula="Yes" />
+
+<Logging Type="standard" Path="%temp%" Template="Microsoft Office Visio Setup(*).txt" />
+
+<% unless @pid_key.nil? %>
+<PIDKEY Value="<%= @pid_key %>" />
+<% end -%>
+
+<% if @auto_activate %>
+<Setting Id="AUTO_ACTIVATE" Value="1" />
+<% end -%>
+
+<Setting Id="SETUP_REBOOT" Value="Never" />
+
+<!-- <USERNAME Value="Customer" /> -->
+
+<!-- <COMPANYNAME Value="MyCompany" /> -->
+
+<!-- <INSTALLLOCATION Value="%programfiles%\Microsoft Office" /> -->
+
+<!-- <LIS CACHEACTION="CacheOnly" /> -->
+
+<!-- <LIS SOURCELIST="\\server1\share\Office;\\server2\share\Office" /> -->
+
+<!-- <DistributionPoint Location="\\server\share\Office" /> -->
+
+<!-- <OptionState Id="OptionID" State="absent" Children="force" /> -->
+
+<!-- <Command Path="%windir%\system32\msiexec.exe" Args="/i \\server\share\my.msi" QuietArg="/q" ChainPosition="after" Execute="install" /> -->
+
+</Configuration>

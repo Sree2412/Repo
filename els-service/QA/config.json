@@ -1,0 +1,425 @@
+{
+  "enums":
+  {
+    "IsPhysical": [
+      true,
+      false
+    ],
+    "IsLogical": [
+      true,
+      false
+    ]},
+  "entities": 
+  [
+    { 
+      "name": "DataTransferType", 
+      "schema": 
+        [
+          { 
+            "propertyName": "Id", 
+            "propertyType": "number", 
+            "primaryKey": true 
+          },
+          { 
+            "propertyName": "Name", 
+            "propertyType": "string"
+          }
+        ], 
+      "get": "DataTransferTypes"
+    },
+    { 
+      "name": "DataTransfer", 
+      "schema": 
+        [
+          { 
+            "propertyName": "Id", 
+            "propertyType": "number", 
+            "primaryKey": true 
+          },
+          { 
+            "propertyName": "DataTransferTypeId", 
+            "propertyType": "number",
+            "foreignKey": "DataTransferType",
+            "pseudoPost": true
+          },
+          { 
+            "propertyName": "DataTransferTypeName", 
+            "propertyType": "string",
+            "minlength": 3, 
+            "maxlength": 30 
+          },  
+          { 
+            "propertyName": "DataClientId", 
+            "propertyType": "number"  
+          },
+          { 
+            "propertyName": "BusinessProjectId", 
+            "propertyType": "number"
+          },
+          { 
+            "propertyName": "CampusId", 
+            "propertyType": "number" 
+          },
+          // { 
+          //   "propertyName": "DataTransferDatetime", 
+          //   "propertyType": "string" ,
+          //   "minlength": 3, 
+          //   "maxlength": 30
+          // },
+
+          { 
+            "propertyName": "CollectingEvidenceHandlerId", 
+            "propertyType": "number",
+            "foreignKey": "EvidenceHandler",
+            "pseudoPost": true
+          },
+          { 
+            "propertyName": "CollectingEvidenceHandlerDisplayName", 
+            "propertyType": "string", 
+            "minlength": 3, 
+            "maxlength": 30 
+          },
+          { 
+            "propertyName": "DeliveringEvidenceHandlerId", 
+            "propertyType": "number",
+            "foreignKey": "EvidenceHandler",
+            "pseudoPost": true 
+          },
+          { 
+            "propertyName": "DeliveringEvidenceHandlerDisplayName", 
+            "propertyType": "string", 
+            "minlength": 3, 
+            "maxlength": 30 
+          },
+           { 
+            "propertyName": "Name", 
+            "propertyType": "string", 
+            "minlength": 3, 
+            "maxlength": 30 
+          },
+           { 
+            "propertyName": "Description", 
+            "propertyType": "string", 
+            "minlength": 3, 
+            "maxlength": 30 
+          },
+          { 
+            "propertyName": "TrackingNumber", 
+            "propertyType": "string", 
+            "minlength": 3, 
+            "maxlength": 30 
+          },
+          { 
+            "propertyName": "HistoricUid", 
+            "propertyType": "number" 
+          },
+          // {
+          //   "propertyName": "Created", 
+          //   "propertyType": "string" ,
+          //   "minlength": 3, 
+          //   "maxlength": 30
+          // },
+          { 
+            "propertyName": "CreatedBy", 
+            "propertyType": "string", 
+            "minlength": 3, 
+            "maxlength": 30 
+          },
+          // {
+          //   "propertyName": "Updated", 
+          //   "propertyType": "string" ,
+          //   "minlength": 3, 
+          //   "maxlength": 30
+          // },
+          { 
+            "propertyName": "UpdatedBy", 
+            "propertyType": "string", 
+            "minlength": 3, 
+            "maxlength": 30 
+          }
+        ], 
+      "get": "DataTransfers", 
+      "post": "DataTransfers", 
+      "patch": "DataTransfers(@Id)", 
+      "put": "DataTransfers(@Id)", 
+      "delete": "DataTransfers(@Id)" 
+    },
+    { 
+      "name": "Container", 
+      "schema": 
+        [
+         
+          { 
+            "propertyName": "Id", 
+            "propertyType": "number", 
+            "primaryKey": true 
+          },
+          { 
+            "propertyName": "ContainerTypeId", 
+            "propertyType": "number",
+            "foreignKey": "ContainerType",
+            "pseudoPost": true
+          },
+         
+          { 
+            "propertyName": "ContainerSubtypeId", 
+            "propertyType": "number",
+            "foreignKey": "ContainerSubtype",
+            "pseudoPost": true
+          },
+         
+         
+          { 
+            "propertyName": "DataClientId", 
+            "propertyType": "number"  
+          },
+          { 
+            "propertyName": "DataTransferId", 
+            "propertyType": "number",
+            "foreignKey": "DataTransfer",
+            "pseudoPost": true
+          },
+
+         
+           { 
+            "propertyName": "ParentContainerId", 
+            "propertyType": "number",
+            "foreignKey": "Container",
+            "pseudoPost": true
+          },
+          
+          { 
+            "propertyName": "DispositionStateId", 
+            "propertyType": "number",
+            "foreignKey": "DispositionState",
+            "pseudoPost": true
+          },
+          
+
+           { 
+            "propertyName": "Description", 
+            "propertyType": "string", 
+            "minlength": 3, 
+            "maxlength": 30 
+          },
+          { 
+            "propertyName": "Password", 
+            "propertyType": "string", 
+            "minlength": 3, 
+            "maxlength": 30 
+          },
+         
+          
+       
+          { 
+            "propertyName": "HistoricUid", 
+            "propertyType": "number" 
+          },
+         
+          { 
+            "propertyName": "CreatedBy", 
+            "propertyType": "string", 
+            "minlength": 3, 
+            "maxlength": 30 
+          },
+          {
+          
+            "propertyName": "UpdatedBy", 
+            "propertyType": "string", 
+            "minlength": 3, 
+            "maxlength": 30 
+          }
+          
+
+        ],
+      "get": "Containers",
+      "put": "Containers(@Id)",
+      "patch": "Containers"
+
+    },
+     
+    
+    { 
+      "name": "EvidenceHandler", 
+      "schema": 
+        [
+          { 
+            "propertyName": "Id", 
+            "propertyType": "number", 
+            "primaryKey": true 
+          }
+        ], 
+      "get": "EvidenceHandlers" //or whatever is the odata syntax for custom calls
+      
+    },
+    { 
+      "name": "EvidenceLocation", 
+      "schema": 
+        [
+          { 
+            "propertyName": "Id", 
+            "propertyType": "number", 
+            "primaryKey": true 
+          }
+        ], 
+      "get": "EvidenceLocations" //or whatever is the odata syntax for custom calls
+    },
+    { 
+      "name": "ContainerType", 
+      "schema": 
+        [
+          { 
+            "propertyName": "Id", 
+            "propertyType": "number", 
+            "primaryKey": true 
+          }
+        ], 
+      "get": "ContainerTypes" //or whatever is the odata syntax for custom calls
+      
+    },
+    { 
+      "name": "ContainerSubtype", 
+      "schema": 
+        [
+          { 
+            "propertyName": "Id", 
+            "propertyType": "number", 
+            "primaryKey": true 
+          }
+        ], 
+      "get": "ContainerSubtypes" //or whatever is the odata syntax for custom calls
+         
+    },
+    { 
+      "name": "DataTransferType", 
+      "schema": 
+        [
+          { 
+            "propertyName": "Id", 
+            "propertyType": "number", 
+            "primaryKey": true 
+          }
+        ], 
+      "get": "DataTransferTypes" //or whatever is the odata syntax for custom calls
+      // "put": "DataTransferTypes@Id)" 
+    },
+     { 
+      "name": "ReasonsForTransfer", 
+      "schema": 
+        [
+          { 
+            "propertyName": "Id", 
+            "propertyType": "number", 
+            "primaryKey": true 
+          }
+        ], 
+      "get": "ReasonsForTransfer" //or whatever is the odata syntax for custom calls
+    },
+    { 
+      "name": "DispositionState", 
+      "schema": 
+        [
+          { 
+            "propertyName": "Id", 
+            "propertyType": "number", 
+            "primaryKey": true 
+          }
+        ], 
+      "get": "DispositionStates" //or whatever is the odata syntax for custom calls
+    },
+    { 
+      "name": "Custody", 
+      "schema": 
+        [
+          { 
+            "propertyName": "Id", 
+            "propertyType": "number", 
+            "primaryKey": true 
+          },          
+          { 
+            "propertyName": "ContainerId", 
+            "propertyType": "number",
+            "foreignKey": "Container",
+            "pseudoPost": true
+          },          
+          { 
+            "propertyName": "FromEvidenceHandlerId", 
+            "propertyType": "number",
+            "foreignKey": "EvidenceHandler",
+            "pseudoPost": true
+          },
+          { 
+            "propertyName": "FromEvidenceHandlerDisplayName", 
+            "propertyType": "string",
+            "minlength": 3, 
+            "maxlength": 30 
+          },
+          { 
+            "propertyName": "TransferredByEvidenceHandlerId", 
+            "propertyType": "number",
+            "foreignKey": "EvidenceHandler",
+            "pseudoPost": true
+          },
+          { 
+            "propertyName": "TransferredByEvidenceHandlerDisplayName", 
+            "propertyType": "string",
+            "minlength": 3, 
+            "maxlength": 30 
+          },
+          { 
+            "propertyName": "ReasonForTransferId", 
+            "propertyType": "number",
+            "foreignKey": "ReasonsForTransfer",
+            "pseudoPost": true
+          },
+          { 
+            "propertyName": "ReasonForTransferName", 
+            "propertyType": "string",
+            "minlength": 3, 
+            "maxlength": 30 
+          },
+          { 
+            "propertyName": "NewEvidenceLocationId", 
+            "propertyType": "number",
+            "foreignKey": "EvidenceLocation",
+            "pseudoPost": true
+          },
+          { 
+            "propertyName": "NewEvidenceLocationName", 
+            "propertyType": "string",
+            "minlength": 3, 
+            "maxlength": 30 
+          },
+          { 
+            "propertyName": "ServiceTicketNumber", 
+            "propertyType": "string",
+            "minlength": 3, 
+            "maxlength": 30            
+          },
+          { 
+            "propertyName": "Notes", 
+            "propertyType": "string", 
+            "minlength": 3, 
+            "maxlength": 30 
+          },
+          { 
+            "propertyName": "CreatedBy", 
+            "propertyType": "string", 
+            "minlength": 3, 
+            "maxlength": 30 
+          },
+          { 
+            "propertyName": "UpdatedBy", 
+            "propertyType": "string", 
+            "minlength": 3, 
+            "maxlength": 30 
+          }
+         
+        ], 
+      "get": "Custodies", //or whatever is the odata syntax for custom calls
+      "post": "Custodies",   
+      "put": "Custodies(@Id)"      
+    }
+   
+  ] 
+}

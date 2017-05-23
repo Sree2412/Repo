@@ -1,0 +1,3 @@
+-f RspecHtmlFormatter
+--format doc
+--color

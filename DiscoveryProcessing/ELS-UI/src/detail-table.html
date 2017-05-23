@@ -1,0 +1,62 @@
+<div layout="column" class="detail-table-container">
+  <md-virtual-repeat-container id="dataClientsCardTable" class="card-table" flex>
+    <table class="data-table detail-pane-table">
+      <thead>
+        <tr>
+          <th ng-if="showSelectBoxes" class="checkboxColumn"><md-checkbox aria-label="select-all" ng-model="$parent.selectAllChecked" ng-change="$parent.selectAll()" /></th>
+          <th ng-repeat="field in fieldsDisplayed" class="clickable" ng-click="sortBy( field )">
+            {{model[field]}}
+            <md-icon ng-style="{ visibility: (sortingBy == field ? 'visible' : 'hidden') }">{{(sortingReverse ? 'arrow_drop_up' : 'arrow_drop_down')}}</md-icon>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="progress-row" ng-if="!detail.$resolved && !detail.$error">
+          <td colspan="{{fieldsDisplayed.length + (showSelectBoxes ? 1 : 0)}}">
+            <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+          </td>
+        </tr>
+        <tr md-virtual-repeat="item in detail | filter: filterObject: true | orderBy: sortingBy : sortingReverse" style="outline: none;" ng-class="{ clickable: (!disableField || !item[disableField]), disabled: item[disableField] }" ng-click="clickRow( item, $index )">
+          <td class="checkboxColumn" ng-if="showSelectBoxes">
+            <md-checkbox aria-label="select" ng-checked="selectedItems.includes(item)" ng-click="selectItem(item); $event.stopPropagation();" />
+          </td>
+          <td ng-repeat="field in fieldsDisplayed">{{item[field] | customFilter: fieldFilters[field]}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </md-virtual-repeat-container>
+  <div class="table-footer detail-pane-content" layout="row">
+    <div flex>
+      <md-button class="md-raised" ng-click="action.action( event )" ng-repeat="action in actions | filter:{left: true}:true" ng-disabled="action.requireSelection && !selectedItems.length">
+        <md-icon ng-show="action.icon">{{action.icon}}</md-icon>
+        {{action.name}}
+      </md-button>
+      <md-button class="md-raised" ng-click="listSettings($event)">
+        <md-icon>settings</md-icon>
+        List Settings
+      </md-button>
+    </div>
+    <div>
+      <md-button class="md-raised" ng-click="exportList()">
+        <md-icon>file_download</md-icon>
+        Export List
+      </md-button>
+      <span ng-repeat="action in actions | filter:{left: '!true'}">
+        <md-button class="md-raised" ng-click="action.action( event )" ng-if="!action.subActions" ng-disabled="action.requireSelection && !selectedItems.length">
+          <md-icon ng-show="action.icon">{{action.icon}}</md-icon>
+          {{action.name}}
+        </md-button>
+        <md-menu ng-if="action.subActions">
+          <md-button class="md-raised" ng-click="$mdMenu.open($event)" ng-disabled="action.requireSelection && !selectedItems.length">
+            <md-icon>arrow_drop_up</md-icon> {{action.name}}
+          </md-button>
+          <md-menu-content>
+            <md-menu-item ng-repeat="subAction in action.subActions">
+              <md-button ng-click="subAction.action(selectedItems, event)">{{subAction.name}}</md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+      </div>
+    </div>
+  </div>
+</div>

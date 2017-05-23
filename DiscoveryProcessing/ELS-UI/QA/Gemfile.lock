@@ -1,0 +1,90 @@
+GIT
+  remote: https://github.consilio.com/QA/Browser-Framework.git
+  revision: 86ccc53abded46e520a49bbfdc95b65f9bff31ca
+  branch: master
+  specs:
+    TestFramework (0.0.15)
+
+GIT
+  remote: https://github.consilio.com/QA/RSpec_Report_Formatter.git
+  revision: c56fbcecefc1e447727ef0dbc43fab7c398507d5
+  specs:
+    rspec_html_formatter (0.3.1)
+      activesupport (>= 4.1.4)
+      rouge (>= 1.6.1)
+      rspec-core (>= 3.0.3)
+
+GIT
+  remote: https://github.consilio.com/QA/uigen
+  revision: 07ddd7ff8bc50393dda5a53490b916e46bf7add6
+  branch: master
+  specs:
+    uigen (0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    abstract (1.0.0)
+    activesupport (5.1.1)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (~> 0.7)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
+    byebug (9.0.6)
+    childprocess (0.7.0)
+      ffi (~> 1.0, >= 1.0.11)
+    concurrent-ruby (1.0.5)
+    diff-lcs (1.3)
+    ffi (1.9.18-x64-mingw32)
+    i18n (0.8.1)
+    interface (1.0.4)
+    json (2.1.0)
+    log4r (1.1.10)
+    logger (1.2.8)
+    minitest (5.10.2)
+    rouge (2.0.7)
+    rspec (3.5.0)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
+    rspec-core (3.5.4)
+      rspec-support (~> 3.5.0)
+    rspec-expectations (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-mocks (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-support (3.5.0)
+    rubyzip (1.2.1)
+    selenium-webdriver (3.4.0)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0)
+    solid_assert (1.0.0)
+    thread_safe (0.3.6)
+    tzinfo (1.2.3)
+      thread_safe (~> 0.1)
+    watir (6.2.1)
+      selenium-webdriver (~> 3.0)
+    websocket (1.2.4)
+
+PLATFORMS
+  x64-mingw32
+
+DEPENDENCIES
+  TestFramework!
+  abstract
+  byebug (~> 9.0.6)
+  interface
+  json
+  log4r
+  logger
+  rspec (~> 3.5.0)
+  rspec_html_formatter!
+  solid_assert
+  uigen!
+  watir (~> 6.2.0)
+
+BUNDLED WITH
+   1.14.3

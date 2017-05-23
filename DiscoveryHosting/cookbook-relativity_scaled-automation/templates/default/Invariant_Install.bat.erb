@@ -1,0 +1,15 @@
+@echo off
+
+REM Optional Inputs that are accepted by the installer. They must be placed after the response file path. e.g. start /wait "" "GOLD 4.3.297.1 Invariant.exe" /log InstallLog.txt /responsefilepath=InvariantResponse.txt /dryrun
+REM /dryrun - Only runs the validations, does not attempt to install.
+REM /skipvalidations - Skip running the validations in the bundle (they will run during the MSI execution)
+REM /uninstall - Uninstall (Alternatively, you can use Add/Remove Programs)
+REM /repair - Repair the installation
+
+echo Running Invariant installer bundle. . .
+start /wait "" "C:\Installs\relativity\<%= node['Relativity']['InvariantSource']['EXE'] %>" /log "C:\Installs\relativity\InstallLog.txt" /responsefilepath="C:\Installs\relativity\InvariantResponse.txt"
+
+IF %ERRORLEVEL% LSS 0 echo An error occurred during installation (Error code: %ERRORLEVEL%). Please check the log file for more details.
+IF %ERRORLEVEL% GTR 0 echo An error occurred during installation (Error code: %ERRORLEVEL%). Please check the log file for more details.
+
+IF %ERRORLEVEL% EQU 0 echo Installation successful!

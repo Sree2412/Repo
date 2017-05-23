@@ -1,0 +1,35 @@
+def utils = new com.consilio.Utils()
+utils.consilioSettings() 
+
+// pull request tasks
+// only run when the base is master
+if (env.CHANGE_TARGET == 'master' && env.BRANCH_NAME =~ /PR-/) {
+  webServicesPR {
+    notify_channel = '#CID'
+  }
+} else if (env.JOB_NAME ==~ /.*-administrative/ || env.JOB_NAME ==~ /.*-release/ )  {
+  node('Windows') {
+    stage('Init') {
+      deleteDir()
+      checkout scm
+    }
+
+    if (env.JOB_NAME ==~ /.*-administrative/) {
+      load 'cid/workflows/administrative.groovy'
+    } else {
+      load 'cid/workflows/release.groovy'
+    }
+  }
+
+  if (env.JOB_NAME ==~ /.*-administrative/) {
+    stage ('Master Workflow') {
+      // this IS CASE-SENSITIVE!!
+      build job: '../workflows/ELS-UI/master'
+    }
+  }
+} else {
+  // always fallback to a basic CI job
+  webServicesCI {
+    notify_channel = '#CID'
+  }
+}

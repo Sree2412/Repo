@@ -1,0 +1,42 @@
+<div flex md-colors="{background: 'background'}" layout="column">
+  <div layout-padding>
+    <div class="md-headline">{{project.projectCode}} - {{project.matterName}}</div>
+    <div layout="row">
+      <div flex="50">
+        <div>
+          <span class="md-body-2">Matter name:</span>
+          {{project.matterName}}
+        </div>
+        <div>
+          <span class="md-body-2">Case type:</span>
+          {{project.caseType}}
+        </div>
+        <div>
+          <span class="md-body-2">Client name:</span>
+          {{project.clientName}}
+        </div>
+      </div>
+      <div flex="50">
+        <p>
+          <div class="md-body-2">Case description:</div>
+          <div>{{project.caseDescription}}</div>
+        </p>
+        <div>
+          <span class="md-body-2">Submitted for:</span>
+          {{project.submittedFor}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <md-tabs md-border-bottom md-autoselect flex>
+    <md-tab label="Items">
+      <item-list items="items"></item-list>
+    </md-tab>
+    <md-tab label="Attachments">
+      <attachment-list attachments="project.attachments"></attachment-list>
+    </md-tab>
+    <md-tab label="History">
+      <history-list history="project.history"></history-list>
+    </md-tab>
+  </md-tabs>
+</div>

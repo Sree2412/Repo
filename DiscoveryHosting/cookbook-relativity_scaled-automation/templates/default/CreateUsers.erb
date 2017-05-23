@@ -1,0 +1,12 @@
+USE [master]
+GO
+CREATE LOGIN [EDDSDBO] WITH PASSWORD=N'<%= node['Relativity']['eddsdbo']['Password'] %>', DEFAULT_DATABASE=[master], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
+GO
+EXEC master..sp_addsrvrolemember @loginame = N'EDDSDBO', @rolename = N'bulkadmin'
+GO
+
+EXEC master..sp_addsrvrolemember @loginame = N'EDDSDBO', @rolename = N'dbcreator'
+GO
+
+EXEC xp_instance_regwrite N'HKEY_LOCAL_MACHINE', N'Software\Microsoft\MSSQLServer\MSSQLServer', N'LoginMode', REG_DWORD, 2
+GO

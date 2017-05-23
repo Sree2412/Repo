@@ -1,0 +1,173 @@
+---
+driver:
+  name: vra
+  username: <%= ENV['VRA_USER'] %>
+  password: "<%= ENV['VRA_PASS'] %>"
+  tenant: Engineering
+  base_url: https://cloud.consilio.com
+  verify_ssl: false
+  cpus: 1
+  memory: 4096
+  lease_days: 5
+  request_timeout: 1200
+  use_dns: false
+  server_ready_retries: 10
+
+provisioner:
+  name: chef_zero
+  require_chef_omnibus: 12.7.2
+
+platforms:
+  # Describes a Windows host, remove if unneeded
+  - name: Win
+    driver:
+      catalog_id: 2f7a97cd-bff0-4408-b26f-2750344ec35e
+      subtenant_id: 3de5fbd7-8968-495a-ac2b-93b731b3a729
+    transport:
+      name: winrm
+      username: <%= ENV['KT_USER'] %>
+      password: <%= ENV['KT_PASS'] %>
+
+suites:
+
+### when you run this the first time, you will not know the HOSTNAME, so you must comment out the Attributes
+### and set the run_list to - recipe[relativity::setup_sql]
+### after the SQL server is setup, then remove ::setup_sql and uncomment the attributes, update the attributes
+### with the HOSTNAME and then run it again
+  - name: primarysql
+    data_bags_path: "test/integration/data_bags"   
+    run_list:
+      - recipe[relativity-scaled-automation-sri::upgrade_default]
+    attributes:
+         consilio:
+                 campus_code: 'DEV'
+         Relativity:			 
+             SQLPrimary:
+                 Install: 1
+                 FileRepo: '\\MTPCTSCID504\FileShare'
+                 EDDSFileShare: '\\MTPCTSCID504\EDDSFileShare'
+                 DTSearch: '\\MTPCTSCID504\DTSearch'
+             Install:
+                 PrimaryInstance: 'MTPCTSCID504'
+                 RelativityInstance: 'KawikaTest'
+                 SQLUseWinAuth: 1 	
+             Version: '9.4'            							 								 						  
+
+### when you run this the first time, you will not know the HOSTNAME of the Invariant SQL Server, so you must comment out the Attributes
+### and set the run_list to - recipe[relativity::setup_sql]
+### after the SQL server is setup, then remove ::setup_sql and uncomment the attributes, update the attributes
+### with the HOSTNAME and then run it again           
+### ----- MAKE SURE YOU SET THE PrimaryInstance HOSTNAME as well -----      
+  - name: invariantsql
+    data_bags_path: "test/integration/data_bags"   
+    run_list:
+      - recipe[relativity-scaled-automation-sri::upgrade_default]
+    attributes:
+        Relativity:					
+             InvariantDatabase:
+                 Install: 1
+                 DataDir: 'F:\Data'
+                 LogsDir: 'F:\Logs'
+             InvariantQueueManager:
+                 Install: 1						 
+             Invariant:
+                 SQLInstance: 'MTPCTSCID534'
+                 WorkerNetworkPath: '\\MTPCTSCID534\InvariantNetworkShare'
+                 DTSearchPath: '\\MTPCTSCID534\DTSearch'
+                 FilesharePath: '\\MTPCTSCID534\FileShare'
+                 QueueManagerInstallPath: 'C:\Program Files\kCura Corporation\Invariant\QueueManager\'
+             Install:
+                 PrimaryInstance: 'MTPCTSCID504'
+                 SQLUseWinAuth: 1
+             InvariantSource:
+                 EXE: 'GOLD_4.3.297.1_Invariant.exe'	 								 
+             Version: '9.3'	
+             Upgrade:
+                 WMS: 1		                   
+
+# make sure you update the PrimaryInstance setting after you have run the above sql tests                 
+  - name: web
+    data_bags_path: "test/integration/data_bags" 
+    run_list:
+      - recipe[relativity-scaled-automation-sri::upgrade_default]
+    attributes:
+         Relativity:
+             Web:
+                 Install: 1
+                 EnableWinAuth: 1
+             Install:
+                 Dir: 'C:\Program Files\kCura Corporation\Relativity\'
+                 PrimaryInstance: 'MTPCTSCID504'
+                 RelativityInstance: 'KawikaTest'
+                 SQLUseWinAuth: 1 
+             DataBag:
+                 Password: 'P@$$w0rd01'    
+             Source:
+                 EXE: 'GOLD_9.3.297.13_Relativity.exe'
+             Version: '9.3'	
+             Upgrade:
+                 Web: 1         				 							 									         
+
+# make sure you update the PrimaryInstance setting after you have run the above sql tests
+  - name: agent
+    data_bags_path: "test/integration/data_bags"   
+    run_list:
+      - recipe[relativity-scaled-automation-sri::upgrade_default]
+    attributes:
+         Relativity:
+             Agent:
+                 Install: 1
+                 Defaults: 1                 
+             Install:
+                 Dir: 'C:\Program Files\kCura Corporation\Relativity\'
+                 PrimaryInstance: 'MTPCTSCID504'
+                 RelativityInstance: 'KawikaTest'
+                 SQLUseWinAuth: 1    
+             Source:
+                 EXE: 'GOLD_9.3.297.13_Relativity.exe'
+             Version: '9.3'	
+             Upgrade:
+                 AGT: 1               								 
+
+# make sure you update the PrimaryInstance setting and Invariant SQLInstance after you have run the above sql tests                 
+  # - name: worker
+  #   data_bags_path: "test/integration/data_bags"   
+  #   run_list:
+  #     - recipe[relativity-scaled-automation-sri::upgrade_default]
+  #   attributes:
+  #       Relativity:
+  #            InvariantWorker: 
+  #               Install: 1
+  #            InvariantQueueManager:
+  #                Install: 0                
+  #            Invariant:
+  #                SQLInstance: 'MTPCTSCID534'
+  #                WorkerNetworkPath: '\\MTPCTSCID534\InvariantNetworkShare'
+  #                WorkerInstallPath: 'C:\Program Files\kCura Corporation\Invariant\Worker\'
+  #                QueueManagerInstallPath: 'C:\Program Files\kCura Corporation\Invariant\QueueManager\'
+  #            Install:
+  #                PrimaryInstance: 'MTPCTSCID504'
+  #                SQLUseWinAuth: 1   
+  #            InvariantSource:
+  #                EXE: 'GOLD_4.3.297.1_Invariant.exe'
+  #            Version: '9.3'             
+
+# make sure you update the PrimaryInstance setting after you have run the above sql tests    
+  - name: analytics
+    data_bags_path: "test/integration/data_bags"   
+    run_list:
+      - recipe[relativity-scaled-automation-sri::upgrade_default]
+    attributes:
+        Relativity:
+            Install:
+                PrimaryInstance: 'MTPCTSCID504'
+            Analytics:
+                Install: 1   
+                CAATIndexDir: 'F:\Analytics\Indexes'   
+                RestUser: 'SLT_REL2'
+                RestPassword: 'P@ssword01'
+            Source:
+                MSI: '9.3.297.13_Relativity_Analytics_Server.msi'
+            Version: '9.3'
+            Upgrade:
+                ANX: 1          							

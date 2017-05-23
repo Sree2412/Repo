@@ -1,0 +1,1 @@
+default['Install']['redistributables'] = 'https://packages.consilio.com/hlnas00/tech/Software/Windows/Redistributables/'

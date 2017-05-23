@@ -1,0 +1,6 @@
+*.txt
+*.html
+Gemfile.lock
+misc.rb
+.byebug_history
+rspec_html_reports\

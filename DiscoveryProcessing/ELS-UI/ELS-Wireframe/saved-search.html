@@ -1,0 +1,58 @@
+<md-content flex layout="column">
+  <div layout-padding>
+    <div class="md-title" layout="row" layout-align="start center">
+      <span>Advanced Search:</span>
+      <md-input-container flex class="md-block">
+        <input aria-label="Name" ng-model="savedSearch.name" />
+      </md-input-container>
+    </div>
+    <div ng-repeat="criterion in savedSearch.criteria track by $index" layout="row">
+      <md-input-container style="{{($index == 0 ? 'visibility: hidden;' : '')}}">
+        <md-select ng-model="criterion.AndOr" placeholder="And/Or">
+          <md-option value="And">And</md-option>
+          <md-option value="Or">Or</md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container flex>
+        <label>Field</label>
+        <md-select ng-model="criterion.field" placeholder="Field">
+          <md-option ng-repeat="field in itemFields" ng-value="field">{{field.name}}</md-option>
+        </md-select>
+      </md-input-container>
+      <div flex ng-switch="criterion.field.type">
+        <md-input-container class="md-block" ng-switch-when="text">
+          <input ng-model="criterion.value" placeholder="Value" />
+        </md-input-container>
+        <md-input-container class="md-block" ng-switch-when="number">
+          <input ng-model="criterion.value" placeholder="Value" type="number" />
+        </md-input-container>
+        <md-input-container class="md-block" ng-switch-when="longText">
+          <textarea ng-model="criterion.value" placeholder="Value"></textarea>
+        </md-input-container>
+        <md-input-container class="md-block" ng-switch-when="date">
+          <md-datepicker ng-model="criterion.value" placeholder="Value"></md-datepicker>
+        </md-input-container>
+        <md-input-container class="md-block" ng-switch-when="multivalue">
+          <label>Value</label>
+          <md-select ng-model="criterion.value" placeholder="Value">
+            <md-option ng-value="value" ng-repeat="(index, value) in criterion.field.values">{{value}}</md-option>
+          </md-select>
+        </md-input-container>
+        <div ng-switch-when="boolean">
+          <md-switch ng-model="criterion.value">{{(criterion.value ? 'Yes' : 'No')}}</md-switch>
+        </div>
+      </div>
+    </div>
+    <div>
+      <md-button class="md-raised" ng-click="addCriteria()">
+        <md-icon>add_circle</md-icon> Search Criteria
+      </md-button>
+      <md-button class="md-raised md-primary" ng-click="searched = true">
+        <md-icon>search</md-icon> Search
+      </md-button>
+    </div>
+  </div>
+  <md-content flex ng-if="searched">
+    <item-list items="items"></item-list>
+  </md-content>
+</md-content>

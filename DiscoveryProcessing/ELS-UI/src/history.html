@@ -1,0 +1,10 @@
+<md-list>
+  <md-list-item class="md-3-line md-long-text" ng-repeat="entry in history">
+    <md-icon class="md-avatar-icon">history</md-icon>
+    <div class="md-list-item-text" layout="column">
+      <h3>{{entry.user}}</h3>
+      <h4>{{entry.time|date:'medium'}}</h3>
+      <p>{{entry.description}}</p>
+    </div>
+  </md-list-item>
+</md-list>

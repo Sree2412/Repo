@@ -1,0 +1,96 @@
+<md-content flex md-colors="{background: 'background'}" layout="column">
+  <div ng-form="dataTransferForm" layout-padding>
+    <div class="md-title" layout="row" layout-align="start center">
+      <span>Data Transfer:</span>
+      <md-input-container flex class="md-block">
+        <input aria-label="Name" required ng-model="dataTransfer.Name" ng-model-options="{ debounce: 500 }" />
+      </md-input-container>
+    </div>
+    <div layout="row">
+      <div flex="50">
+        <md-input-container class="md-block">
+          <label>Type</label>
+          <md-select required ng-model="dataTransfer.DataTransferTypeId">
+            <md-option ng-repeat="transferType in $resolve.dataTransferTypes" ng-value="transferType.Id">{{transferType.Name}}</md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <input ng-model="dataTransfer.TrackingNumber" placeholder="Tracking Number" ng-model-options="{ debounce: 500 }" />
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Collecting Evidence Handler</label>
+          <virtual-select required="true" placeholder="Collecting Evidence Handler" model="dataTransfer.CollectingEvidenceHandlerId" items="$resolve.evidenceHandlers" identifier="Id" label="DisplayName"></virtual-select>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Delivering Evidence Handler</label>
+          <virtual-select placeholder="Delivering Evidence Handler" model="dataTransfer.DeliveringEvidenceHandlerId" items="$resolve.evidenceHandlers" identifier="Id" label="DisplayName"></virtual-select>
+        </md-input-container>
+      </div>
+      <div flex="50">
+        <md-input-container class="md-block fix-height">
+          <div layout="row">
+            <label>Data Client</label>
+            <virtual-select placeholder="Data Client" model="dataTransfer.DataClientId" items="$resolve.dataClients" identifier="Id" label="Name"></virtual-select>
+            <md-button class="md-icon-button" flex-order="2" ng-href="#/data-client/{{dataTransfer.DataClientId}}">
+              <md-icon>keyboard_arrow_right</md-icon>
+            </md-button>
+          </div>
+        </md-input-container>
+        <md-input-container flex class="md-block fix-height">
+          <div layout="row">
+            <label>Project</label>
+            <virtual-select placeholder="Project" required="true" model="dataTransfer.BusinessProjectId" items="$resolve.projects" identifier="ID" get-item-text="getProjectText(item)"></virtual-select>
+            <md-button class="md-icon-button" flex-order="2" ng-href="#/project/{{getProject(dataTransfer.BusinessProjectId).Code}}">
+              <md-icon>keyboard_arrow_right</md-icon>
+            </md-button>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <input ng-model="dataTransfer.Description" placeholder="Description" ng-model-options="{ debounce: 500 }" />
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Transfer Date</label>
+          <md-datepicker required ng-model="dataTransfer.DataTransferDatetime"></md-datepicker>
+        </md-input-container>
+      </div>
+    </div>
+  </div>
+  <md-tabs md-border-bottom md-autoselect flex>
+    <md-tab label="Containers">
+      <div style="overflow: hidden; height: 100%; position: relative;">
+        <detail-table detail="containers"
+          model="$resolve.containerModel"
+          disable-field="IsObscured"
+          field-filters="$resolve.containerFilters"
+          fields-displayed="['Id', 'ContainerTypeName', 'ContainerSubTypeName', 'DispositionStateName', 'Description']"
+          filter-object="{ DataTransferId: dataTransfer.Id }"
+          on-row-click="selectContainer( item, index )"
+          actions="[{ icon: 'add_circle', name: 'Container', action: addContainer, left: true },
+            {name: 'Reports', requireSelection: true, subActions: [
+              {name: 'Chain of custody', action: viewCustody},
+              {name: 'Item submission no barcode'},
+              {name: 'Item submission with barcode'},
+              {name: 'Transfer receipt'},
+              {name: 'Container label'}
+            ]},
+            {name: 'Transactions', requireSelection: true, subActions: [
+              {name: 'Check out items'},
+              {name: 'Check in items'},
+              {name: 'Move items'},
+              {name: 'Dispose items'},
+              {name: 'Print label(s)'},
+              {name: 'Mass update items'}
+            ]}]"
+          list-name="transferContainersTable"
+          show-select-boxes="true"></detail-table>
+        <container-detail container="selectedContainer" container-list="containers" index="selectedContainerIndex"></container-detail>
+      </div>
+    </md-tab>
+    <md-tab label="Attachments">
+      <attachment-list attachments="dataTransfer.attachments"></attachment-list>
+    </md-tab>
+    <md-tab label="History">
+      <history-list item="dataTransfer"></history-list>
+    </md-tab>
+  </md-tabs>
+</md-content>

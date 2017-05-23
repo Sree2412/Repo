@@ -1,0 +1,107 @@
+<div class="detail-panel" ng-show="item" md-colors="{background: 'background'}" md-whiteframe="1" ng-cloak focus-on layout="column">
+  <div layout="row" layout-align="start center">
+    <div flex="20" layout="row" layout-align="start center">
+      <md-button class="md-icon-button" ng-click="item = null">
+        <md-icon>arrow_back</md-icon>
+      </md-button>
+      <span class="md-title">Item #{{item["Item Number"]}}</span>
+    </div>
+    <div flex style="text-align: center;">
+      <md-button class="md-icon-button">
+        <md-icon>navigate_before</md-icon>
+      </md-button>
+      <md-button class="md-icon-button">
+        <md-icon>navigate_next</md-icon>
+      </md-button>
+    </div>
+    <div flex="20" style="text-align: right;">
+      <md-button class="md-icon-button" ng-click="showNav('attachmentNav')">
+        <md-icon>attachment</md-icon>
+      </md-button>
+      <span class="badge" md-colors="{ background: 'primary'}" md-whiteframe="4" ng-show="item.attachments.length">{{item.attachments.length}}</span>
+      <md-button class="md-icon-button" ng-click="showNav('historyNav')">
+        <md-icon>history</md-icon>
+      </md-button>
+    </div>
+  </div>
+  <div layout="row" flex>
+    <div layout="column">
+      <md-content flex layout-padding>
+        <div ng-repeat="field in itemFields | filter:{ displayInEdit: true }:true" ng-if="!field.dependentOnField || (item[field.dependentOnField] == field.dependentOnValue)" style="width: 45%; float: left;">
+          <div ng-switch="field.type">
+            <md-input-container class="md-block" ng-switch-when="text">
+              <input ng-model="item[field.name]" placeholder="{{field.name}}" ng-required="{{field.required}}" />
+            </md-input-container>
+            <md-input-container class="md-block" ng-switch-when="number">
+              <input ng-model="item[field.name]" placeholder="{{field.name}}" ng-required="{{field.required}}" type="number" />
+            </md-input-container>
+            <md-input-container class="md-block" ng-switch-when="longText">
+              <textarea ng-model="item[field.name]" placeholder="{{field.name}}" ng-required="{{field.required}}"></textarea>
+            </md-input-container>
+            <md-input-container class="md-block fix-height" ng-switch-when="date">
+              <md-datepicker ng-model="item[field.name]" placeholder="{{field.name}}" ng-required="{{field.required}}"></md-datepicker>
+            </md-input-container>
+            <md-input-container class="md-block" ng-switch-when="multivalue">
+              <label>{{field.name}}</label>
+              <md-select placeholder="{{field.name}}" ng-model="item[field.name]" ng-required="{{field.required}}">
+                <md-option ng-value="value" ng-repeat="(index, value) in field.values">{{value}}</md-option>
+              </md-select>
+            </md-input-container>
+            <div ng-switch-when="boolean">
+              <md-switch ng-model="item[field.name]" ng-required="{{field.required}}">{{field.name}}</md-switch>
+            </div>
+          </div>
+        </div>
+      </md-content>
+      <div>
+        <md-button class="md-raised">
+          <md-icon>content_copy</md-icon> Duplicate to New Item
+        </md-button>
+        <md-menu md-position-mode="target-right target">
+          <md-button class="md-raised" ng-click="$mdOpenMenu($event)">
+            <md-icon>arrow_drop_up</md-icon> Actions
+          </md-button>
+          <md-menu-content>
+            <md-menu-item>
+              <md-button>Print item label</md-button>
+            </md-menu-item>
+            <md-menu-item>
+              <md-button>View item history</md-button>
+            </md-menu-item>
+            <md-menu-item>
+              <md-button>View chain of custody log</md-button>
+            </md-menu-item>
+            <md-menu-item>
+              <md-button>View tickets</md-button>
+            </md-menu-item>
+            <md-menu-item>
+              <md-button>Delete</md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+      </div>
+    </div>
+    <md-sidenav class="md-sidenav-right" md-component-id="attachmentNav" md-whiteframe="2" layout="column">
+      <md-toolbar class="md-accent" md-whiteframe="1">
+        <div class="md-toolbar-tools">
+          <span flex>Attachments</span>
+          <md-button class="md-icon-button" ng-click="hideNav( 'attachmentNav' )"><md-icon>close</md-icon></md-button>
+        </div>
+      </md-toolbar>
+      <md-content flex>
+        <attachment-list attachments="item.attachments"></attachment-list>
+      </md-content>
+    </md-sidenav>
+    <md-sidenav class="md-sidenav-right" md-component-id="historyNav" md-whiteframe="2" layout="column">
+      <md-toolbar class="md-accent" md-whiteframe="1">
+        <div class="md-toolbar-tools">
+          <span flex>History</span>
+          <md-button class="md-icon-button" ng-click="hideNav( 'historyNav' )"><md-icon>close</md-icon></md-button>
+        </div>
+      </md-toolbar>
+      <md-content flex>
+        <history-list history="item.history"></history-list>
+      </md-content>
+    </md-sidenav>
+  </div>
+</div>

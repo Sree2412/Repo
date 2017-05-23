@@ -1,0 +1,12 @@
+source 'https://supermarket.chef.io'
+
+metadata
+cookbook 'iis', '~> 4.1.6'
+cookbook 'windows', '~> 1.39.1'
+cookbook 'dotnetframework', '~> 1.2.0'
+cookbook 'msoffice', '~> 0.1.0'
+cookbook 'firewall', '~> 2.5.0'
+
+cookbook 'dotnet', git: 'https://github.consilio.com/CID/cookbook-dotnet.git', tag: '2.1.3'
+cookbook 'seven_zip', git: 'https://github.consilio.com/CID/cookbook-seven_zip.git', tag: '1.2.3'
+cookbook 'sqlserver', git: 'https://github.consilio.com/CID/cookbook-sqlserver.git', tag: '3.1.4'

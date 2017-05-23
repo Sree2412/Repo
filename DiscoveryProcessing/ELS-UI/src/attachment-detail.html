@@ -1,0 +1,37 @@
+<form class="detail-panel" ng-show="attachment" md-colors="{background: 'background'}" md-whiteframe="1" ng-cloak focus-on>
+  <div layout="row" layout-align="start center">
+    <md-button class="md-icon-button toolbar-back-button" type="submit" ng-click="attachment = null">
+      <md-icon>arrow_back</md-icon>
+    </md-button>
+    <span class="md-title" flex>Attachment Detail</span>
+    <md-button class="md-icon-button toolbar-back-button">
+      <md-icon>navigate_before</md-icon>
+    </md-button>
+    <md-button class="md-icon-button toolbar-back-button">
+      <md-icon>navigate_next</md-icon>
+    </md-button>
+  </div>
+  <md-content layout-padding>
+    <div ng-if="attachment.type == 'File'">
+      <div>
+        <md-input-container>
+          <input ng-model="attachment.fileName" placeholder="Filename" ng-model-options="{ debounce: 500 }" />
+        </md-input-container>
+      </div>
+      <div>
+        <label>Upload file</label>
+        <md-button>Browse</md-button>
+      </div>
+    </div>
+    <div ng-if="attachment.type == 'Ticket'">
+      <md-input-container>
+        <input ng-model="attachment.ticketNumber" type="Number" placeholder="Ticket Number" ng-model-options="{ debounce: 500 }" />
+      </md-input-container>
+    </div>
+    <div>
+      <md-input-container>
+        <textarea ng-model="attachment.description" placeholder="Description" ng-model-options="{ debounce: 500 }" />
+      </md-input-container>
+    </div>
+  </md-content>
+</form>

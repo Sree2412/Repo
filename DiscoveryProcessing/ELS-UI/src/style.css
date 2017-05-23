@@ -1,0 +1,345 @@
+body {
+  overflow: hidden;
+}
+
+.main-title-bar {
+  z-index: 75;
+}
+
+.toolbar-logo {
+  height: 100%;
+}
+
+.toolbar-back-button {
+  margin-right: 0 !important;
+}
+
+.config-panel {
+  position: absolute;
+  top: 64px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  z-index: 74;
+}
+
+  .config-panel.ng-enter,
+  .config-panel.ng-leave.ng-leave-active  {
+    top: 100%;
+  }
+
+  .config-panel.ng-leave,
+  .config-panel.ng-enter.ng-enter-active  {
+    top: 64px;
+  }
+
+  .config-panel.ng-leave {
+    transition: all cubic-bezier(0.4, 0.0, 0.6, 1) 195ms;
+  }
+
+  .config-panel.ng-enter {
+    transition: all cubic-bezier(0.4, 0.0, 0.6, 1) 225ms;
+  }
+
+  .config-panel .content {
+    height: 100%;
+    padding-bottom: 64px;
+  }
+
+#project-detail-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.project-detail {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+}
+
+  .project-detail.ng-leave {
+    opacity: 1;
+    transition: all cubic-bezier(0.0, 0.0, 0.2, 1) 375ms;
+  }
+
+    .project-detail.ng-leave.ng-leave-active {
+      opacity: 0;
+    }
+
+  .project-detail.ng-enter {
+    left: -100%;
+    transition: all cubic-bezier(0.0, 0.0, 0.2, 1) 375ms;
+  }
+
+    .project-detail.ng-enter.ng-enter-active {
+      left: 0;
+    }
+
+.detail-panel-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.detail-panel {
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+  .detail-panel.ng-hide {
+    top: 100%;
+  }
+
+  .detail-panel.ng-hide-remove {
+    transition: all cubic-bezier(0.4, 0.0, 0.6, 1) 225ms;
+  }
+
+  .detail-panel.ng-hide-add {
+    transition: all cubic-bezier(0.4, 0.0, 0.6, 1) 195ms;
+  }
+
+md-input-container .md-errors-spacer {
+  display: none;
+}
+
+  md-input-container.fix-height md-select {
+    margin: 0;
+  }
+
+  md-input-container.fix-height > div {
+    height: 30px;
+  }
+
+.badge {
+  position: absolute;
+  background-color: red;
+  border-radius: 50%;
+  width: 15px;
+  height: 13px;
+  font-size: 9px;
+  font-weight: bolder;
+  text-align: center;
+  padding-top: 2px;
+  margin-top: 5px;
+  margin-left: -25px;
+  z-index: 1;
+}
+
+.toolbar-selected {
+  z-index: 3;
+}
+
+.filter-bar {
+  padding-top: 16px;
+}
+
+.toolbar-selected.filter-bar {
+  padding-top: 0;
+}
+
+input.toolbar-search  {
+  border: none;
+}
+
+md-autocomplete.toolbar-search input {
+  border: none;
+}
+
+.selector-container {
+  overflow: hidden;
+}
+
+md-toolbar.selector-toolbar {
+  transition:all cubic-bezier(0.4, 0.0, 0.2, 1) 200ms;
+}
+
+.filter-bar-container {
+  height: 128px;
+  min-height: 128px;
+}
+
+#dataClientsToolbar {
+  height: 64px;
+  position: absolute;
+  top: 0;
+  transition:all cubic-bezier(0.4, 0.0, 0.2, 1) 200ms;
+  transition-property: top, box-shadow, background, padding;
+  z-index: 1;
+}
+
+#dataClientsToolbar.toolbar-selected {
+  top: 64px;
+  z-index: 3;
+}
+
+#projectsToolbar {
+  height: 64px;
+  position: absolute;
+  top: 0;
+  transition:all cubic-bezier(0.4, 0.0, 0.2, 1) 200ms;
+  transition-property: top, box-shadow, background, padding;
+  z-index: 1;
+}
+
+#projectsToolbar.toolbar-selected {
+  top: 64px;
+  z-index: 3;
+}
+
+#projectsToolbar.other-selected {
+  top: 64px;
+}
+
+.list-content {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  transition: all cubic-bezier(0.4, 0.0, 0.2, 1) 200ms;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+  .list-content.ng-leave {
+    overflow: hidden;
+    flex-grow: 1;
+    height: 0;
+  }
+
+    .list-content.ng-leave.ng-leave-active {
+      flex-grow: 0;
+    }
+
+  .list-content.ng-enter {
+    height: 0;
+    overflow: hidden;
+    flex-grow: 0;
+  }
+
+    .list-content.ng-enter.ng-enter-active {
+      flex-grow: 1;
+    }
+
+.list-content md-list {
+  padding: 0;
+}
+
+.filter-button .md-button {
+  margin-left: -8px;
+}
+
+.filter-button {
+  width: 38px;
+  overflow: hidden;
+  transition: all cubic-bezier(0.4, 0.0, 0.2, 1) 200ms;
+}
+
+  .filter-button.ng-hide {
+    width: 0;
+  }
+
+.list-switch {
+  position: inherit;
+  transition: all cubic-bezier(0.4, 0.0, 0.2, 1) 200ms;
+}
+
+.list-switch.ng-leave {
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+
+  .list-switch.ng-leave-active {
+    left: 100%;
+  }
+
+.list-switch.ng-enter {
+  position: absolute;
+  width: 100%;
+  left: -100%;
+}
+
+  .list-switch.ng-enter-active {
+    left: 0;
+  }
+
+.floating-button {
+  position: absolute;
+  bottom: 48px;
+  right: -36px;
+  width: 72px;
+  height: 68px;
+  z-index: 1000;
+}
+
+  .floating-button.appear {
+    transform: scale(1);
+    transition: transform cubic-bezier(0.0, 0.0, 0.2, 1) 100ms;
+  }
+
+  .floating-button.appear-add {
+    transform: scale(0);
+  }
+
+.list-content .md-virtual-repeat-scroller {
+  overflow-y: scroll;
+}
+
+.card-table .md-virtual-repeat-scroller {
+  overflow-x: auto;
+}
+
+.detail-table-container {
+  height: 100%;
+}
+
+.list-item-line {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+}
+
+.request-queue-save md-icon {
+  margin-left: 0.5em;
+}
+
+.request-queue-save {
+  opacity: 1;
+}
+
+.request-queue-save.ng-hide {
+  opacity: 0;
+  transition-delay: 4s;
+  transition: cubic-bezier(0.4, 0.0, 1, 1) 1000ms;
+}
+
+.md-button.select-header-button {
+    margin: 0;
+    padding: 0;
+}
+
+.md-button.select-header-button:last-child {
+    margin-right: 6px;
+}
+
+.parameter-search {
+    margin-left: 8px;
+    padding: 0 0 0 6px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.select-header-input-area {
+    position: relative;
+    height: 48px;
+}

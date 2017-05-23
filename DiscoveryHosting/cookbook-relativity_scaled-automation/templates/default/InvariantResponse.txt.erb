@@ -1,0 +1,108 @@
+### VERSION 1 ###
+
+################### FEATURE SELECTION ################################
+### 0 for: Do not install or uninstall.
+### 1 for: Install or upgrade.
+###
+### E.g. INSTALLDATABASE=1
+###
+######################################################################
+
+INSTALLDATABASE=<%= node['Relativity']['InvariantDatabase']['Install'] %>
+INSTALLQUEUEMANAGER=<%= node['Relativity']['InvariantQueueManager']['Install'] %>
+INSTALLWORKER=<%= node['Relativity']['InvariantWorker']['Install'] %>
+
+################### COMMON PROPERTIES ################################
+### The following properties are for all features.
+######################################################################
+
+### Target SQL instance for Invariant install
+### This SQL instance must be locally accessible
+### E.g. SQLINSTANCE=MySQLServer
+
+SQLINSTANCE=<%= node['Relativity']['Invariant']['SQLInstance'] %>
+
+### SQL instance for Relativity install
+### This SQL instance must be network accessible from local machine
+### E.g. RELATIVITYSQLINSTANCE=MyRelativitySQLServer
+
+RELATIVITYSQLINSTANCE=<%= node['Relativity']['Install']['PrimaryInstance'] %>
+
+### Windows username to run queue manager service as
+### E.g. SERVICEUSERNAME=domain\username
+
+SERVICEUSERNAME=<%= node['Relativity']['Relativity']['Service_Account'] %>
+
+### Password for Windows username to run queue manager service as
+### E.g. SERVICEPASSWORD=MySecretPassword
+
+SERVICEPASSWORD=<%= node['Relativity']['Relativity']['Service_Account_Password'] %>
+
+### The EDDSDBO password for the target SQL instance
+### The EDDSDBO account must already exist
+### E.g. EDDSDBOPASSWORD=MySecretPassword
+
+EDDSDBOPASSWORD=<%= node['Relativity']['eddsdbo']['Password'] %>
+
+### Whether or not to use Windows authorization for SQL access
+### 0 for: Do not use Windows authorization
+### 1 for: Use Windows authorization
+
+USEWINAUTH=<%= node['Relativity']['Install']['SQLUseWinAuth'] %>
+
+### The name of a SQL Server login.
+### This SQL login must be a SQL sysadmin.
+### This property is only needed if USEWINAUTH is set to 0.
+### E.g. SQLUSERNAME=mySqlUserName
+
+SQLUSERNAME=<%= node['Relativity']['SQLServer']['Service_Account'] %>
+
+
+### The password for the SQLUSERNAME.
+### This property is only needed if USEWINAUTH is set to 0
+### E.g. SQLPASSWORD=myPassword
+
+SQLPASSWORD=<%= node['Relativity']['SQLServer']['Service_Account_Password'] %>
+
+### The file share for worker files
+### E.g. WORKERNETWORKPATH=\\MySQLServer\InvariantNetworkShare
+
+WORKERNETWORKPATH=<%= node['Relativity']['Invariant']['WorkerNetworkPath'] %>
+
+################### DATABASE PROPERTIES ##############################
+### The following properties are for the database feature.
+######################################################################
+
+### The file path for database data files
+### E.g. MDFDIR=C:\Data
+
+MDFDIR=<%= node['Relativity']['InvariantDatabase']['DataDir'] %>
+
+### The file path for database log files
+### E.g. LDFDIR=C:\Logs
+
+LDFDIR=<%= node['Relativity']['InvariantDatabase']['LogsDir'] %>
+
+### The file share for dtSearch files
+### E.g. DTSEARCHINDEXPATH=\\MySQLServer\DtSearchIndexes
+
+DTSEARCHINDEXPATH=<%= node['Relativity']['Invariant']['DTSearchPath'] %>
+
+### The file share for data files
+### E.g. DATAFILESNETWORKPATH=\\MySQLServer\Fileshare
+
+DATAFILESNETWORKPATH=<%= node['Relativity']['Invariant']['FilesharePath'] %>
+
+################### QUEUE MANAGER AND WORKER PROPERTIES #########################
+### The following properties are for the queue manager and worker features.
+######################################################################
+
+### The install path for queue manager files
+### E.g. QUEUEMANAGERINSTALLPATH=C:\Program Files\kCura Corporation\Invariant\QueueManager\
+
+QUEUEMANAGERINSTALLPATH=<%= node['Relativity']['Invariant']['QueueManagerInstallPath'] %>
+
+### The install path for worker files
+### E.g. WORKERINSTALLPATH=C:\Program Files\kCura Corporation\Invariant\Worker\
+
+WORKERINSTALLPATH=<%= node['Relativity']['Invariant']['WorkerInstallPath'] %>

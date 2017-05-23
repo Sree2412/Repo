@@ -1,0 +1,170 @@
+<div flex layout="column" class="selector-container">
+  <div class="filter-bar-container">
+    <md-toolbar md-whiteframe="{{(activeList == 'data-clients' ? 4 : -1)}}" id="dataClientsToolbar" class="md-accent filter-bar"
+        ng-class="{'md-hue-1': activeList != 'data-clients', 'toolbar-selected': activeList == 'data-clients'}">
+      <div class="md-toolbar-tools">
+        <span class="filter-button" ng-show="activeList == 'projects' || activeList == 'data-transfers'">
+          <md-button class="md-icon-button" ng-disabled="!dataClientFilter" ng-click="dataClientFilter = ''">
+            <md-icon>filter_list</md-icon>
+          </md-button>
+        </span>
+        <span flex ng-if="activeList == 'data-clients'">
+          <md-input-container md-no-float>
+            <input placeholder="Data Clients" ng-model="$parent.dataClientSearch" class="toolbar-search" id="data-client-search" />
+          </md-input-container>
+        </span>
+        <span flex ng-if="activeList != 'data-clients'">
+          <md-autocomplete class="toolbar-search"
+              md-input-name="clientFilter"
+              md-search-text="$parent.dataClientSearch"
+              md-selected-item="$parent.dataClientFilter"
+              md-item-text="dataClient.Name"
+              md-items="dataClient in dataClients | filter: { Name: $parent.dataClientSearch } | filter: filterClients"
+              md-require-match
+              md-floating-label="Data Clients">
+            <md-item-template>
+              <span md-highlight-text="$parent.dataClientSearch">{{dataClient.Name}}</span>
+            </md-item-template>
+          </md-autocomplete>
+        </span>
+        <md-button class="md-icon-button" ng-if="activeList == 'data-clients'" ng-click="focusOn('data-client-search')">
+          <md-icon>search</md-icon>
+        </md-button>
+        <md-button class="md-icon-button" ng-if="activeList != 'data-clients'" ng-click="showList('data-clients')">
+          <md-icon>keyboard_arrow_down</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-toolbar md-whiteframe="{{(activeList == 'projects' ? 4 : -1)}}" id="projectsToolbar" class="md-accent filter-bar"
+        ng-class="{'md-hue-1': activeList != 'projects', 'toolbar-selected': activeList == 'projects', 'other-selected': (activeList != 'data-clients' && activeList != 'projects')}">
+      <div class="md-toolbar-tools">
+        <span class="filter-button" ng-show="activeList == 'data-clients' || activeList == 'data-transfers'">
+          <md-button class="md-icon-button" ng-disabled="!projectFilter" ng-click="projectFilter = ''">
+            <md-icon>filter_list</md-icon>
+          </md-button>
+        </span>
+        <span flex ng-if="activeList == 'projects'">
+          <md-input-container md-no-float>
+            <input placeholder="Projects" ng-model="$parent.projectSearch" class="toolbar-search" id="project-search" />
+          </md-input-container>
+        </span>
+        <span flex ng-if="activeList != 'projects'">
+          <md-autocomplete class="toolbar-search"
+              md-input-name="projectFilter"
+              md-search-text="$parent.projectSearch"
+              md-selected-item="$parent.projectFilter"
+              md-item-text="project.Code + ' - ' + project.Name"
+              md-items="project in projects | filter: filterProjects"
+              md-require-match
+              md-floating-label="Projects">
+            <md-item-template>
+              <span md-highlight-text="$parent.projectSearch">{{project.Code}} - {{project.Name}}</span>
+            </md-item-template>
+          </md-autocomplete>
+        </span>
+        <md-button class="md-icon-button" ng-if="activeList == 'projects'" ng-click="focusOn('project-search')">
+          <md-icon>search</md-icon>
+        </md-button>
+        <md-button class="md-icon-button" ng-if="activeList != 'projects'" ng-click="showList('projects')">
+          <md-icon>keyboard_arrow_down</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+  </div>
+  <md-content ng-if="activeList == 'data-clients' || activeList == 'projects'" ng-switch="activeList" class="list-content" layout="column" resize-window-on-animation="enter">
+    <md-progress-linear md-mode="indeterminate" ng-switch-when="projects" ng-show="!projects.$resolved && !projects.$error"></md-progress-linear>
+    <md-list class="md-dense list-switch" ng-switch-when="projects" flex layout="column">
+      <md-virtual-repeat-container flex>
+        <md-list-item class="md-2-line"
+            ng-href="#/project/{{project.Code}}"
+            md-virtual-repeat="project in projects | filter: filterProjects"
+            md-colors="(project === selectedContext ? {background: 'background-200'} : {})"
+            ng-click="selectProject( project );">
+          <div class="md-list-item-text" layout="column">
+            <h3>{{project.Code}} - {{project.Name}}</h3>
+            <p>{{project.ClientName}}</p>
+          </div>
+        </md-list-item>
+      </md-virtual-repeat-container>
+    </md-list>
+    <md-progress-linear md-mode="indeterminate" ng-switch-when="data-clients" ng-show="!dataClients.$resolved && !dataClients.$error"></md-progress-linear>
+    <md-list class="md-dense list-switch" ng-switch-when="data-clients" flex layout="column">
+      <md-virtual-repeat-container flex>
+        <md-list-item
+            ng-href="#/data-client/{{dataClient.Id}}"
+            md-virtual-repeat="dataClient in dataClients | filter: { Name: $parent.dataClientSearch } | filter: filterClients"
+            md-colors="(dataClient === selectedContext ? {background: 'background-200'} : {})"
+            ng-click="selectClient( dataClient )">
+          {{dataClient.Name}}
+        </md-list-item>
+      </md-virtual-repeat-container>
+    </md-list>
+  </md-content>
+  <md-toolbar md-whiteframe="{{(activeList == 'data-transfers' ? 4 : -1)}}" class="md-accent selector-toolbar"
+      ng-class="{'md-hue-1': activeList != 'data-transfers', 'toolbar-selected': activeList == 'data-transfers'}">
+    <div class="md-toolbar-tools">
+      <md-input-container flex md-no-float>
+        <input placeholder="Data Transfers" ng-model="dataTransferFilter" class="toolbar-search" id="data-transfer-search" />
+      </md-input-container>
+      <md-button class="md-icon-button" ng-if="activeList == 'data-transfers'" ng-click="focusOn('data-transfer-search')">
+        <md-icon>search</md-icon>
+      </md-button>
+      <md-button class="md-icon-button" ng-if="activeList != 'data-transfers'" ng-click="showList('data-transfers')">
+        <md-icon>keyboard_arrow_down</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-content ng-if="activeList == 'data-transfers'" class="list-content" layout="column" resize-window-on-animation="enter">
+    <md-progress-linear md-mode="indeterminate" ng-show="!dataTransfers.$resolved && !dataTransfers.$error"></md-progress-linear>
+    <md-list class="md-dense" flex layout="column">
+      <md-virtual-repeat-container flex>
+        <md-list-item
+            ng-href="#/data-transfer/{{dataTransfer.Id}}"
+            md-virtual-repeat="dataTransfer in dataTransfers | filter: { DataClientId: dataClientFilter.Id, BusinessProjectId: projectFilter.ID }: true | filter:{ Name: dataTransferFilter }"
+            md-colors="(dataTransfer === selectedContext ? {background: 'background-200'} : {})"
+            ng-click="selectContext( dataTransfer );">
+          <span class="list-item-line">{{dataTransfer.Name}}</span>
+        </md-list-item>
+      </md-virtual-repeat-container>
+    </md-list>
+    <div class="floating-button" class="floating-button" floating-position>
+      <md-button class="md-fab" ng-click="addDataTransfer()">
+        <md-tooltip md-direction="top">Add new data transfer</md-tooltip>
+        <md-icon>add</md-icon>
+      </md-button>
+    </div>
+  </md-content>
+  <md-toolbar md-whiteframe="{{(activeList == 'saved-searches' ? 4 : -1)}}" class="md-accent selector-toolbar"
+      ng-class="{'md-hue-1': activeList != 'saved-searches', 'toolbar-selected': activeList == 'saved-searches'}">
+    <div class="md-toolbar-tools">
+      <md-input-container flex md-no-float>
+        <input placeholder="Advanced Search" ng-model="savedSearchFilter" class="toolbar-search" ng-disabled="activeList != 'saved-searches'" id="saved-search-search" />
+      </md-input-container>
+      <md-button class="md-icon-button" ng-if="activeList == 'saved-searches'" ng-click="focusOn('saved-search-search')">
+        <md-icon>search</md-icon>
+      </md-button>
+      <md-button class="md-icon-button" ng-click="showList('saved-searches')" ng-if="activeList != 'saved-searches'">
+        <md-icon>keyboard_arrow_down</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-content ng-if="activeList == 'saved-searches'" class="list-content" layout="column" resize-window-on-animation="enter">
+    <md-list class="md-dense" flex layout="column">
+      <md-virtual-repeat-container flex>
+        <md-list-item
+            ng-href="#/saved-search/{{$index}}"
+            ng-repeat="savedSearch in savedSearches | filter:savedSearchFilter track by $index"
+            md-colors="(savedSearch === selectedContext ? {background: 'background-200'} : {})"
+            ng-click="selectContext( savedSearch );">
+          {{savedSearch.name}}
+        </md-list-item>
+      </md-virtual-repeat-container>
+    </md-list>
+    <div class="floating-button" floating-position>
+      <md-button class="md-fab" ng-click="addSavedSearch()">
+        <md-tooltip md-direction="top">Add new saved search</md-tooltip>
+        <md-icon>add</md-icon>
+      </md-button>
+    </div>
+  </md-content>
+</div>

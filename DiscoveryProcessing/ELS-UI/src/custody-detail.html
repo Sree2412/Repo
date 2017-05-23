@@ -1,0 +1,28 @@
+<md-dialog aria-label="Container Custody Log">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2 flex>Container Custody Log</h2>
+      <md-button class="md-icon-button" ng-click="print()" aria-label="Print chain of custody">
+        <md-icon>print</md-icon>
+      </md-button>
+      <md-button class="md-icon-button" ng-click="cancel()" aria-label="Close dialog">
+        <md-icon>close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content style="min-width: 500px;">
+    <md-progress-linear md-mode="indeterminate" ng-show="!custodies.$resolved"></md-progress-linear>
+    <md-list flex id="custodyList">
+      <md-list-item ng-repeat="custody in custodies" class="md-3-line md-long-text">
+        <div class="md-list-item-text">
+          <h3>{{custody.TransferDatetime | date}} - {{custody.ReasonForTransferName}}</h3>
+          <h4 layout="row">
+            <span flex="50">From: {{custody.FromEvidenceHandlerDisplayName | defaultIfNull: "N/A"}}</span>
+            <span flex="50">To: {{custody.TransferredByEvidenceHandlerDisplayName | defaultIfNull: "N/A"}}</span>
+          </h4>
+          <p>{{custody.Notes}}</p>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-dialog-content>
+</md-dialog>

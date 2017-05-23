@@ -1,0 +1,128 @@
+stage 'Init'
+node('Linux && ChefDK') {
+  try {
+    checkout scm
+    stash includes: '**', name: 'source'
+  } catch (e) {
+    println "Jenkins encountered Error: ${e}"
+    throw e
+  } finally {
+    rake "clean"
+    rake "clobber"
+  }
+}
+
+stage 'Style'
+node('Linux && ChefDK') {
+  try {
+    unstash "source"
+    println "Running style guide tests"
+    rake "style"
+  } catch (e) {
+    println "Jenkins encountered Error: ${e}"
+    throw e
+  } finally {
+    rake "clean"
+    rake "clobber"
+  }
+}
+
+stage 'Unit'
+node('Linux && ChefDK') {
+  try {
+    unstash "source"
+    println "Running setup"
+    rake "setup:cookbooks"
+    println "Running unit tests"
+    sh "mkdir Reports"
+    rake "unit"
+    step([$class: 'JUnitResultArchiver', testResults: 'Reports/chefspec.xml'])
+  } catch (e) {
+    println "Jenkins encountered Error: ${e}"
+    throw e
+  } finally {
+    rake "clean"
+    rake "clobber"
+  }
+}
+
+if( env.JOB_NAME ==~ /.*ci-master/ || env.JOB_NAME ==~ /.*ci-develop/) {
+  stage 'Integration'
+  node('Kitchen') {
+    try {
+      unstash "source"
+      println "Running setup"
+      rake "setup:cookbooks"
+      sh "mkdir -p Logs"
+      println "Running integration tests"
+      sh "chef exec kitchen verify -c 4 | tee Logs/kitchen_tests.log"
+      sh "mkdir -p Reports"
+      sh "awk -f filter_junit.awk Logs/kitchen_tests.log > Reports/kitchen_tests.xml"
+      step([$class: 'JUnitResultArchiver', testResults: "Reports/kitchen_tests.xml"])
+      // Add more tests here!
+      sh "chef exec kitchen destroy -c 4"
+    } catch (e) {
+      println "Jenkins encountered Error: ${e}"
+      throw e
+    } finally {
+      rake "clean"
+      rake "clobber"
+    }
+  }
+}
+
+if( env.JOB_NAME ==~ /.*ci-master/) {
+  stage 'Package'
+  node('Linux && ChefDK') {
+    try {
+      unstash "source"
+      println "Running Build/Package"
+      rake "build:package"
+      archive 'artifacts/*.tar.gz'
+      rake "archive"
+    } catch (e) {
+      println "Jenkins encountered Error: ${e}"
+      throw e
+    } finally {
+      rake "clean"
+      rake "clobber"
+    }
+  }
+}
+
+if( env.JOB_NAME ==~ /.*ci-master/) {
+  stage 'Deploy'
+  node('Linux && ChefDK') {
+    try {
+      unstash "source"
+      rake 'build:deploy'
+    } catch (e) {
+      println "Jenkins encountered Error: ${e}"
+      throw e
+    } finally {
+      rake "clean"
+      rake "clobber"
+    }
+  }
+}
+
+if( env.JOB_NAME ==~ /.*ci-develop/) {
+  stage 'Push'
+  node('Linux && ChefDK') {
+    try {
+      unstash "source"
+      rake 'push:master'
+    } catch (e) {
+      println "Jenkins encountered Error: ${e}"
+      throw e
+    } finally {
+      rake "clean"
+      rake "clobber"
+    }
+  }
+}
+
+// make rake calls look nicer
+def rake(args) {
+  sh "chef exec rake ${args}"
+}

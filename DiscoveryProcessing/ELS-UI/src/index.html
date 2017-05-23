@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" style="overflow: hidden !important;">
+<head>
+    <title>Enterprise Evidence Logging System</title>
+
+    <link rel="stylesheet" href="fonts/Roboto/roboto.css">
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css" />
+    <link rel="stylesheet" href="fonts/material-icons.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="table.css" />
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="node_modules/angular-resource/angular-resource.min.js"></script>
+    <script src="node_modules/angular-material/angular-material.min.js"></script>
+    <script src="node_modules/angular-cookies/angular-cookies.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="app-settings.js"></script>
+    <script src="selector.js"></script>
+    <script src="data-factories.js"></script>
+    <script src="history.js"></script>
+    <script src="saved-search.js"></script>
+    <script src="details.js"></script>
+    <script src="detail-table.js"></script>
+    <script src="requestQueue.js"></script>
+    <script src="transfer-detail.js"></script>
+    <script src="container-detail.js"></script>
+    <script src="attachments.js"></script>
+</head>
+<body ng-app="ELS" layout="column">
+  <md-toolbar class="main-title-bar">
+    <div class="md-toolbar-tools" layout-padding md-whiteframe="4">
+      <a href="#/" class="toolbar-logo">
+        <img src="images/WhiteConsilioLogo_noTag.svg" class="toolbar-logo" />
+      </a>
+      <a href="#/" flex>Enterprise Evidence Logging System</a>
+      <request-queue-status></request-queue-status>
+    </div>
+  </md-toolbar>
+  <div layout="row" flex>
+    <md-sidenav class="md-sidenav-left" md-is-locked-open="true" md-whiteframe="2" layout="column" side-nav-selector></md-sidenav>
+    <div flex md-colors="{background: 'background-400'}" id="project-detail-container">
+      <div class="project-detail" ng-view layout="column" style="background: none;"></div>
+    </div>
+  </div>
+  <div class="config-panel" ng-include="configPanel"></div>
+</body>
+</html>

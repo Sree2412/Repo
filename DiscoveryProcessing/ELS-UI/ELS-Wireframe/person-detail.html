@@ -1,0 +1,24 @@
+<form class="detail-panel" ng-show="person" md-colors="{background: 'background'}" md-whiteframe="1" ng-cloak layout="column" focus-on>
+  <div layout="row" layout-align="start center">
+    <md-button class="md-icon-button toolbar-back-button" type="submit" ng-click="person = null">
+      <md-icon>arrow_back</md-icon>
+    </md-button>
+    <span class="md-title" flex>Person Detail</span>
+    <md-button class="md-icon-button toolbar-back-button">
+      <md-icon>navigate_before</md-icon>
+    </md-button>
+    <md-button class="md-icon-button toolbar-back-button">
+      <md-icon>navigate_next</md-icon>
+    </md-button>
+  </div>
+  <md-content flex layout-padding>
+    <div>
+      <md-input-container>
+        <input placeholder="First Name" ng-model="person.firstName" md-autofocus />
+      </md-input-container>
+      <md-input-container>
+        <input placeholder="Last Name" ng-model="person.lastName" />
+      </md-input-container>
+    </div>
+  </md-content>
+</form>

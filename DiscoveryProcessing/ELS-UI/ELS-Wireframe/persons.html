@@ -1,0 +1,18 @@
+<div class="detail-panel-container" layout="column">
+  <md-content flex>
+    <md-list>
+      <md-list-item class="md-2-line" ng-repeat="person in project.persons" ng-click="showPersonDetail( person )">
+        <md-icon class="md-avatar-icon">person</md-icon>
+        <div class="md-list-item-text" layout="column">
+          {{person.firstName}} {{person.lastName}}
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-content>
+  <div>
+    <md-button class="md-raised" ng-click="addPerson()">
+      <md-icon>add_circle</md-icon> Person
+    </md-button>
+  </div>
+  <person-detail person="detailPerson"></person-detail>
+</div>

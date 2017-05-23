@@ -1,0 +1,1663 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+<!-- This .edmx document was automatically generated based on table definitions in EvidenceLoggingSystem on EGERTH150409 as of 2016-10-25 21:05:10.2046173 UTC by CONSILIO\egerth. -->
+	<!-- EF Runtime content -->
+	<edmx:Runtime>
+		<!-- SSDL content -->
+		<edmx:StorageModels>
+		<Schema Namespace="EvidenceLoggingSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EvidenceLoggingSystem.DAL.vwContainer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwContainer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IsPhysical" Type="bit" StoreGeneratedPattern="Computed" />
+          <Property Name="IsLogical" Type="bit" />
+          <Property Name="ContainerTypeId" Type="int" Nullable="false" />
+          <Property Name="ContainerTypeName" Type="nvarchar" MaxLength="50" StoreGeneratedPattern="Computed" />
+          <Property Name="ContainerSubtypeId" Type="int" />
+          <Property Name="ContainerSubTypeName" Type="nvarchar" MaxLength="100" StoreGeneratedPattern="Computed" />
+          <Property Name="DataClientId" Type="int" />
+          <Property Name="DataTransferId" Type="bigint" Nullable="false" />
+          <Property Name="DataTransferName" Type="nvarchar" MaxLength="150" StoreGeneratedPattern="Computed" />
+          <Property Name="ParentContainerId" Type="bigint" />
+          <Property Name="DispositionStateId" Type="int" Nullable="false" />
+          <Property Name="DispositionStateName" Type="nvarchar" MaxLength="100" StoreGeneratedPattern="Computed" />
+          <Property Name="Description" Type="nvarchar" MaxLength="3000" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" />
+          <Property Name="HistoricUid" Type="bigint" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Updated" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EvidenceLoggingSystem.DAL.vwContainerBusinessProjectMapping' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwContainerBusinessProjectMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContainerId" Type="bigint" Nullable="false" />
+          <Property Name="BusinessProjectId" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Deleted" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="DeletedBy" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EvidenceLoggingSystem.DAL.vwContainerSubtype' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwContainerSubtype">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ContainerTypeId" Type="int" Nullable="false" />
+          <Property Name="ContainerTypeName" Type="nvarchar" MaxLength="50" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="HistoricUid" Type="bigint" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Updated" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EvidenceLoggingSystem.DAL.vwContainerType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwContainerType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+          <Property Name="IsPhysical" Type="bit" Nullable="false" />
+          <Property Name="IsLogical" Type="bit" Nullable="false" />
+          <Property Name="HistoricUid" Type="bigint" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Updated" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EvidenceLoggingSystem.DAL.vwCustody' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwCustody">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ContainerId" Type="bigint" Nullable="false" />
+          <Property Name="FromEvidenceHandlerId" Type="int" />
+          <Property Name="FromEvidenceHandlerDisplayName" Type="nvarchar" MaxLength="300" StoreGeneratedPattern="Computed" />
+          <Property Name="TransferredByEvidenceHandlerId" Type="int" Nullable="false" />
+          <Property Name="TransferredByEvidenceHandlerDisplayName" Type="nvarchar" MaxLength="300" StoreGeneratedPattern="Computed" />
+          <Property Name="TransferDatetime" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="ReasonForTransferId" Type="int" Nullable="false" />
+          <Property Name="ReasonForTransferName" Type="nvarchar" MaxLength="50" />
+          <Property Name="NewEvidenceLocationId" Type="int" Nullable="false" />
+          <Property Name="NewEvidenceLocationName" Type="nvarchar" MaxLength="100" StoreGeneratedPattern="Computed" />
+          <Property Name="ServiceTicketNumber" Type="nvarchar" MaxLength="255" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="4000" />
+          <Property Name="HistoricUid" Type="bigint" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Updated" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EvidenceLoggingSystem.DAL.vwDataTransfer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwDataTransfer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DataTransferTypeId" Type="int" Nullable="false" />
+          <Property Name="DataTransferTypeName" Type="nvarchar" MaxLength="50" StoreGeneratedPattern="Computed" />
+          <Property Name="DataClientId" Type="int" />
+          <Property Name="BusinessProjectId" Type="int" Nullable="false" />
+          <Property Name="DataTransferDatetime" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="CollectingEvidenceHandlerId" Type="int" Nullable="false" />
+          <Property Name="CollectingEvidenceHandlerDisplayName" Type="nvarchar" MaxLength="300" StoreGeneratedPattern="Computed" />
+          <Property Name="DeliveringEvidenceHandlerId" Type="int" />
+          <Property Name="DeliveringEvidenceHandlerDisplayName" Type="nvarchar" MaxLength="300" StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="TrackingNumber" Type="nvarchar" MaxLength="255" />
+          <Property Name="HistoricUid" Type="bigint" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Updated" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CampusId" Type="int" Nullable="true" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EvidenceLoggingSystem.DAL.vwDataTransferType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwDataTransferType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+          <Property Name="HistoricUid" Type="bigint" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Updated" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EvidenceLoggingSystem.DAL.vwDigitalContainer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwDigitalContainer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="ContainerTypeId" Type="int" />
+          <Property Name="ContainerTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContainerSubtypeId" Type="int" />
+          <Property Name="ContainerSubtypeName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DataClientId" Type="int" />
+          <Property Name="DataTransferId" Type="bigint" />
+          <Property Name="DataTransferName" Type="nvarchar" MaxLength="150" />
+          <Property Name="ParentContainerId" Type="bigint" />
+          <Property Name="DispositionStateId" Type="int" />
+          <Property Name="DispositionStateName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="3000" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" />
+          <Property Name="ContainerLocation" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="HistoricUid" Type="bigint" />
+          <Property Name="Created" Type="datetime2" Precision="7" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+          <Property Name="Updated" Type="datetime2" Precision="7" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EvidenceLoggingSystem.DAL.vwDispositionState' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwDispositionState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="HistoricUid" Type="bigint" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Updated" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EvidenceLoggingSystem.DAL.vwEvidenceHandler' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwEvidenceHandler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="UserIdentifier" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="HistoricUid" Type="bigint" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Updated" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EvidenceLoggingSystem.DAL.vwEvidenceLocation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwEvidenceLocation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ParentEvidenceLocationId" Type="int" />
+          <Property Name="ParentEvidenceLocationName" Type="nvarchar" MaxLength="100" StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="HistoricUid" Type="bigint" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Updated" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EvidenceLoggingSystem.DAL.vwPhysicalContainer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwPhysicalContainer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="ContainerTypeId" Type="int" />
+          <Property Name="ContainerTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContainerSubtypeId" Type="int" />
+          <Property Name="ContainerSubtypeName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DataClientId" Type="int" />
+          <Property Name="DataTransferId" Type="bigint" />
+          <Property Name="DataTransferName" Type="nvarchar" MaxLength="150" />
+          <Property Name="ParentContainerId" Type="bigint" />
+          <Property Name="DispositionStateId" Type="int" />
+          <Property Name="DispositionStateName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="3000" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" />
+          <Property Name="EvidenceLocationId" Type="int" Nullable="false" />
+          <Property Name="EvidenceLocationName" Type="nvarchar" MaxLength="100" StoreGeneratedPattern="Computed" />
+          <Property Name="Make" Type="nvarchar" MaxLength="50" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Capacity" Type="nvarchar" MaxLength="25" />
+          <Property Name="Label" Type="nvarchar" MaxLength="700" />
+          <Property Name="HistoricUid" Type="bigint" />
+          <Property Name="Created" Type="datetime2" Precision="7" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+          <Property Name="Updated" Type="datetime2" Precision="7" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EvidenceLoggingSystem.DAL.vwReasonForTransfer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwReasonForTransfer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+          <Property Name="HistoricUid" Type="bigint" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Updated" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Function Name="ContainerBusinessProjectMappingCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DAL">
+          <Parameter Name="ContainerId" Type="bigint" Mode="In" />
+          <Parameter Name="BusinessProjectId" Type="int" Mode="In" />
+          <Parameter Name="CreatedBy" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ContainerBusinessProjectMappingDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DAL">
+          <Parameter Name="Id" Type="bigint" Mode="In" />
+          <Parameter Name="DeletedBy" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ContainerDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DAL">
+          <Parameter Name="Id" Type="bigint" Mode="In" />
+          <Parameter Name="DeletedBy" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ContainerUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DAL">
+          <Parameter Name="Id" Type="bigint" Mode="In" />
+          <Parameter Name="ContainerTypeId" Type="int" Mode="In" />
+          <Parameter Name="ContainerSubtypeId" Type="int" Mode="In" />
+          <Parameter Name="DataClientId" Type="int" Mode="In" />
+          <Parameter Name="DataTransferId" Type="bigint" Mode="In" />
+          <Parameter Name="ParentContainerId" Type="bigint" Mode="In" />
+          <Parameter Name="DispositionStateId" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="CustodyCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DAL">
+          <Parameter Name="ContainerId" Type="bigint" Mode="In" />
+          <Parameter Name="FromEvidenceHandlerId" Type="int" Mode="In" />
+          <Parameter Name="TransferredByEvidenceHandlerId" Type="int" Mode="In" />
+          <Parameter Name="TransferDatetime" Type="datetime2" Mode="In" />
+          <Parameter Name="ReasonForTransferId" Type="int" Mode="In" />
+          <Parameter Name="NewEvidenceLocationId" Type="int" Mode="In" />
+          <Parameter Name="ServiceTicketNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="Notes" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="CustodyUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DAL">
+          <Parameter Name="Id" Type="bigint" Mode="In" />
+          <Parameter Name="ServiceTicketNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="Notes" Type="nvarchar" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="DataTransferCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DAL">
+          <Parameter Name="DataTransferTypeId" Type="int" Mode="In" />
+          <Parameter Name="DataClientId" Type="int" Mode="In" />
+          <Parameter Name="CampusId" Type="int" Mode="In" />
+          <Parameter Name="BusinessProjectId" Type="int" Mode="In" />
+          <Parameter Name="DataTransferDatetime" Type="datetime2" Mode="In" />
+          <Parameter Name="CollectingEvidenceHandlerId" Type="int" Mode="In" />
+          <Parameter Name="DeliveringEvidenceHandlerId" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="TrackingNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="DataTransferDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DAL">
+          <Parameter Name="Id" Type="bigint" Mode="In" />
+          <Parameter Name="DeletedBy" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="DataTransferUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DAL">
+          <Parameter Name="Id" Type="bigint" Mode="In" />
+          <Parameter Name="DataTransferTypeId" Type="int" Mode="In" />
+          <Parameter Name="DataClientId" Type="int" Mode="In" />
+          <Parameter Name="CampusId" Type="int" Mode="In" />
+          <Parameter Name="BusinessProjectId" Type="int" Mode="In" />
+          <Parameter Name="DataTransferDatetime" Type="datetime2" Mode="In" />
+          <Parameter Name="CollectingEvidenceHandlerId" Type="int" Mode="In" />
+          <Parameter Name="DeliveringEvidenceHandlerId" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="TrackingNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="DigitalContainerCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DAL">
+          <Parameter Name="ContainerTypeId" Type="int" Mode="In" />
+          <Parameter Name="ContainerSubtypeId" Type="int" Mode="In" />
+          <Parameter Name="DataClientId" Type="int" Mode="In" />
+          <Parameter Name="DataTransferId" Type="bigint" Mode="In" />
+          <Parameter Name="ParentContainerId" Type="bigint" Mode="In" />
+          <Parameter Name="DispositionStateId" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="ContainerLocation" Type="nvarchar" Mode="In" />
+          <Parameter Name="FileName" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="DigitalContainerUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DAL">
+          <Parameter Name="Id" Type="bigint" Mode="In" />
+          <Parameter Name="ContainerTypeId" Type="int" Mode="In" />
+          <Parameter Name="ContainerSubtypeId" Type="int" Mode="In" />
+          <Parameter Name="DataClientId" Type="int" Mode="In" />
+          <Parameter Name="DataTransferId" Type="bigint" Mode="In" />
+          <Parameter Name="ParentContainerId" Type="bigint" Mode="In" />
+          <Parameter Name="DispositionStateId" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="ContainerLocation" Type="nvarchar" Mode="In" />
+          <Parameter Name="FileName" Type="nvarchar" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="PhysicalContainerCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DAL">
+          <Parameter Name="ContainerTypeId" Type="int" Mode="In" />
+          <Parameter Name="ContainerSubtypeId" Type="int" Mode="In" />
+          <Parameter Name="DataClientId" Type="int" Mode="In" />
+          <Parameter Name="DataTransferId" Type="bigint" Mode="In" />
+          <Parameter Name="ParentContainerId" Type="bigint" Mode="In" />
+          <Parameter Name="DispositionStateId" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="EvidenceLocationId" Type="int" Mode="In" />
+          <Parameter Name="Make" Type="nvarchar" Mode="In" />
+          <Parameter Name="Model" Type="nvarchar" Mode="In" />
+          <Parameter Name="SerialNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="Capacity" Type="nvarchar" Mode="In" />
+          <Parameter Name="Label" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="PhysicalContainerUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DAL">
+          <Parameter Name="Id" Type="bigint" Mode="In" />
+          <Parameter Name="ContainerTypeId" Type="int" Mode="In" />
+          <Parameter Name="ContainerSubtypeId" Type="int" Mode="In" />
+          <Parameter Name="DataClientId" Type="int" Mode="In" />
+          <Parameter Name="DataTransferId" Type="bigint" Mode="In" />
+          <Parameter Name="ParentContainerId" Type="bigint" Mode="In" />
+          <Parameter Name="DispositionStateId" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="EvidenceLocationId" Type="int" Mode="In" />
+          <Parameter Name="Make" Type="nvarchar" Mode="In" />
+          <Parameter Name="Model" Type="nvarchar" Mode="In" />
+          <Parameter Name="SerialNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="Capacity" Type="nvarchar" Mode="In" />
+          <Parameter Name="Label" Type="nvarchar" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="EvidenceLoggingSystemModelStoreContainer">
+          <EntitySet Name="vwContainer" EntityType="Self.vwContainer" store:Type="Views" store:Schema="DAL">
+            <DefiningQuery>SELECT 
+    [vwContainer].[Id] AS [Id], 
+    [vwContainer].[IsPhysical] AS [IsPhysical], 
+    [vwContainer].[IsLogical] AS [IsLogical], 
+    [vwContainer].[ContainerTypeId] AS [ContainerTypeId], 
+    [vwContainer].[ContainerTypeName] AS [ContainerTypeName], 
+    [vwContainer].[ContainerSubtypeId] AS [ContainerSubtypeId], 
+    [vwContainer].[ContainerSubTypeName] AS [ContainerSubTypeName], 
+    [vwContainer].[DataClientId] AS [DataClientId], 
+    [vwContainer].[DataTransferId] AS [DataTransferId], 
+    [vwContainer].[DataTransferName] AS [DataTransferName], 
+    [vwContainer].[ParentContainerId] AS [ParentContainerId], 
+    [vwContainer].[DispositionStateId] AS [DispositionStateId], 
+    [vwContainer].[DispositionStateName] AS [DispositionStateName], 
+    [vwContainer].[Description] AS [Description], 
+    [vwContainer].[Password] AS [Password], 
+    [vwContainer].[HistoricUid] AS [HistoricUid], 
+    [vwContainer].[Created] AS [Created], 
+    [vwContainer].[CreatedBy] AS [CreatedBy], 
+    [vwContainer].[Updated] AS [Updated], 
+    [vwContainer].[UpdatedBy] AS [UpdatedBy]
+    FROM [DAL].[vwContainer] AS [vwContainer]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwContainerBusinessProjectMapping" EntityType="Self.vwContainerBusinessProjectMapping" store:Type="Views" store:Schema="DAL">
+            <DefiningQuery>SELECT 
+    [vwContainerBusinessProjectMapping].[Id] AS [Id], 
+    [vwContainerBusinessProjectMapping].[ContainerId] AS [ContainerId], 
+    [vwContainerBusinessProjectMapping].[BusinessProjectId] AS [BusinessProjectId], 
+    [vwContainerBusinessProjectMapping].[Created] AS [Created], 
+    [vwContainerBusinessProjectMapping].[CreatedBy] AS [CreatedBy], 
+    [vwContainerBusinessProjectMapping].[Deleted] AS [Deleted], 
+    [vwContainerBusinessProjectMapping].[DeletedBy] AS [DeletedBy]
+    FROM [DAL].[vwContainerBusinessProjectMapping] AS [vwContainerBusinessProjectMapping]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwContainerSubtype" EntityType="Self.vwContainerSubtype" store:Type="Views" store:Schema="DAL">
+            <DefiningQuery>SELECT 
+    [vwContainerSubtype].[Id] AS [Id], 
+    [vwContainerSubtype].[ContainerTypeId] AS [ContainerTypeId], 
+    [vwContainerSubtype].[ContainerTypeName] AS [ContainerTypeName], 
+    [vwContainerSubtype].[Name] AS [Name], 
+    [vwContainerSubtype].[Description] AS [Description], 
+    [vwContainerSubtype].[HistoricUid] AS [HistoricUid], 
+    [vwContainerSubtype].[Created] AS [Created], 
+    [vwContainerSubtype].[CreatedBy] AS [CreatedBy], 
+    [vwContainerSubtype].[Updated] AS [Updated], 
+    [vwContainerSubtype].[UpdatedBy] AS [UpdatedBy]
+    FROM [DAL].[vwContainerSubtype] AS [vwContainerSubtype]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwContainerType" EntityType="Self.vwContainerType" store:Type="Views" store:Schema="DAL">
+            <DefiningQuery>SELECT 
+    [vwContainerType].[Id] AS [Id], 
+    [vwContainerType].[Name] AS [Name], 
+    [vwContainerType].[Description] AS [Description], 
+    [vwContainerType].[IsPhysical] AS [IsPhysical], 
+    [vwContainerType].[IsLogical] AS [IsLogical], 
+    [vwContainerType].[HistoricUid] AS [HistoricUid], 
+    [vwContainerType].[Created] AS [Created], 
+    [vwContainerType].[CreatedBy] AS [CreatedBy], 
+    [vwContainerType].[Updated] AS [Updated], 
+    [vwContainerType].[UpdatedBy] AS [UpdatedBy]
+    FROM [DAL].[vwContainerType] AS [vwContainerType]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwCustody" EntityType="Self.vwCustody" store:Type="Views" store:Schema="DAL">
+            <DefiningQuery>SELECT 
+    [vwCustody].[Id] AS [Id], 
+    [vwCustody].[ContainerId] AS [ContainerId], 
+    [vwCustody].[FromEvidenceHandlerId] AS [FromEvidenceHandlerId], 
+    [vwCustody].[FromEvidenceHandlerDisplayName] AS [FromEvidenceHandlerDisplayName], 
+    [vwCustody].[TransferredByEvidenceHandlerId] AS [TransferredByEvidenceHandlerId], 
+    [vwCustody].[TransferredByEvidenceHandlerDisplayName] AS [TransferredByEvidenceHandlerDisplayName], 
+    [vwCustody].[TransferDatetime] AS [TransferDatetime], 
+    [vwCustody].[ReasonForTransferId] AS [ReasonForTransferId], 
+    [vwCustody].[ReasonForTransferName] AS [ReasonForTransferName], 
+    [vwCustody].[NewEvidenceLocationId] AS [NewEvidenceLocationId], 
+    [vwCustody].[NewEvidenceLocationName] AS [NewEvidenceLocationName], 
+    [vwCustody].[ServiceTicketNumber] AS [ServiceTicketNumber], 
+    [vwCustody].[Notes] AS [Notes], 
+    [vwCustody].[HistoricUid] AS [HistoricUid], 
+    [vwCustody].[Created] AS [Created], 
+    [vwCustody].[CreatedBy] AS [CreatedBy], 
+    [vwCustody].[Updated] AS [Updated], 
+    [vwCustody].[UpdatedBy] AS [UpdatedBy]
+    FROM [DAL].[vwCustody] AS [vwCustody]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwDataTransfer" EntityType="Self.vwDataTransfer" store:Type="Views" store:Schema="DAL">
+            <DefiningQuery>SELECT 
+    [vwDataTransfer].[Id] AS [Id], 
+    [vwDataTransfer].[DataTransferTypeId] AS [DataTransferTypeId], 
+    [vwDataTransfer].[DataTransferTypeName] AS [DataTransferTypeName], 
+    [vwDataTransfer].[DataClientId] AS [DataClientId], 
+    [vwDataTransfer].[BusinessProjectId] AS [BusinessProjectId], 
+    [vwDataTransfer].[DataTransferDatetime] AS [DataTransferDatetime], 
+    [vwDataTransfer].[CollectingEvidenceHandlerId] AS [CollectingEvidenceHandlerId], 
+    [vwDataTransfer].[CollectingEvidenceHandlerDisplayName] AS [CollectingEvidenceHandlerDisplayName], 
+    [vwDataTransfer].[DeliveringEvidenceHandlerId] AS [DeliveringEvidenceHandlerId], 
+    [vwDataTransfer].[DeliveringEvidenceHandlerDisplayName] AS [DeliveringEvidenceHandlerDisplayName], 
+    [vwDataTransfer].[Name] AS [Name], 
+    [vwDataTransfer].[Description] AS [Description], 
+    [vwDataTransfer].[TrackingNumber] AS [TrackingNumber], 
+    [vwDataTransfer].[HistoricUid] AS [HistoricUid], 
+    [vwDataTransfer].[Created] AS [Created], 
+    [vwDataTransfer].[CreatedBy] AS [CreatedBy], 
+    [vwDataTransfer].[Updated] AS [Updated], 
+    [vwDataTransfer].[UpdatedBy] AS [UpdatedBy],
+    NULL AS [CampusId]
+    FROM [DAL].[vwDataTransfer] AS [vwDataTransfer]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwDataTransferType" EntityType="Self.vwDataTransferType" store:Type="Views" store:Schema="DAL">
+            <DefiningQuery>SELECT 
+    [vwDataTransferType].[Id] AS [Id], 
+    [vwDataTransferType].[Name] AS [Name], 
+    [vwDataTransferType].[Description] AS [Description], 
+    [vwDataTransferType].[HistoricUid] AS [HistoricUid], 
+    [vwDataTransferType].[Created] AS [Created], 
+    [vwDataTransferType].[CreatedBy] AS [CreatedBy], 
+    [vwDataTransferType].[Updated] AS [Updated], 
+    [vwDataTransferType].[UpdatedBy] AS [UpdatedBy]
+    FROM [DAL].[vwDataTransferType] AS [vwDataTransferType]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwDigitalContainer" EntityType="Self.vwDigitalContainer" store:Type="Views" store:Schema="DAL">
+            <DefiningQuery>SELECT 
+    [vwDigitalContainer].[Id] AS [Id], 
+    [vwDigitalContainer].[ContainerTypeId] AS [ContainerTypeId], 
+    [vwDigitalContainer].[ContainerTypeName] AS [ContainerTypeName], 
+    [vwDigitalContainer].[ContainerSubtypeId] AS [ContainerSubtypeId], 
+    [vwDigitalContainer].[ContainerSubtypeName] AS [ContainerSubtypeName], 
+    [vwDigitalContainer].[DataClientId] AS [DataClientId], 
+    [vwDigitalContainer].[DataTransferId] AS [DataTransferId], 
+    [vwDigitalContainer].[DataTransferName] AS [DataTransferName], 
+    [vwDigitalContainer].[ParentContainerId] AS [ParentContainerId], 
+    [vwDigitalContainer].[DispositionStateId] AS [DispositionStateId], 
+    [vwDigitalContainer].[DispositionStateName] AS [DispositionStateName], 
+    [vwDigitalContainer].[Description] AS [Description], 
+    [vwDigitalContainer].[Password] AS [Password], 
+    [vwDigitalContainer].[ContainerLocation] AS [ContainerLocation], 
+    [vwDigitalContainer].[FileName] AS [FileName], 
+    [vwDigitalContainer].[HistoricUid] AS [HistoricUid], 
+    [vwDigitalContainer].[Created] AS [Created], 
+    [vwDigitalContainer].[CreatedBy] AS [CreatedBy], 
+    [vwDigitalContainer].[Updated] AS [Updated], 
+    [vwDigitalContainer].[UpdatedBy] AS [UpdatedBy]
+    FROM [DAL].[vwDigitalContainer] AS [vwDigitalContainer]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwDispositionState" EntityType="Self.vwDispositionState" store:Type="Views" store:Schema="DAL">
+            <DefiningQuery>SELECT 
+    [vwDispositionState].[Id] AS [Id], 
+    [vwDispositionState].[Name] AS [Name], 
+    [vwDispositionState].[Description] AS [Description], 
+    [vwDispositionState].[HistoricUid] AS [HistoricUid], 
+    [vwDispositionState].[Created] AS [Created], 
+    [vwDispositionState].[CreatedBy] AS [CreatedBy], 
+    [vwDispositionState].[Updated] AS [Updated], 
+    [vwDispositionState].[UpdatedBy] AS [UpdatedBy]
+    FROM [DAL].[vwDispositionState] AS [vwDispositionState]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwEvidenceHandler" EntityType="Self.vwEvidenceHandler" store:Type="Views" store:Schema="DAL">
+            <DefiningQuery>SELECT 
+    [vwEvidenceHandler].[Id] AS [Id], 
+    [vwEvidenceHandler].[Name] AS [Name], 
+    [vwEvidenceHandler].[UserIdentifier] AS [UserIdentifier], 
+    [vwEvidenceHandler].[DisplayName] AS [DisplayName], 
+    [vwEvidenceHandler].[HistoricUid] AS [HistoricUid], 
+    [vwEvidenceHandler].[Created] AS [Created], 
+    [vwEvidenceHandler].[CreatedBy] AS [CreatedBy], 
+    [vwEvidenceHandler].[Updated] AS [Updated], 
+    [vwEvidenceHandler].[UpdatedBy] AS [UpdatedBy]
+    FROM [DAL].[vwEvidenceHandler] AS [vwEvidenceHandler]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwEvidenceLocation" EntityType="Self.vwEvidenceLocation" store:Type="Views" store:Schema="DAL">
+            <DefiningQuery>SELECT 
+    [vwEvidenceLocation].[Id] AS [Id], 
+    [vwEvidenceLocation].[ParentEvidenceLocationId] AS [ParentEvidenceLocationId], 
+    [vwEvidenceLocation].[ParentEvidenceLocationName] AS [ParentEvidenceLocationName], 
+    [vwEvidenceLocation].[Name] AS [Name], 
+    [vwEvidenceLocation].[Description] AS [Description], 
+    [vwEvidenceLocation].[HistoricUid] AS [HistoricUid], 
+    [vwEvidenceLocation].[Created] AS [Created], 
+    [vwEvidenceLocation].[CreatedBy] AS [CreatedBy], 
+    [vwEvidenceLocation].[Updated] AS [Updated], 
+    [vwEvidenceLocation].[UpdatedBy] AS [UpdatedBy]
+    FROM [DAL].[vwEvidenceLocation] AS [vwEvidenceLocation]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwPhysicalContainer" EntityType="Self.vwPhysicalContainer" store:Type="Views" store:Schema="DAL">
+            <DefiningQuery>SELECT 
+    [vwPhysicalContainer].[Id] AS [Id], 
+    [vwPhysicalContainer].[ContainerTypeId] AS [ContainerTypeId], 
+    [vwPhysicalContainer].[ContainerTypeName] AS [ContainerTypeName], 
+    [vwPhysicalContainer].[ContainerSubtypeId] AS [ContainerSubtypeId], 
+    [vwPhysicalContainer].[ContainerSubtypeName] AS [ContainerSubtypeName], 
+    [vwPhysicalContainer].[DataClientId] AS [DataClientId], 
+    [vwPhysicalContainer].[DataTransferId] AS [DataTransferId], 
+    [vwPhysicalContainer].[DataTransferName] AS [DataTransferName], 
+    [vwPhysicalContainer].[ParentContainerId] AS [ParentContainerId], 
+    [vwPhysicalContainer].[DispositionStateId] AS [DispositionStateId], 
+    [vwPhysicalContainer].[DispositionStateName] AS [DispositionStateName], 
+    [vwPhysicalContainer].[Description] AS [Description], 
+    [vwPhysicalContainer].[Password] AS [Password], 
+    [vwPhysicalContainer].[EvidenceLocationId] AS [EvidenceLocationId], 
+    [vwPhysicalContainer].[EvidenceLocationName] AS [EvidenceLocationName], 
+    [vwPhysicalContainer].[Make] AS [Make], 
+    [vwPhysicalContainer].[Model] AS [Model], 
+    [vwPhysicalContainer].[SerialNumber] AS [SerialNumber], 
+    [vwPhysicalContainer].[Capacity] AS [Capacity], 
+    [vwPhysicalContainer].[Label] AS [Label], 
+    [vwPhysicalContainer].[HistoricUid] AS [HistoricUid], 
+    [vwPhysicalContainer].[Created] AS [Created], 
+    [vwPhysicalContainer].[CreatedBy] AS [CreatedBy], 
+    [vwPhysicalContainer].[Updated] AS [Updated], 
+    [vwPhysicalContainer].[UpdatedBy] AS [UpdatedBy]
+    FROM [DAL].[vwPhysicalContainer] AS [vwPhysicalContainer]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwReasonForTransfer" EntityType="Self.vwReasonForTransfer" store:Type="Views" store:Schema="DAL">
+            <DefiningQuery>SELECT 
+    [vwReasonForTransfer].[Id] AS [Id], 
+    [vwReasonForTransfer].[Name] AS [Name], 
+    [vwReasonForTransfer].[Description] AS [Description], 
+    [vwReasonForTransfer].[HistoricUid] AS [HistoricUid], 
+    [vwReasonForTransfer].[Created] AS [Created], 
+    [vwReasonForTransfer].[CreatedBy] AS [CreatedBy], 
+    [vwReasonForTransfer].[Updated] AS [Updated], 
+    [vwReasonForTransfer].[UpdatedBy] AS [UpdatedBy]
+    FROM [DAL].[vwReasonForTransfer] AS [vwReasonForTransfer]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+		<!-- CSDL content -->
+		<edmx:ConceptualModels>
+			<Schema Namespace="EvidenceLoggingSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation"  xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+				<EntityType Name="ContainerType">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="Description" Type="String" Nullable="true" MaxLength="300" FixedLength="false" Unicode="true" />
+					<Property Name="IsPhysical" Type="Boolean" Nullable="false" />
+					<Property Name="HistoricUid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<Property Name="Updated" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<NavigationProperty Name="ContainerSubtypes" Relationship="Self.FK_ContainerSubtype_ContainerType_ContainerTypeId" FromRole="ContainerType" ToRole="ContainerSubtype" />
+					<NavigationProperty Name="Containers" Relationship="Self.FK_Container_ContainerType_ContainerTypeId" FromRole="ContainerType" ToRole="Container" />
+          <Property Name="IsLogical" Type="Boolean" Nullable="false" />
+				</EntityType>
+				<EntityType Name="DataTransferType">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="Description" Type="String" Nullable="true" MaxLength="300" FixedLength="false" Unicode="true" />
+					<Property Name="HistoricUid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<Property Name="Updated" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<NavigationProperty Name="DataTransfers" Relationship="Self.FK_DataTransfer_DataTransferType_DataTransferTypeId" FromRole="DataTransferType" ToRole="DataTransfer" />
+				</EntityType>
+				<EntityType Name="DispositionState">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+					<Property Name="Description" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+					<Property Name="HistoricUid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<Property Name="Updated" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<NavigationProperty Name="Containers" Relationship="Self.FK_Container_DispositionState_DispositionStateId" FromRole="DispositionState" ToRole="Container" />
+				</EntityType>
+				<EntityType Name="EvidenceHandler">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="Name" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+					<Property Name="UserIdentifier" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<Property Name="DisplayName" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+					<Property Name="HistoricUid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<Property Name="Updated" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<NavigationProperty Name="DataTransfersCollectingEvidenceHandler" Relationship="Self.FK_DataTransfer_EvidenceHandler_CollectingEvidenceHandlerId" FromRole="EvidenceHandler" ToRole="DataTransfer" />
+					<NavigationProperty Name="DataTransfersDeliveringEvidenceHandler" Relationship="Self.FK_DataTransfer_EvidenceHandler_DeliveringEvidenceHandlerId" FromRole="EvidenceHandler" ToRole="DataTransfer" />
+					<NavigationProperty Name="CustodiesFromEvidenceHandler" Relationship="Self.FK_Custody_EvidenceHandler_FromEvidenceHandlerId" FromRole="EvidenceHandler" ToRole="Custody" />
+					<NavigationProperty Name="CustodiesTransferredByEvidenceHandler" Relationship="Self.FK_Custody_EvidenceHandler_TransferredByEvidenceHandlerId" FromRole="EvidenceHandler" ToRole="Custody" />
+				</EntityType>
+				<EntityType Name="EvidenceLocation">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="ParentEvidenceLocationId" Type="Int32" Nullable="true" />
+					<Property Name="ParentEvidenceLocationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+					<Property Name="Description" Type="String" Nullable="true" MaxLength="500" FixedLength="false" Unicode="true" />
+					<Property Name="HistoricUid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<Property Name="Updated" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<NavigationProperty Name="PhysicalContainers" Relationship="Self.PK_PhysicalContainer_EvidenceLocation_EvidenceLocationId" FromRole="EvidenceLocation" ToRole="PhysicalContainer" />
+					<NavigationProperty Name="Custodies" Relationship="Self.FK_Custody_EvidenceLocation_EvidenceLocationId" FromRole="EvidenceLocation" ToRole="Custody" />
+				</EntityType>
+				<EntityType Name="ReasonForTransfer">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="Description" Type="String" Nullable="true" MaxLength="300" FixedLength="false" Unicode="true" />
+					<Property Name="HistoricUid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<Property Name="Updated" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<NavigationProperty Name="Custodies" Relationship="Self.FK_Custody_ReasonForTransfer_ReasonForTransferId" FromRole="ReasonForTransfer" ToRole="Custody" />
+				</EntityType>
+				<EntityType Name="Container">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="IsPhysical" Type="Boolean" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="ContainerTypeId" Type="Int32" Nullable="false" />
+					<Property Name="ContainerTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="ContainerSubtypeId" Type="Int32" Nullable="true" />
+					<Property Name="ContainerSubTypeName" Type="String" Nullable="true" MaxLength="100" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="DataClientId" Type="Int32" Nullable="true" />
+					<Property Name="DataTransferId" Type="Int64" Nullable="false" />
+					<Property Name="DataTransferName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="ParentContainerId" Type="Int64" Nullable="true" />
+					<Property Name="DispositionStateId" Type="Int32" Nullable="false" />
+					<Property Name="DispositionStateName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="Description" Type="String" Nullable="true" MaxLength="3000" FixedLength="false" Unicode="true" />
+					<Property Name="Password" Type="String" Nullable="true" MaxLength="255" FixedLength="false" Unicode="true" />
+					<Property Name="HistoricUid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<Property Name="Updated" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<NavigationProperty Name="DispositionState" Relationship="Self.FK_Container_DispositionState_DispositionStateId" FromRole="Container" ToRole="DispositionState" />
+					<NavigationProperty Name="ContainerSubtype" Relationship="Self.FK_Container_ContainerSubtype_ContainerSubtypeId" FromRole="Container" ToRole="ContainerSubtype" />
+					<NavigationProperty Name="ContainerBusinessProjectMappings" Relationship="Self.FK_ContainerBusinessProjectMapping_Container" FromRole="Container" ToRole="ContainerBusinessProjectMapping" />
+					<NavigationProperty Name="Custodies" Relationship="Self.FK_Custody_Container_ContainerId" FromRole="Container" ToRole="Custody" />
+					<NavigationProperty Name="ContainerType" Relationship="Self.FK_Container_ContainerType_ContainerTypeId" FromRole="Container" ToRole="ContainerType" />
+					<NavigationProperty Name="ParentContainer" Relationship="Self.FK_Container_Container_ParentContainerId" FromRole="ChildContainer" ToRole="ParentContainer" />
+					<NavigationProperty Name="DataTransfer" Relationship="Self.FK_Container_DataTransfer_DataTransferId" FromRole="Container" ToRole="DataTransfer" />
+          <Property Name="IsLogical" Type="Boolean" />
+				</EntityType>
+				<EntityType Name="DataTransfer">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="DataTransferTypeId" Type="Int32" Nullable="false" />
+					<Property Name="DataTransferTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="DataClientId" Type="Int32" Nullable="true" />
+					<Property Name="BusinessProjectId" Type="Int32" Nullable="false" />
+					<Property Name="DataTransferDatetime" Type="DateTime" Nullable="false" Precision="0" />
+					<Property Name="CollectingEvidenceHandlerId" Type="Int32" Nullable="false" />
+					<Property Name="CollectingEvidenceHandlerDisplayName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="DeliveringEvidenceHandlerId" Type="Int32" Nullable="true" />
+					<Property Name="DeliveringEvidenceHandlerDisplayName" Type="String" Nullable="true" MaxLength="300" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+					<Property Name="Description" Type="String" Nullable="true" MaxLength="500" FixedLength="false" Unicode="true" />
+					<Property Name="TrackingNumber" Type="String" Nullable="true" MaxLength="255" FixedLength="false" Unicode="true" />
+					<Property Name="HistoricUid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<Property Name="Updated" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<NavigationProperty Name="DataTransferType" Relationship="Self.FK_DataTransfer_DataTransferType_DataTransferTypeId" FromRole="DataTransfer" ToRole="DataTransferType" />
+					<NavigationProperty Name="DataTransferCollectingEvidenceHandler" Relationship="Self.FK_DataTransfer_EvidenceHandler_CollectingEvidenceHandlerId" FromRole="DataTransfer" ToRole="EvidenceHandler" />
+					<NavigationProperty Name="DataTransferDeliveringEvidenceHandler" Relationship="Self.FK_DataTransfer_EvidenceHandler_DeliveringEvidenceHandlerId" FromRole="DataTransfer" ToRole="EvidenceHandler" />
+					<NavigationProperty Name="Containers" Relationship="Self.FK_Container_DataTransfer_DataTransferId" FromRole="DataTransfer" ToRole="Container" />
+          <Property Name="CampusId" Type="Int32" Nullable="true" />
+				</EntityType>
+        <EntityType Name="ContainerSubtype">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="ContainerTypeId" Type="Int32" Nullable="false" />
+					<Property Name="ContainerTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+					<Property Name="Description" Type="String" Nullable="true" MaxLength="500" FixedLength="false" Unicode="true" />
+					<Property Name="HistoricUid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<Property Name="Updated" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<NavigationProperty Name="Containers" Relationship="Self.FK_Container_ContainerSubtype_ContainerSubtypeId" FromRole="ContainerSubtype" ToRole="Container" />
+					<NavigationProperty Name="ContainerType" Relationship="Self.FK_ContainerSubtype_ContainerType_ContainerTypeId" FromRole="ContainerSubtype" ToRole="ContainerType" />
+				</EntityType>
+				<EntityType Name="ContainerBusinessProjectMapping">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="ContainerId" Type="Int64" Nullable="false" />
+					<Property Name="BusinessProjectId" Type="Int32" Nullable="false" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<Property Name="Deleted" Type="Int32" Nullable="true" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="DeletedBy" Type="Int32" Nullable="true" />
+					<NavigationProperty Name="Container" Relationship="Self.FK_ContainerBusinessProjectMapping_Container" FromRole="ContainerBusinessProjectMapping" ToRole="Container" />
+				</EntityType>
+				<EntityType Name="Custody">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="ContainerId" Type="Int64" Nullable="false" />
+					<Property Name="FromEvidenceHandlerId" Type="Int32" Nullable="true" />
+					<Property Name="FromEvidenceHandlerDisplayName" Type="String" Nullable="true" MaxLength="300" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="TransferredByEvidenceHandlerId" Type="Int32" Nullable="false" />
+					<Property Name="TransferredByEvidenceHandlerDisplayName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="TransferDatetime" Type="DateTime" Nullable="false" Precision="3" />
+					<Property Name="ReasonForTransferId" Type="Int32" Nullable="false" />
+					<Property Name="ReasonForTransferName" Type="String" MaxLength="50" Unicode="true" FixedLength="false"/>
+					<Property Name="NewEvidenceLocationId" Type="Int32" Nullable="false" />
+					<Property Name="NewEvidenceLocationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="ServiceTicketNumber" Type="String" Nullable="true" MaxLength="255" FixedLength="false" Unicode="true" />
+					<Property Name="Notes" Type="String" Nullable="true" MaxLength="4000" FixedLength="false" Unicode="true" />
+					<Property Name="HistoricUid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<Property Name="Updated" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+					<NavigationProperty Name="Container" Relationship="Self.FK_Custody_Container_ContainerId" FromRole="Custody" ToRole="Container" />
+					<NavigationProperty Name="FromEvidenceHandler" Relationship="Self.FK_Custody_EvidenceHandler_FromEvidenceHandlerId" FromRole="Custody" ToRole="EvidenceHandler" />
+					<NavigationProperty Name="TransferredByEvidenceHandler" Relationship="Self.FK_Custody_EvidenceHandler_TransferredByEvidenceHandlerId" FromRole="Custody" ToRole="EvidenceHandler" />
+					<NavigationProperty Name="ReasonForTransfer" Relationship="Self.FK_Custody_ReasonForTransfer_ReasonForTransferId" FromRole="Custody" ToRole="ReasonForTransfer" />
+					<NavigationProperty Name="EvidenceLocation" Relationship="Self.FK_Custody_EvidenceLocation_EvidenceLocationId" FromRole="Custody" ToRole="EvidenceLocation" />
+				</EntityType>
+				<EntityType Name="DigitalContainer" BaseType="EvidenceLoggingSystemModel.Container">
+					<Property Name="ContainerLocation" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+					<Property Name="FileName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+				</EntityType>
+				<EntityType Name="PhysicalContainer" BaseType="EvidenceLoggingSystemModel.Container">
+					<Property Name="EvidenceLocationId" Type="Int32" Nullable="false" />
+					<Property Name="EvidenceLocationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="Make" Type="String" Nullable="true" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="Model" Type="String" Nullable="true" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="SerialNumber" Type="String" Nullable="true" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="Capacity" Type="String" Nullable="true" MaxLength="25" FixedLength="false" Unicode="true" />
+					<Property Name="Label" Type="String" Nullable="true" MaxLength="700" FixedLength="false" Unicode="true" />
+					<NavigationProperty Name="EvidenceLocation" Relationship="Self.PK_PhysicalContainer_EvidenceLocation_EvidenceLocationId" FromRole="PhysicalContainer" ToRole="EvidenceLocation" />
+				</EntityType>
+				<Association Name="FK_ContainerSubtype_ContainerType_ContainerTypeId">
+					<End Role="ContainerType" Type="Self.ContainerType" Multiplicity="1" />
+					<End Role="ContainerSubtype" Type="Self.ContainerSubtype" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContainerType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContainerSubtype">
+              <PropertyRef Name="ContainerTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+				</Association>
+				<Association Name="FK_Container_ContainerType_ContainerTypeId">
+					<End Role="ContainerType" Type="Self.ContainerType" Multiplicity="1" />
+					<End Role="Container" Type="Self.Container" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="ContainerType">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="Container">
+							<PropertyRef Name="ContainerTypeId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_DataTransfer_DataTransferType_DataTransferTypeId">
+					<End Role="DataTransferType" Type="Self.DataTransferType" Multiplicity="1" />
+					<End Role="DataTransfer" Type="Self.DataTransfer" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="DataTransferType">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="DataTransfer">
+							<PropertyRef Name="DataTransferTypeId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_Container_DispositionState_DispositionStateId">
+					<End Role="DispositionState" Type="Self.DispositionState" Multiplicity="1" />
+					<End Role="Container" Type="Self.Container" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="DispositionState">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="Container">
+							<PropertyRef Name="DispositionStateId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_DataTransfer_EvidenceHandler_CollectingEvidenceHandlerId">
+					<End Role="EvidenceHandler" Type="Self.EvidenceHandler" Multiplicity="1" />
+					<End Role="DataTransfer" Type="Self.DataTransfer" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="EvidenceHandler">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="DataTransfer">
+							<PropertyRef Name="CollectingEvidenceHandlerId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_DataTransfer_EvidenceHandler_DeliveringEvidenceHandlerId">
+					<End Role="EvidenceHandler" Type="Self.EvidenceHandler" Multiplicity="0..1" />
+					<End Role="DataTransfer" Type="Self.DataTransfer" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="EvidenceHandler">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="DataTransfer">
+							<PropertyRef Name="DeliveringEvidenceHandlerId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_Custody_EvidenceHandler_FromEvidenceHandlerId">
+					<End Role="EvidenceHandler" Type="Self.EvidenceHandler" Multiplicity="0..1" />
+					<End Role="Custody" Type="Self.Custody" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="EvidenceHandler">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="Custody">
+							<PropertyRef Name="FromEvidenceHandlerId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_Custody_EvidenceHandler_TransferredByEvidenceHandlerId">
+					<End Role="EvidenceHandler" Type="Self.EvidenceHandler" Multiplicity="1" />
+					<End Role="Custody" Type="Self.Custody" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="EvidenceHandler">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="Custody">
+							<PropertyRef Name="TransferredByEvidenceHandlerId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="PK_PhysicalContainer_EvidenceLocation_EvidenceLocationId">
+					<End Role="EvidenceLocation" Type="Self.EvidenceLocation" Multiplicity="1" />
+					<End Role="PhysicalContainer" Type="Self.PhysicalContainer" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="EvidenceLocation">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="PhysicalContainer">
+							<PropertyRef Name="EvidenceLocationId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_Custody_EvidenceLocation_EvidenceLocationId">
+					<End Role="EvidenceLocation" Type="Self.EvidenceLocation" Multiplicity="1" />
+					<End Role="Custody" Type="Self.Custody" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="EvidenceLocation">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="Custody">
+							<PropertyRef Name="NewEvidenceLocationId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_Custody_ReasonForTransfer_ReasonForTransferId">
+					<End Role="ReasonForTransfer" Type="Self.ReasonForTransfer" Multiplicity="1" />
+					<End Role="Custody" Type="Self.Custody" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="ReasonForTransfer">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="Custody">
+							<PropertyRef Name="ReasonForTransferId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_ContainerBusinessProjectMapping_Container">
+					<End Role="Container" Type="Self.Container" Multiplicity="1" />
+					<End Role="ContainerBusinessProjectMapping" Type="Self.ContainerBusinessProjectMapping" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Container">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="ContainerBusinessProjectMapping">
+							<PropertyRef Name="ContainerId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_Custody_Container_ContainerId">
+					<End Role="Container" Type="Self.Container" Multiplicity="1" />
+					<End Role="Custody" Type="Self.Custody" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Container">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="Custody">
+							<PropertyRef Name="ContainerId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_Container_Container_ParentContainerId">
+					<End Role="ChildContainer" Type="Self.Container" Multiplicity="0..1" />
+					<End Role="ParentContainer" Type="Self.Container" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="ChildContainer">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="ParentContainer">
+							<PropertyRef Name="ParentContainerId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_Container_DataTransfer_DataTransferId">
+					<End Role="DataTransfer" Type="Self.DataTransfer" Multiplicity="1" />
+					<End Role="Container" Type="Self.Container" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="DataTransfer">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="Container">
+							<PropertyRef Name="DataTransferId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_Container_ContainerSubtype_ContainerSubtypeId">
+					<End Role="ContainerSubtype" Type="Self.ContainerSubtype" Multiplicity="0..1" />
+					<End Role="Container" Type="Self.Container" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="ContainerSubtype">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="Container">
+							<PropertyRef Name="ContainerSubtypeId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<EntityContainer Name="EvidenceLoggingSystemStoreContainer">
+					<EntitySet Name="ContainerTypes" EntityType="Self.ContainerType" />
+					<EntitySet Name="DataTransferTypes" EntityType="Self.DataTransferType" />
+					<EntitySet Name="DispositionStates" EntityType="Self.DispositionState" />
+					<EntitySet Name="EvidenceHandlers" EntityType="Self.EvidenceHandler" />
+					<EntitySet Name="EvidenceLocations" EntityType="Self.EvidenceLocation" />
+					<EntitySet Name="ReasonForTransfers" EntityType="Self.ReasonForTransfer" />
+					<EntitySet Name="Containers" EntityType="Self.Container" />
+					<EntitySet Name="DataTransfers" EntityType="Self.DataTransfer" />
+					<EntitySet Name="ContainerSubtypes" EntityType="Self.ContainerSubtype" />
+					<EntitySet Name="ContainerBusinessProjectMappings" EntityType="Self.ContainerBusinessProjectMapping" />
+					<EntitySet Name="Custodies" EntityType="Self.Custody" />
+					<AssociationSet Name="FK_ContainerSubtype_ContainerType_ContainerTypeId" Association="Self.FK_ContainerSubtype_ContainerType_ContainerTypeId">
+						<End Role="ContainerType" EntitySet="ContainerTypes" />
+						<End Role="ContainerSubtype" EntitySet="ContainerSubtypes" />
+					</AssociationSet>
+					<AssociationSet Name="FK_Container_ContainerType_ContainerTypeId" Association="Self.FK_Container_ContainerType_ContainerTypeId">
+						<End Role="ContainerType" EntitySet="ContainerTypes" />
+						<End Role="Container" EntitySet="Containers" />
+					</AssociationSet>
+					<AssociationSet Name="FK_DataTransfer_DataTransferType_DataTransferTypeId" Association="Self.FK_DataTransfer_DataTransferType_DataTransferTypeId">
+						<End Role="DataTransferType" EntitySet="DataTransferTypes" />
+						<End Role="DataTransfer" EntitySet="DataTransfers" />
+					</AssociationSet>
+					<AssociationSet Name="FK_Container_DispositionState_DispositionStateId" Association="Self.FK_Container_DispositionState_DispositionStateId">
+						<End Role="DispositionState" EntitySet="DispositionStates" />
+						<End Role="Container" EntitySet="Containers" />
+					</AssociationSet>
+					<AssociationSet Name="FK_DataTransfer_EvidenceHandler_CollectingEvidenceHandlerId" Association="Self.FK_DataTransfer_EvidenceHandler_CollectingEvidenceHandlerId">
+						<End Role="EvidenceHandler" EntitySet="EvidenceHandlers" />
+						<End Role="DataTransfer" EntitySet="DataTransfers" />
+					</AssociationSet>
+					<AssociationSet Name="FK_DataTransfer_EvidenceHandler_DeliveringEvidenceHandlerId" Association="Self.FK_DataTransfer_EvidenceHandler_DeliveringEvidenceHandlerId">
+						<End Role="EvidenceHandler" EntitySet="EvidenceHandlers" />
+						<End Role="DataTransfer" EntitySet="DataTransfers" />
+					</AssociationSet>
+					<AssociationSet Name="FK_Custody_EvidenceHandler_FromEvidenceHandlerId" Association="Self.FK_Custody_EvidenceHandler_FromEvidenceHandlerId">
+						<End Role="EvidenceHandler" EntitySet="EvidenceHandlers" />
+						<End Role="Custody" EntitySet="Custodies" />
+					</AssociationSet>
+					<AssociationSet Name="FK_Custody_EvidenceHandler_TransferredByEvidenceHandlerId" Association="Self.FK_Custody_EvidenceHandler_TransferredByEvidenceHandlerId">
+						<End Role="EvidenceHandler" EntitySet="EvidenceHandlers" />
+						<End Role="Custody" EntitySet="Custodies" />
+					</AssociationSet>
+					<AssociationSet Name="PK_PhysicalContainer_EvidenceLocation_EvidenceLocationId" Association="Self.PK_PhysicalContainer_EvidenceLocation_EvidenceLocationId">
+						<End Role="EvidenceLocation" EntitySet="EvidenceLocations" />
+						<End Role="PhysicalContainer" EntitySet="Containers" />
+					</AssociationSet>
+					<AssociationSet Name="FK_Custody_EvidenceLocation_EvidenceLocationId" Association="Self.FK_Custody_EvidenceLocation_EvidenceLocationId">
+						<End Role="EvidenceLocation" EntitySet="EvidenceLocations" />
+						<End Role="Custody" EntitySet="Custodies" />
+					</AssociationSet>
+					<AssociationSet Name="FK_Custody_ReasonForTransfer_ReasonForTransferId" Association="Self.FK_Custody_ReasonForTransfer_ReasonForTransferId">
+						<End Role="ReasonForTransfer" EntitySet="ReasonForTransfers" />
+						<End Role="Custody" EntitySet="Custodies" />
+					</AssociationSet>
+					<AssociationSet Name="FK_ContainerBusinessProjectMapping_Container" Association="Self.FK_ContainerBusinessProjectMapping_Container">
+						<End Role="Container" EntitySet="Containers" />
+						<End Role="ContainerBusinessProjectMapping" EntitySet="ContainerBusinessProjectMappings" />
+					</AssociationSet>
+					<AssociationSet Name="FK_Custody_Container_ContainerId" Association="Self.FK_Custody_Container_ContainerId">
+						<End Role="Container" EntitySet="Containers" />
+						<End Role="Custody" EntitySet="Custodies" />
+					</AssociationSet>
+					<AssociationSet Name="FK_Container_Container_ParentContainerId" Association="Self.FK_Container_Container_ParentContainerId">
+						<End Role="ParentContainer" EntitySet="Containers" />
+						<End Role="ChildContainer" EntitySet="Containers" />
+					</AssociationSet>
+					<AssociationSet Name="FK_Container_DataTransfer_DataTransferId" Association="Self.FK_Container_DataTransfer_DataTransferId">
+						<End Role="DataTransfer" EntitySet="DataTransfers" />
+						<End Role="Container" EntitySet="Containers" />
+					</AssociationSet>
+					<AssociationSet Name="FK_Container_ContainerSubtype_ContainerSubtypeId" Association="Self.FK_Container_ContainerSubtype_ContainerSubtypeId">
+						<End Role="ContainerSubtype" EntitySet="ContainerSubtypes" />
+						<End Role="Container" EntitySet="Containers" />
+					</AssociationSet>
+				  <FunctionImport Name="ContainerDelete">
+				  	<Parameter Name="Id" Mode="In" Type="Int64" />
+            <Parameter Name="DeletedBy" Mode="In" Type="String" />
+          </FunctionImport>
+				  <FunctionImport Name="DigitalContainerDelete">
+				  	<Parameter Name="Id" Mode="In" Type="Int64" />
+            <Parameter Name="DeletedBy" Mode="In" Type="String" />
+          </FunctionImport>
+				  <FunctionImport Name="PhysicalContainerDelete">
+				  	<Parameter Name="Id" Mode="In" Type="Int64" />
+            <Parameter Name="DeletedBy" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DataTransferDelete">
+				  	<Parameter Name="Id" Mode="In" Type="Int64" />
+            <Parameter Name="DeletedBy" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ContainerBusinessProjectMappingDelete">
+				  	<Parameter Name="Id" Mode="In" Type="Int64" />
+            <Parameter Name="DeletedBy" Mode="In" Type="String" />
+          </FunctionImport>
+				</EntityContainer>
+			</Schema>
+		</edmx:ConceptualModels>
+		<!-- MSL content -->
+		<edmx:Mappings>
+			<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+				<Alias Key="store" Value="EvidenceLoggingSystemModel.Store" />
+				<Alias Key="concept" Value="EvidenceLoggingSystemModel" />
+				<EntityContainerMapping StorageEntityContainer="EvidenceLoggingSystemModelStoreContainer" CdmEntityContainer="EvidenceLoggingSystemStoreContainer">
+					<EntitySetMapping Name="ContainerTypes">
+						<EntityTypeMapping TypeName="concept.ContainerType">
+							<MappingFragment StoreEntitySet="vwContainerType">
+								<ScalarProperty Name="IsLogical" ColumnName="IsLogical" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+								<ScalarProperty Name="Name" ColumnName="Name" />
+								<ScalarProperty Name="Description" ColumnName="Description" />
+								<ScalarProperty Name="IsPhysical" ColumnName="IsPhysical" />
+								<ScalarProperty Name="HistoricUid" ColumnName="HistoricUid" />
+								<ScalarProperty Name="Created" ColumnName="Created" />
+								<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+								<ScalarProperty Name="Updated" ColumnName="Updated" />
+								<ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="DataTransferTypes">
+						<EntityTypeMapping TypeName="concept.DataTransferType">
+							<MappingFragment StoreEntitySet="vwDataTransferType">
+								<ScalarProperty Name="Id" ColumnName="Id" />
+								<ScalarProperty Name="Name" ColumnName="Name" />
+								<ScalarProperty Name="Description" ColumnName="Description" />
+								<ScalarProperty Name="HistoricUid" ColumnName="HistoricUid" />
+								<ScalarProperty Name="Created" ColumnName="Created" />
+								<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+								<ScalarProperty Name="Updated" ColumnName="Updated" />
+								<ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="DispositionStates">
+						<EntityTypeMapping TypeName="concept.DispositionState">
+							<MappingFragment StoreEntitySet="vwDispositionState">
+								<ScalarProperty Name="Id" ColumnName="Id" />
+								<ScalarProperty Name="Name" ColumnName="Name" />
+								<ScalarProperty Name="Description" ColumnName="Description" />
+								<ScalarProperty Name="HistoricUid" ColumnName="HistoricUid" />
+								<ScalarProperty Name="Created" ColumnName="Created" />
+								<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+								<ScalarProperty Name="Updated" ColumnName="Updated" />
+								<ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="EvidenceHandlers">
+						<EntityTypeMapping TypeName="concept.EvidenceHandler">
+							<MappingFragment StoreEntitySet="vwEvidenceHandler">
+								<ScalarProperty Name="Id" ColumnName="Id" />
+								<ScalarProperty Name="Name" ColumnName="Name" />
+								<ScalarProperty Name="UserIdentifier" ColumnName="UserIdentifier" />
+								<ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+								<ScalarProperty Name="HistoricUid" ColumnName="HistoricUid" />
+								<ScalarProperty Name="Created" ColumnName="Created" />
+								<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+								<ScalarProperty Name="Updated" ColumnName="Updated" />
+								<ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="EvidenceLocations">
+						<EntityTypeMapping TypeName="concept.EvidenceLocation">
+							<MappingFragment StoreEntitySet="vwEvidenceLocation">
+								<ScalarProperty Name="Id" ColumnName="Id" />
+								<ScalarProperty Name="ParentEvidenceLocationId" ColumnName="ParentEvidenceLocationId" />
+								<ScalarProperty Name="ParentEvidenceLocationName" ColumnName="ParentEvidenceLocationName" />
+								<ScalarProperty Name="Name" ColumnName="Name" />
+								<ScalarProperty Name="Description" ColumnName="Description" />
+								<ScalarProperty Name="HistoricUid" ColumnName="HistoricUid" />
+								<ScalarProperty Name="Created" ColumnName="Created" />
+								<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+								<ScalarProperty Name="Updated" ColumnName="Updated" />
+								<ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="ReasonForTransfers">
+						<EntityTypeMapping TypeName="concept.ReasonForTransfer">
+							<MappingFragment StoreEntitySet="vwReasonForTransfer">
+								<ScalarProperty Name="Id" ColumnName="Id" />
+								<ScalarProperty Name="Name" ColumnName="Name" />
+								<ScalarProperty Name="Description" ColumnName="Description" />
+								<ScalarProperty Name="HistoricUid" ColumnName="HistoricUid" />
+								<ScalarProperty Name="Created" ColumnName="Created" />
+								<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+								<ScalarProperty Name="Updated" ColumnName="Updated" />
+								<ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="Containers">
+            <EntityTypeMapping TypeName="concept.DigitalContainer" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+            	<ModificationFunctionMapping>
+            		<InsertFunction FunctionName="store.DigitalContainerCreate">
+            			<ScalarProperty Name="ContainerTypeId" ParameterName="ContainerTypeId" />
+            			<ScalarProperty Name="ContainerSubtypeId" ParameterName="ContainerSubtypeId" />
+            			<ScalarProperty Name="DataClientId" ParameterName="DataClientId" />
+            			<ScalarProperty Name="DataTransferId" ParameterName="DataTransferId" />
+            			<ScalarProperty Name="ParentContainerId" ParameterName="ParentContainerId" />
+            			<ScalarProperty Name="DispositionStateId" ParameterName="DispositionStateId" />
+            			<ScalarProperty Name="Description" ParameterName="Description" />
+            			<ScalarProperty Name="Password" ParameterName="Password" />
+            			<ScalarProperty Name="ContainerLocation" ParameterName="ContainerLocation" />
+            			<ScalarProperty Name="FileName" ParameterName="FileName" />
+            			<ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+            			<ResultBinding Name="Id" ColumnName="Id" />
+            			<ResultBinding Name="ContainerTypeName" ColumnName="ContainerTypeName" />
+            			<ResultBinding Name="ContainerSubTypeName" ColumnName="ContainerSubtypeName" />
+            			<ResultBinding Name="DataTransferName" ColumnName="DataTransferName" />
+            			<ResultBinding Name="DispositionStateName" ColumnName="DispositionStateName" />
+            			<ResultBinding Name="HistoricUid" ColumnName="HistoricUid" />
+            			<ResultBinding Name="Created" ColumnName="Created" />
+            			<ResultBinding Name="Updated" ColumnName="Updated" />
+            			<ResultBinding Name="UpdatedBy" ColumnName="UpdatedBy" />
+            		</InsertFunction>
+            		<UpdateFunction FunctionName="store.DigitalContainerUpdate">
+            			<ScalarProperty Name="Id" ParameterName="Id" Version="Current" />
+            			<ScalarProperty Name="ContainerTypeId" ParameterName="ContainerTypeId" Version="Current" />
+            			<ScalarProperty Name="ContainerSubtypeId" ParameterName="ContainerSubtypeId" Version="Current" />
+            			<ScalarProperty Name="DataClientId" ParameterName="DataClientId" Version="Current" />
+            			<ScalarProperty Name="DataTransferId" ParameterName="DataTransferId" Version="Current" />
+            			<ScalarProperty Name="ParentContainerId" ParameterName="ParentContainerId" Version="Current" />
+            			<ScalarProperty Name="DispositionStateId" ParameterName="DispositionStateId" Version="Current" />
+            			<ScalarProperty Name="Description" ParameterName="Description" Version="Current" />
+            			<ScalarProperty Name="Password" ParameterName="Password" Version="Current" />
+            			<ScalarProperty Name="ContainerLocation" ParameterName="ContainerLocation" Version="Current" />
+            			<ScalarProperty Name="FileName" ParameterName="FileName" Version="Current" />
+            			<ScalarProperty Name="UpdatedBy" ParameterName="UpdatedBy" Version="Current" />
+            			<ResultBinding Name="ContainerTypeName" ColumnName="ContainerTypeName" />
+            			<ResultBinding Name="ContainerSubTypeName" ColumnName="ContainerSubtypeName" />
+            			<ResultBinding Name="DataTransferName" ColumnName="DataTransferName" />
+            			<ResultBinding Name="DispositionStateName" ColumnName="DispositionStateName" />
+            			<ResultBinding Name="HistoricUid" ColumnName="HistoricUid" />
+            			<ResultBinding Name="Created" ColumnName="Created" />
+            			<ResultBinding Name="CreatedBy" ColumnName="CreatedBy" />
+            			<ResultBinding Name="Updated" ColumnName="Updated" />
+            		</UpdateFunction>
+            	</ModificationFunctionMapping>
+            </EntityTypeMapping>
+						<EntityTypeMapping TypeName="concept.PhysicalContainer">
+							<ModificationFunctionMapping>
+								<InsertFunction FunctionName="store.PhysicalContainerCreate">
+									<ScalarProperty Name="ContainerTypeId" ParameterName="ContainerTypeId" />
+									<ScalarProperty Name="ContainerSubtypeId" ParameterName="ContainerSubtypeId" />
+									<ScalarProperty Name="DataClientId" ParameterName="DataClientId" />
+									<ScalarProperty Name="DataTransferId" ParameterName="DataTransferId" />
+									<ScalarProperty Name="ParentContainerId" ParameterName="ParentContainerId" />
+									<ScalarProperty Name="DispositionStateId" ParameterName="DispositionStateId" />
+									<ScalarProperty Name="Description" ParameterName="Description" />
+									<ScalarProperty Name="Password" ParameterName="Password" />
+									<ScalarProperty Name="EvidenceLocationId" ParameterName="EvidenceLocationId" />
+									<ScalarProperty Name="Make" ParameterName="Make" />
+									<ScalarProperty Name="Model" ParameterName="Model" />
+									<ScalarProperty Name="SerialNumber" ParameterName="SerialNumber" />
+									<ScalarProperty Name="Capacity" ParameterName="Capacity" />
+									<ScalarProperty Name="Label" ParameterName="Label" />
+									<ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+									<ResultBinding Name="Id" ColumnName="Id" />
+									<ResultBinding Name="ContainerTypeName" ColumnName="ContainerTypeName" />
+									<ResultBinding Name="ContainerSubTypeName" ColumnName="ContainerSubtypeName" />
+									<ResultBinding Name="DataTransferName" ColumnName="DataTransferName" />
+									<ResultBinding Name="DispositionStateName" ColumnName="DispositionStateName" />
+									<ResultBinding Name="EvidenceLocationName" ColumnName="EvidenceLocationName" />
+									<ResultBinding Name="HistoricUid" ColumnName="HistoricUid" />
+									<ResultBinding Name="Created" ColumnName="Created" />
+									<ResultBinding Name="Updated" ColumnName="Updated" />
+									<ResultBinding Name="UpdatedBy" ColumnName="UpdatedBy" />
+								</InsertFunction>
+								<UpdateFunction FunctionName="store.PhysicalContainerUpdate">
+									<ScalarProperty Name="Id" ParameterName="Id" Version="Current" />
+									<ScalarProperty Name="ContainerTypeId" ParameterName="ContainerTypeId" Version="Current" />
+									<ScalarProperty Name="ContainerSubtypeId" ParameterName="ContainerSubtypeId" Version="Current" />
+									<ScalarProperty Name="DataClientId" ParameterName="DataClientId" Version="Current" />
+									<ScalarProperty Name="DataTransferId" ParameterName="DataTransferId" Version="Current" />
+									<ScalarProperty Name="ParentContainerId" ParameterName="ParentContainerId" Version="Current" />
+									<ScalarProperty Name="DispositionStateId" ParameterName="DispositionStateId" Version="Current" />
+									<ScalarProperty Name="Description" ParameterName="Description" Version="Current" />
+									<ScalarProperty Name="Password" ParameterName="Password" Version="Current" />
+									<ScalarProperty Name="EvidenceLocationId" ParameterName="EvidenceLocationId" Version="Current" />
+									<ScalarProperty Name="Make" ParameterName="Make" Version="Current" />
+									<ScalarProperty Name="Model" ParameterName="Model" Version="Current" />
+									<ScalarProperty Name="SerialNumber" ParameterName="SerialNumber" Version="Current" />
+									<ScalarProperty Name="Capacity" ParameterName="Capacity" Version="Current" />
+									<ScalarProperty Name="Label" ParameterName="Label" Version="Current" />
+									<ScalarProperty Name="UpdatedBy" ParameterName="UpdatedBy" Version="Current" />
+									<ResultBinding Name="ContainerTypeName" ColumnName="ContainerTypeName" />
+									<ResultBinding Name="ContainerSubTypeName" ColumnName="ContainerSubtypeName" />
+									<ResultBinding Name="DataTransferName" ColumnName="DataTransferName" />
+									<ResultBinding Name="DispositionStateName" ColumnName="DispositionStateName" />
+									<ResultBinding Name="EvidenceLocationName" ColumnName="EvidenceLocationName" />
+									<ResultBinding Name="HistoricUid" ColumnName="HistoricUid" />
+									<ResultBinding Name="Created" ColumnName="Created" />
+									<ResultBinding Name="CreatedBy" ColumnName="CreatedBy" />
+									<ResultBinding Name="Updated" ColumnName="Updated" />
+								</UpdateFunction>
+							</ModificationFunctionMapping>
+						</EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(EvidenceLoggingSystemModel.DigitalContainer)">
+              <MappingFragment StoreEntitySet="vwDigitalContainer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ContainerLocation" ColumnName="ContainerLocation" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(EvidenceLoggingSystemModel.PhysicalContainer)">
+              <MappingFragment StoreEntitySet="vwPhysicalContainer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Label" ColumnName="Label" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="EvidenceLocationName" ColumnName="EvidenceLocationName" />
+                <ScalarProperty Name="EvidenceLocationId" ColumnName="EvidenceLocationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="EvidenceLoggingSystemModel.Container">
+              <ModificationFunctionMapping>
+                <UpdateFunction FunctionName="EvidenceLoggingSystemModel.Store.ContainerUpdate">
+                  <ScalarProperty Name="UpdatedBy" ParameterName="UpdatedBy" Version="Current" />
+                  <ScalarProperty Name="Password" ParameterName="Password" Version="Current" />
+                  <ScalarProperty Name="Description" ParameterName="Description" Version="Current" />
+                  <ScalarProperty Name="DispositionStateId" ParameterName="DispositionStateId" Version="Current" />
+                  <ScalarProperty Name="ParentContainerId" ParameterName="ParentContainerId" Version="Current" />
+                  <ScalarProperty Name="DataTransferId" ParameterName="DataTransferId" Version="Current" />
+                  <ScalarProperty Name="DataClientId" ParameterName="DataClientId" Version="Current" />
+                  <ScalarProperty Name="ContainerSubtypeId" ParameterName="ContainerSubtypeId" Version="Current" />
+                  <ScalarProperty Name="ContainerTypeId" ParameterName="ContainerTypeId" Version="Current" />
+                  <ScalarProperty Name="Id" ParameterName="Id" Version="Current" />
+                </UpdateFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(EvidenceLoggingSystemModel.Container)">
+              <MappingFragment StoreEntitySet="vwContainer">
+                <ScalarProperty Name="ContainerSubTypeName" ColumnName="ContainerSubTypeName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IsLogical" ColumnName="IsLogical" />
+                <ScalarProperty Name="IsPhysical" ColumnName="IsPhysical" />
+                <ScalarProperty Name="ContainerTypeId" ColumnName="ContainerTypeId" />
+                <ScalarProperty Name="ContainerTypeName" ColumnName="ContainerTypeName" />
+                <ScalarProperty Name="ContainerSubtypeId" ColumnName="ContainerSubtypeId" />
+                <ScalarProperty Name="DataClientId" ColumnName="DataClientId" />
+                <ScalarProperty Name="DataTransferId" ColumnName="DataTransferId" />
+                <ScalarProperty Name="DataTransferName" ColumnName="DataTransferName" />
+                <ScalarProperty Name="ParentContainerId" ColumnName="ParentContainerId" />
+                <ScalarProperty Name="DispositionStateId" ColumnName="DispositionStateId" />
+                <ScalarProperty Name="DispositionStateName" ColumnName="DispositionStateName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="HistoricUid" ColumnName="HistoricUid" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Updated" ColumnName="Updated" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="DataTransfers">
+            <EntityTypeMapping TypeName="concept.DataTransfer">
+							<MappingFragment StoreEntitySet="vwDataTransfer">
+								<ScalarProperty Name="Id" ColumnName="Id" />
+								<ScalarProperty Name="DataTransferTypeId" ColumnName="DataTransferTypeId" />
+								<ScalarProperty Name="DataTransferTypeName" ColumnName="DataTransferTypeName" />
+								<ScalarProperty Name="DataClientId" ColumnName="DataClientId" />
+								<ScalarProperty Name="BusinessProjectId" ColumnName="BusinessProjectId" />
+								<ScalarProperty Name="DataTransferDatetime" ColumnName="DataTransferDatetime" />
+								<ScalarProperty Name="CollectingEvidenceHandlerId" ColumnName="CollectingEvidenceHandlerId" />
+								<ScalarProperty Name="CollectingEvidenceHandlerDisplayName" ColumnName="CollectingEvidenceHandlerDisplayName" />
+								<ScalarProperty Name="DeliveringEvidenceHandlerId" ColumnName="DeliveringEvidenceHandlerId" />
+								<ScalarProperty Name="DeliveringEvidenceHandlerDisplayName" ColumnName="DeliveringEvidenceHandlerDisplayName" />
+								<ScalarProperty Name="Name" ColumnName="Name" />
+								<ScalarProperty Name="Description" ColumnName="Description" />
+								<ScalarProperty Name="TrackingNumber" ColumnName="TrackingNumber" />
+								<ScalarProperty Name="HistoricUid" ColumnName="HistoricUid" />
+								<ScalarProperty Name="Created" ColumnName="Created" />
+								<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+								<ScalarProperty Name="Updated" ColumnName="Updated" />
+								<ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CampusId" ColumnName="CampusId" />
+              </MappingFragment>
+						</EntityTypeMapping>
+						<EntityTypeMapping TypeName="concept.DataTransfer">
+							<ModificationFunctionMapping>
+								<InsertFunction FunctionName="store.DataTransferCreate">
+									<ScalarProperty Name="DataTransferTypeId" ParameterName="DataTransferTypeId" />
+									<ScalarProperty Name="CampusId" ParameterName="CampusId" />
+									<ScalarProperty Name="DataClientId" ParameterName="DataClientId" />
+									<ScalarProperty Name="BusinessProjectId" ParameterName="BusinessProjectId" />
+									<ScalarProperty Name="DataTransferDatetime" ParameterName="DataTransferDatetime" />
+									<ScalarProperty Name="CollectingEvidenceHandlerId" ParameterName="CollectingEvidenceHandlerId" />
+									<ScalarProperty Name="DeliveringEvidenceHandlerId" ParameterName="DeliveringEvidenceHandlerId" />
+									<ScalarProperty Name="Name" ParameterName="Name" />
+									<ScalarProperty Name="Description" ParameterName="Description" />
+									<ScalarProperty Name="TrackingNumber" ParameterName="TrackingNumber" />
+									<ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+									<ResultBinding Name="Id" ColumnName="Id" />
+									<ResultBinding Name="DataTransferTypeName" ColumnName="DataTransferTypeName" />
+									<ResultBinding Name="CollectingEvidenceHandlerDisplayName" ColumnName="CollectingEvidenceHandlerDisplayName" />
+									<ResultBinding Name="DeliveringEvidenceHandlerDisplayName" ColumnName="DeliveringEvidenceHandlerDisplayName" />
+									<ResultBinding Name="HistoricUid" ColumnName="HistoricUid" />
+									<ResultBinding Name="Created" ColumnName="Created" />
+									<ResultBinding Name="Updated" ColumnName="Updated" />
+									<ResultBinding Name="UpdatedBy" ColumnName="UpdatedBy" />
+								</InsertFunction>
+								<UpdateFunction FunctionName="store.DataTransferUpdate">
+									<ScalarProperty Name="Id" ParameterName="Id" Version="Current" />
+									<ScalarProperty Name="CampusId" ParameterName="CampusId" Version="Current" />
+									<ScalarProperty Name="DataTransferTypeId" ParameterName="DataTransferTypeId" Version="Current" />
+									<ScalarProperty Name="DataClientId" ParameterName="DataClientId" Version="Current" />
+									<ScalarProperty Name="BusinessProjectId" ParameterName="BusinessProjectId" Version="Current" />
+									<ScalarProperty Name="DataTransferDatetime" ParameterName="DataTransferDatetime" Version="Current" />
+									<ScalarProperty Name="CollectingEvidenceHandlerId" ParameterName="CollectingEvidenceHandlerId" Version="Current" />
+									<ScalarProperty Name="DeliveringEvidenceHandlerId" ParameterName="DeliveringEvidenceHandlerId" Version="Current" />
+									<ScalarProperty Name="Name" ParameterName="Name" Version="Current" />
+									<ScalarProperty Name="Description" ParameterName="Description" Version="Current" />
+									<ScalarProperty Name="TrackingNumber" ParameterName="TrackingNumber" Version="Current" />
+									<ScalarProperty Name="UpdatedBy" ParameterName="UpdatedBy" Version="Current" />
+									<ResultBinding Name="DataTransferTypeName" ColumnName="DataTransferTypeName" />
+									<ResultBinding Name="CollectingEvidenceHandlerDisplayName" ColumnName="CollectingEvidenceHandlerDisplayName" />
+									<ResultBinding Name="DeliveringEvidenceHandlerDisplayName" ColumnName="DeliveringEvidenceHandlerDisplayName" />
+									<ResultBinding Name="HistoricUid" ColumnName="HistoricUid" />
+									<ResultBinding Name="Created" ColumnName="Created" />
+									<ResultBinding Name="CreatedBy" ColumnName="CreatedBy" />
+									<ResultBinding Name="Updated" ColumnName="Updated" />
+								</UpdateFunction>
+							</ModificationFunctionMapping>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="ContainerSubtypes">
+						<EntityTypeMapping TypeName="concept.ContainerSubtype">
+							<MappingFragment StoreEntitySet="vwContainerSubtype">
+								<ScalarProperty Name="Id" ColumnName="Id" />
+								<ScalarProperty Name="ContainerTypeId" ColumnName="ContainerTypeId" />
+								<ScalarProperty Name="ContainerTypeName" ColumnName="ContainerTypeName" />
+								<ScalarProperty Name="Name" ColumnName="Name" />
+								<ScalarProperty Name="Description" ColumnName="Description" />
+								<ScalarProperty Name="HistoricUid" ColumnName="HistoricUid" />
+								<ScalarProperty Name="Created" ColumnName="Created" />
+								<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+								<ScalarProperty Name="Updated" ColumnName="Updated" />
+								<ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="ContainerBusinessProjectMappings">
+						<EntityTypeMapping TypeName="concept.ContainerBusinessProjectMapping">
+							<MappingFragment StoreEntitySet="vwContainerBusinessProjectMapping">
+								<ScalarProperty Name="Id" ColumnName="Id" />
+								<ScalarProperty Name="ContainerId" ColumnName="ContainerId" />
+								<ScalarProperty Name="BusinessProjectId" ColumnName="BusinessProjectId" />
+								<ScalarProperty Name="Created" ColumnName="Created" />
+								<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+								<ScalarProperty Name="Deleted" ColumnName="Deleted" />
+								<ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+							</MappingFragment>
+						</EntityTypeMapping>
+						<EntityTypeMapping TypeName="concept.ContainerBusinessProjectMapping">
+							<ModificationFunctionMapping>
+								<InsertFunction FunctionName="store.ContainerBusinessProjectMappingCreate">
+									<ScalarProperty Name="ContainerId" ParameterName="ContainerId" />
+									<ScalarProperty Name="BusinessProjectId" ParameterName="BusinessProjectId" />
+									<ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+									<ResultBinding Name="Id" ColumnName="Id" />
+									<ResultBinding Name="Created" ColumnName="Created" />
+								</InsertFunction>
+							</ModificationFunctionMapping>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="Custodies">
+						<EntityTypeMapping TypeName="concept.Custody">
+							<MappingFragment StoreEntitySet="vwCustody">
+								<ScalarProperty Name="Id" ColumnName="Id" />
+								<ScalarProperty Name="ContainerId" ColumnName="ContainerId" />
+								<ScalarProperty Name="FromEvidenceHandlerId" ColumnName="FromEvidenceHandlerId" />
+								<ScalarProperty Name="FromEvidenceHandlerDisplayName" ColumnName="FromEvidenceHandlerDisplayName" />
+								<ScalarProperty Name="TransferredByEvidenceHandlerId" ColumnName="TransferredByEvidenceHandlerId" />
+								<ScalarProperty Name="TransferredByEvidenceHandlerDisplayName" ColumnName="TransferredByEvidenceHandlerDisplayName" />
+								<ScalarProperty Name="TransferDatetime" ColumnName="TransferDatetime" />
+								<ScalarProperty Name="ReasonForTransferId" ColumnName="ReasonForTransferId" />
+								<ScalarProperty Name="ReasonForTransferName" ColumnName="ReasonForTransferName" />
+								<ScalarProperty Name="NewEvidenceLocationId" ColumnName="NewEvidenceLocationId" />
+								<ScalarProperty Name="NewEvidenceLocationName" ColumnName="NewEvidenceLocationName" />
+								<ScalarProperty Name="ServiceTicketNumber" ColumnName="ServiceTicketNumber" />
+								<ScalarProperty Name="Notes" ColumnName="Notes" />
+								<ScalarProperty Name="HistoricUid" ColumnName="HistoricUid" />
+								<ScalarProperty Name="Created" ColumnName="Created" />
+								<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+								<ScalarProperty Name="Updated" ColumnName="Updated" />
+								<ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+							</MappingFragment>
+						</EntityTypeMapping>
+						<EntityTypeMapping TypeName="concept.Custody">
+							<ModificationFunctionMapping>
+								<InsertFunction FunctionName="store.CustodyCreate">
+									<ScalarProperty Name="ContainerId" ParameterName="ContainerId" />
+									<ScalarProperty Name="FromEvidenceHandlerId" ParameterName="FromEvidenceHandlerId" />
+									<ScalarProperty Name="TransferredByEvidenceHandlerId" ParameterName="TransferredByEvidenceHandlerId" />
+									<ScalarProperty Name="TransferDatetime" ParameterName="TransferDatetime" />
+									<ScalarProperty Name="ReasonForTransferId" ParameterName="ReasonForTransferId" />
+									<ScalarProperty Name="NewEvidenceLocationId" ParameterName="NewEvidenceLocationId" />
+									<ScalarProperty Name="ServiceTicketNumber" ParameterName="ServiceTicketNumber" />
+									<ScalarProperty Name="Notes" ParameterName="Notes" />
+									<ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+									<ResultBinding Name="Id" ColumnName="Id" />
+									<ResultBinding Name="FromEvidenceHandlerDisplayName" ColumnName="FromEvidenceHandlerDisplayName" />
+									<ResultBinding Name="TransferredByEvidenceHandlerDisplayName" ColumnName="TransferredByEvidenceHandlerDisplayName" />
+									<ResultBinding Name="ReasonForTransferName" ColumnName="ReasonForTransferName" />
+									<ResultBinding Name="NewEvidenceLocationName" ColumnName="NewEvidenceLocationName" />
+									<ResultBinding Name="HistoricUid" ColumnName="HistoricUid" />
+									<ResultBinding Name="Created" ColumnName="Created" />
+									<ResultBinding Name="Updated" ColumnName="Updated" />
+									<ResultBinding Name="UpdatedBy" ColumnName="UpdatedBy" />
+								</InsertFunction>
+								<UpdateFunction FunctionName="store.CustodyUpdate">
+									<ScalarProperty Name="Id" ParameterName="Id" Version="Current" />
+									<ScalarProperty Name="ServiceTicketNumber" ParameterName="ServiceTicketNumber" Version="Current" />
+									<ScalarProperty Name="Notes" ParameterName="Notes" Version="Current" />
+									<ScalarProperty Name="UpdatedBy" ParameterName="UpdatedBy" Version="Current" />
+									<ResultBinding Name="HistoricUid" ColumnName="HistoricUid" />
+									<ResultBinding Name="Created" ColumnName="Created" />
+									<ResultBinding Name="CreatedBy" ColumnName="CreatedBy" />
+									<ResultBinding Name="Updated" ColumnName="Updated" />
+								</UpdateFunction>
+							</ModificationFunctionMapping>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<FunctionImportMapping FunctionImportName="ContainerDelete" FunctionName="EvidenceLoggingSystemModel.Store.ContainerDelete" />
+					<FunctionImportMapping FunctionImportName="DataTransferDelete" FunctionName="EvidenceLoggingSystemModel.Store.DataTransferDelete" />
+					<FunctionImportMapping FunctionImportName="ContainerBusinessProjectMappingDelete" FunctionName="EvidenceLoggingSystemModel.Store.ContainerBusinessProjectMappingDelete" />
+					<FunctionImportMapping FunctionImportName="DigitalContainerDelete" FunctionName="EvidenceLoggingSystemModel.Store.ContainerDelete" />
+					<FunctionImportMapping FunctionImportName="PhysicalContainerDelete" FunctionName="EvidenceLoggingSystemModel.Store.ContainerDelete" />
+				</EntityContainerMapping>
+			</Mapping>
+		</edmx:Mappings>
+	</edmx:Runtime>
+	<!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+	<Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+		<Connection>
+			<DesignerInfoPropertySet>
+				<DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+			</DesignerInfoPropertySet>
+		</Connection>
+		<Options>
+			<DesignerInfoPropertySet>
+				<DesignerProperty Name="ValidateOnBuild" Value="true" />
+				<DesignerProperty Name="EnablePluralization" Value="true" />
+				<DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+				<DesignerProperty Name="UseLegacyProvider" Value="false" />
+				<DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+			</DesignerInfoPropertySet>
+		</Options>
+		<!-- Diagram content (shape and connector positions) -->
+		<Diagrams>
+      <Diagram DiagramId="37076dd5fae54b789ef661a7c7e759be" Name="Diagram1">
+        <EntityTypeShape EntityType="EvidenceLoggingSystemModel.ContainerType" Width="1.5" PointX="0.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvidenceLoggingSystemModel.DataTransferType" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvidenceLoggingSystemModel.DispositionState" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvidenceLoggingSystemModel.EvidenceHandler" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvidenceLoggingSystemModel.EvidenceLocation" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvidenceLoggingSystemModel.ReasonForTransfer" Width="1.5" PointX="10.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvidenceLoggingSystemModel.Container" Width="1.875" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvidenceLoggingSystemModel.DataTransfer" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvidenceLoggingSystemModel.ContainerSubtype" Width="1.5" PointX="3" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvidenceLoggingSystemModel.ContainerBusinessProjectMapping" Width="3.125" PointX="7.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvidenceLoggingSystemModel.Custody" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvidenceLoggingSystemModel.DigitalContainer" Width="1.5" PointX="10.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvidenceLoggingSystemModel.PhysicalContainer" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_ContainerSubtype_ContainerType_ContainerTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_Container_ContainerType_ContainerTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_DigitalContainer_ContainerType_ContainerTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_PhysicalContainer_ContainerType_ContainerTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_DataTransfer_DataTransferType_DataTransferTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_Container_DispositionState_DispositionStateId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_DigitalContainer_DispositionState_DispositionStateId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_PhysicalContainer_DispositionState_DispositionStateId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_DataTransfer_EvidenceHandler_CollectingEvidenceHandlerId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_DataTransfer_EvidenceHandler_DeliveringEvidenceHandlerId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_Custody_EvidenceHandler_FromEvidenceHandlerId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_Custody_EvidenceHandler_TransferredByEvidenceHandlerId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.PK_PhysicalContainer_EvidenceLocation_EvidenceLocationId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_Custody_EvidenceLocation_EvidenceLocationId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_Custody_ReasonForTransfer_ReasonForTransferId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_ContainerBusinessProjectMapping_Container" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_ContainerBusinessProjectMapping_DigitalContainer" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_ContainerBusinessProjectMapping_PhysicalContainer" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.PK_DigitalContainer_Container_ContainerId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.PK_PhysicalContainer_Container_ContainerId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_Custody_Container_ContainerId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_Custody_DigitalContainer_ContainerId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_Custody_PhysicalContainer_ContainerId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_Container_Container_ParentContainerId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_DigitalContainer_Container_ParentContainerId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_PhysicalContainer_Container_ParentContainerId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_Container_DataTransfer_DataTransferId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_DigitalContainer_DataTransfer_DataTransferId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_PhysicalContainer_DataTransfer_DataTransferId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_Container_ContainerSubtype_ContainerSubtypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_DigitalContainer_ContainerSubtype_ContainerSubtypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="EvidenceLoggingSystemModel.FK_PhysicalContainer_ContainerSubtype_ContainerSubtypeId" ManuallyRouted="false" />
+        <InheritanceConnector EntityType="EvidenceLoggingSystemModel.DigitalContainer" />
+        <InheritanceConnector EntityType="EvidenceLoggingSystemModel.PhysicalContainer" />
+      </Diagram>
+    </Diagrams>
+	</Designer>
+</edmx:Edmx>

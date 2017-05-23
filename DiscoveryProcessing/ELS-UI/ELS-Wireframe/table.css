@@ -1,0 +1,78 @@
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.data-table th, table.data-table td {
+  border-bottom: 1px solid rgba( 0, 0, 0, 0.12 );
+}
+
+table.data-table th+th, table.data-table td+td {
+  padding-left: 56px;
+}
+
+table.data-table th.checkboxColumn+th, table.data-table td.checkboxColumn+td {
+  padding-left: 0;
+}
+
+table.data-table th:first-child, table.data-table td:first-child {
+  padding-left: 16px;
+}
+
+table.data-table th:last-child, table.data-table td:last-child {
+  padding-right: 16px;
+}
+
+table.data-table td.limitWidth {
+  max-width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+table.data-table .checkboxColumn {
+  width: 40px;
+  max-width: 40px;
+}
+
+table.data-table tr {
+  height: 48px;
+}
+
+table.data-table tr.clickable {
+  cursor: pointer;
+  outline: none;
+}
+
+table.data-table tr.selected {
+  background-color: rgba(245, 245, 245, 0.8);
+}
+
+table.data-table tbody tr:hover {
+  background-color: rgba(238, 238, 238, 0.8);
+}
+
+table.data-table thead th {
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+  color: rgba( 0, 0, 0, 0.54 );
+}
+
+table.data-table tbody td {
+  font-size: 13px;
+  font-weight: 400;
+  text-align: left;
+  color: rgba( 0, 0, 0, 0.87 );
+}
+
+table.data-table tbody td.numeric {
+  text-align: right;
+}
+
+.table-footer {
+  height: 56px;
+}
+
+table.data-table td md-checkbox, th md-checkbox {
+  margin: 0;
+}

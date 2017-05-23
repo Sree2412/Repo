@@ -1,0 +1,36 @@
+<div class="detail-panel-container" layout="column">
+  <md-content flex>
+    <md-list>
+      <md-list-item class="md-3-line" ng-repeat="attachment in attachments" ng-click="showAttachmentDetail( attachment )">
+        <md-icon class="md-avatar-icon">{{attachmentIcons[attachment.type]}}</md-icon>
+        <div class="md-list-item-text" layout="column">
+          <h3 ng-switch="attachment.type">
+            <span ng-switch-when="File">{{attachment.fileName}}</span>
+            <span ng-switch-when="Note">{{attachment.type}}</span>
+            <span ng-switch-when="Ticket">{{attachment.type}} #{{attachment.ticketNumber}}</span>
+          </h3>
+          <p>{{attachment.description}}</p>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-content>
+  <div>
+    <md-menu>
+      <md-button class="md-raised" ng-click="$mdOpenMenu($event)">
+        <md-icon>add_circle</md-icon> Attachment
+      </md-button>
+      <md-menu-content>
+        <md-menu-item>
+          <md-button ng-click="addAttachment('File')">File</md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button ng-click="addAttachment('Note')">Note</md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button ng-click="addAttachment('Ticket')">Ticket</md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+  </div>
+  <attachment-detail attachment="detailAttachment"></attachment-detail>
+</div>

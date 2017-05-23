@@ -1,0 +1,65 @@
+### Version 1 ###
+### WARNING. This software installation program and all other programs and software that will
+### be installed by this program (collectively, “Software”) belong to kCura Corporation and/or
+### kCura’s third party software licensors. The Software is licensed with restrictions and is
+### protected by Federal Copyright Law, International Copyright Treaties, and the Illinois Trade
+### Secrets Act. All rights are reserved. Any unauthorized copying, use, or other activity, is
+### strictly prohibited, and is subject to civil and criminal penalties.
+### Target directory for CAAT installation files.
+### This path must be a local, accessible path on the server you are installing to.
+### E.g. CAATPATH=C:\CAAT
+
+CAATPATH=C:\CAAT\
+
+### Target directory for CAAT indexes.
+### This path must be a local, accessible path on the server you are installing to.
+### E.g. CAATINDEXDIR=C:\Analytics\Indexes
+
+CAATINDEXDIR=<%= node['Relativity']['Analytics']['CAATIndexDir'] %>
+
+### The primary database server name that Relativity's installed on.
+### This path must be a local, accessible path on the server you are installing to.
+### E.g. DBSERVER=MySqlInstance
+
+DBSERVER=<%= node['Relativity']['Install']['PrimaryInstance'] %>
+
+### The EDDSDBO password for the primary database.
+### E.g. DBPASS=MySecretPassword
+
+DBPASS=<%= node['Relativity']['eddsdbo']['Password'] %>
+
+### Domain (or Workgroup) and Username of the Relativity Service Account Windows login. 
+### This Windows login must already exist.
+### E.g. RSA=domain\username
+
+RSA=<%= node['Relativity']['Relativity']['Service_Account'] %>
+
+### Password for the SERVICEUSERNAME.
+### E.g. RSAPASS=MySecretPassword
+
+RSAPASS=<%= node['Relativity']['Relativity']['Service_Account_Password'] %>
+
+### Port for CAAT REST
+### E.g. RESTPORT=8443
+
+RESTPORT=8443
+
+### Username for CAAT REST. User will be created during installation.
+### E.g. RESTUSERNAME=CARestUser
+
+RESTUSERNAME=<%= node['Relativity']['Analytics']['RestUser'] %>
+
+### Password for CAAT REST user. User will be created during installation.
+### E.g. RESTPASSWORD=MyRESTPassword1234!
+
+RESTPASSWORD=<%= node['Relativity']['Analytics']['RestPassword'] %>
+
+### Name of the CAAT service.
+### E.g. CAATSERVICE=Content Analyst CAAT
+
+CAATSERVICE=Content Analyst CAAT
+
+### Port for CAAT
+### E.g. CAATPORT=8080
+
+CAATPORT=8080

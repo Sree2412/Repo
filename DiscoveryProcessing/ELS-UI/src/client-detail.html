@@ -1,0 +1,41 @@
+<md-content flex md-colors="{background: 'background'}" layout="column">
+  <div layout-padding>
+    <div class="md-headline">Data Client: {{client.Name}}</div>
+    <div>
+      <div>
+        <span class="md-body-2">Client name:</span>
+        {{client.Name}}
+      </div>
+      <div>
+        <span class="md-body-2">Data Segregation Type:</span>
+        {{client.DataSegregationType.DisplayName}}
+      </div>
+    </div>
+  </div>
+  <md-tabs md-border-bottom md-autoselect flex>
+    <md-tab label="Projects">
+      <detail-table detail="$resolve.projects"
+        model="$resolve.projectModel"
+        field-filters="$resolve.projectFilters"
+        fields-displayed="['ID', 'Code', 'Name', 'DomainProjectStatusName', 'DomainServiceLineName', 'ClientName']"
+        filter-object="filterProjects"
+        on-row-click="selectProject( item )"
+        list-name="clientProjectsTable">
+    </md-tab>
+    <md-tab label="Data Transfers">
+      <detail-table detail="$resolve.dataTransfers"
+        model="$resolve.dataTransferModel"
+        field-filters="$resolve.dataTransferFilters"
+        fields-displayed="['Id', 'Name', 'DataTransferTypeName', 'DataTransferDatetime', 'CollectingEvidenceHandlerDisplayName', 'DeliveringEvidenceHandlerDisplayName']"
+        filter-object="{ DataClientId: client.Id }"
+        on-row-click="selectDataTransfer( item )"
+        list-name="clientTransfersTable">
+    </md-tab>
+    <md-tab label="Attachments">
+      <attachment-list attachments="client.attachments"></attachment-list>
+    </md-tab>
+    <md-tab label="History">
+      <history-list item="client"></history-list>
+    </md-tab>
+  </md-tabs>
+</md-content>
